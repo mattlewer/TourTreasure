@@ -4,6 +4,7 @@ import {ICarouselInstance} from 'react-native-reanimated-carousel';
 import {useRef, useState} from 'react';
 import {useRecoilState} from 'recoil';
 import {userState} from '../../../state/userState';
+import {localise} from '../../lang/lang';
 import {User} from '../../../interfaces/user';
 import useHandleUserData from '../../hooks/useHandleUserData';
 
@@ -12,7 +13,6 @@ import SelectedLocation from '../../../assets/app_selected_location.png';
 import Navigation from '../../../assets/app_navigation.png';
 import Map from '../../../assets/app_example_map.png';
 import Points from '../../../assets/app_example_points.png';
-import { localise } from '../../lang/lang';
 
 type HowToUseRouteProp = RouteProp<CreateAccoundStackParams, 'HowToUse'>;
 
