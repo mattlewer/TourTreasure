@@ -1,30 +1,14 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {Modal, StyleSheet, Pressable, Animated} from 'react-native';
-import {Easing} from 'react-native-reanimated';
+import {localise} from '../../../services/lang/lang';
 import * as color from '../../../constants/color';
 import Lottie from 'lottie-react-native';
-import { localise } from '../../../services/lang/lang';
 
 interface SuccessAnimationModalProps {
   onClose: () => void;
 }
 
 const SuccessAnimationModal = (props: SuccessAnimationModalProps) => {
-  const count = new Animated.Value(1000);
-
-  useEffect(() => {
-    playAnimation();
-  }, []);
-
-  const playAnimation = () => {
-    Animated.timing(count, {
-      toValue: 0,
-      duration: 800,
-      easing: Easing.bounce,
-      useNativeDriver: false,
-    }).start();
-  };
-
   return (
     <Modal visible animationType={'fade'} style={style.modal} transparent>
       <Pressable style={style.modalContainer} onPress={props.onClose}>
@@ -33,21 +17,19 @@ const SuccessAnimationModal = (props: SuccessAnimationModalProps) => {
           autoPlay
           loop={false}
           style={{zIndex: 600}}
-          onAnimationFinish={props.onClose}
         />
         <Lottie
-          source={require('../../../assets/chest.json')}
+          source={require('../../../assets/chest1.json')}
           autoPlay
           loop={false}
           onAnimationFinish={props.onClose}
-          style={{zIndex: 600, width: '60%'}}
+          style={{zIndex: 400, width: '100%'}}
         />
         <Animated.Text
           style={{
             fontSize: 72,
-            color: color.BLACK,
+            color: color.PRIMARY,
             fontWeight: '600',
-            marginTop: count,
           }}>
           5{localise('POINTS_GAINED')}
         </Animated.Text>
@@ -62,11 +44,12 @@ const style = StyleSheet.create({
     width: '100%',
   },
   modalContainer: {
+    backgroundColor: '#ffffffcc',
     flex: 1,
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#00000000',
+    paddingBottom: '53%',
   },
 });
 export default SuccessAnimationModal;
