@@ -28,5 +28,10 @@
   "RATING": "Rating:",
   "REVIEWS": "Reviews:",
   "TRAVEL": "Travel:",
-  "MIN": "min"
+  "MIN": "min",
+
+  "ARE_YOU_SURE": "Are you sure?",
+  "UNSAVING_WARNING": "Unsaving means you will lose all current progress for this location",
+  "YES": "Yes",
+  "NO": "No"
 }
