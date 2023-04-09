@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "jsx": "react-native",
+    "lib": ["es2019"],
+    "types": ["react-native", "jest"],
+    "moduleResolution": "node",
+    "noEmit": false,
+    "strictNullChecks": true,
+    "strict": true,
+    "alwaysStrict": true,
+    "target": "esnext",
+    "module": "ESNext",
+    "noUncheckedIndexedAccess": true,
+    "noEmitOnError": true,
+    "skipLibCheck": true,
+  },
+  "exclude": [
+    "node_modules",
+    "babel.config.js",
+    "metro.config.js",
+    "jest.config.js"
+  ],
+  "include": [
+    "src/**/*",
+  ]
+}

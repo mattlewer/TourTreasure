@@ -1,0 +1,32 @@
+{
+  "WELCOME": "Welcome to Tour Treasure",
+  "ENTER_USERNAME_TO_START": "Enter a username to get started!",
+  "USERNAME": "Username",
+
+  "GET_STARTED": "Get started!",
+  "SKIP": "SKIP",
+  "NEXT": "Next",
+  "START_EXPLORING": "Start exploring",
+  "HOW_TO_CARD_TITLE_1": "Home",
+  "HOW_TO_CARD_DESC_1": "This will be your central hub to view your profile, saved places, and points collected. It is also where you can search for a new location.",
+  "HOW_TO_CARD_TITLE_2": "Locations",
+  "HOW_TO_CARD_DESC_2": "After searching for a location, you will be taken to the map screen, each place you visit you will gain you points, the higher up the list, the more points for visiting!",
+  "HOW_TO_CARD_TITLE_3": "Destinations",
+  "HOW_TO_CARD_DESC_3": "Tap a destination on the map or the list to view more information about it, you can also choose from here to receive directions to your chosen point of interest by clicking 'Navigate'...",
+  "HOW_TO_CARD_TITLE_4": "Directions",
+  "HOW_TO_CARD_DESC_4": "...this will start a route to your destination as well as informing you of the time to get there.",
+  "HOW_TO_CARD_TITLE_5": "Points",
+  "HOW_TO_CARD_DESC_5": "When you're within 150 meters of the location by either navigating or selecting the location on the map, you'll gain the points!",
+
+  "WELCOME_USER": "Welcome,\n",
+  "VISITED": "Visited",
+  "POINTS": "Points",
+  "LOCATIONS": "Locations",
+  "SEARCH_LOCATION": "Search location",
+  "SAVED_PLACES": "Saved places",
+  "NO_SAVED_PLACES": "No saved places...",
+  "RATING": "Rating:",
+  "REVIEWS": "Reviews:",
+  "TRAVEL": "Travel:",
+  "MIN": "min"
+}
