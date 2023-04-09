@@ -31,14 +31,14 @@ const PlaceInfoRow = (props: PlaceInfoRowProps) => {
 const style = StyleSheet.create({
   container: {
     borderRadius: 8,
-    backgroundColor: color.PRIMARY + '11',
+    backgroundColor: '#fff7f9',
     padding: 16,
     marginBottom: 10,
     width: '100%',
-    // elevation: 2,
-    // shadowOffset: {width: 0, height: 2},
-    // shadowColor: '#000',
-    // shadowOpacity: 1,
+    elevation: 2,
+    shadowOffset: {width: 0, height: 2},
+    shadowColor: '#000',
+    shadowOpacity: 1,
   },
   row: {
     flexDirection: 'row',

@@ -1,5 +1,6 @@
 import {View, StyleSheet, Text} from 'react-native';
 import {typography} from '../../../constants/typography';
+import {localise} from '../../../services/lang/lang';
 import * as color from '../../../constants/color';
 import React from 'react';
 import TextButton from '../../modules/TextButton';
@@ -7,7 +8,6 @@ import useCreateAccountViewModel from '../../../services/viewModels/screens/useC
 import TextInputField from '../../modules/TextInputField';
 import ScreenContainer from '../../modules/ScreenContainer';
 import IconWithBirds from '../../modules/IconWithBirds';
-import {localise} from '../../../services/lang/lang';
 
 const CreateAccount = () => {
   const viewModel = useCreateAccountViewModel();

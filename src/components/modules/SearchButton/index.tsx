@@ -1,6 +1,6 @@
+import React from 'react';
 import {View, Image, StyleSheet} from 'react-native';
 import * as color from '../../../constants/color';
-import React from 'react';
 import SearchIcon from '../../../assets/search_icon.png'
 
 const SearchButton = () => {

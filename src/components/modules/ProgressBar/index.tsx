@@ -1,6 +1,6 @@
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
 import * as color from '../../../constants/color';
+import {View, StyleSheet} from 'react-native';
 import {Slider} from '@miblanchard/react-native-slider';
 import LinearGradient from 'react-native-linear-gradient';
 

@@ -1,7 +1,7 @@
+import React from 'react';
 import {View, Text, StyleSheet, Image} from 'react-native';
 import {typography} from '../../../constants/typography';
 import * as color from '../../../constants/color';
-import React from 'react';
 
 interface HowToUseCardProps {
   image: HTMLImageElement;
