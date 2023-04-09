@@ -11,6 +11,8 @@ import Home from '../../../assets/app_example_home.png';
 import SelectedLocation from '../../../assets/app_selected_location.png';
 import Navigation from '../../../assets/app_navigation.png';
 import Map from '../../../assets/app_example_map.png';
+import Points from '../../../assets/app_example_points.png';
+import { localise } from '../../lang/lang';
 
 type HowToUseRouteProp = RouteProp<CreateAccoundStackParams, 'HowToUse'>;
 
@@ -23,34 +25,29 @@ const useHowToUserViewModel = () => {
 
   const info = [
     {
-      title: 'Home',
-      content:
-        'This will be your central hub to view your profile, saved places, and points collected. It is also where you can search for a new location.',
+      title: localise('HOW_TO_CARD_TITLE_1'),
+      content: localise('HOW_TO_CARD_DESC_1'),
       image: Home,
     },
     {
-      title: 'Locations',
-      content:
-        'After searching for a location, you will be taken to the map screen, each place you visit you will gain you points, the higher up the list, the more points for visiting!',
+      title: localise('HOW_TO_CARD_TITLE_2'),
+      content: localise('HOW_TO_CARD_DESC_2'),
       image: Map,
     },
     {
-      title: 'Destinations',
-      content:
-        "Tap a destination on the map or the list to view more information about it, you can also choose from here to receive directions to your chosen point of interest by clicking 'Navigate'...",
+      title: localise('HOW_TO_CARD_TITLE_3'),
+      content: localise('HOW_TO_CARD_DESC_3'),
       image: SelectedLocation,
     },
     {
-      title: 'Directions',
-      content:
-        '...this will start a route to your destination as well as informing you of the time to get there.',
+      title: localise('HOW_TO_CARD_TITLE_4'),
+      content: localise('HOW_TO_CARD_DESC_4'),
       image: Navigation,
     },
     {
-      title: 'Points',
-      content:
-        "When you're within 150 meters of the location by either navigating or selecting the location on the map, you'll gain the points!",
-      image: Map,
+      title: localise('HOW_TO_CARD_TITLE_5'),
+      content: localise('HOW_TO_CARD_DESC_5'),
+      image: Points,
     },
   ];
 
