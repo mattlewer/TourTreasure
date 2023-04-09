@@ -1,9 +1,8 @@
+import React from 'react';
 import {View, Image, StyleSheet} from 'react-native';
 import * as color from '../../../constants/color';
 import Lottie from 'lottie-react-native';
 import Logo from '../../../assets/logo.png';
-
-import React from 'react';
 
 const IconWithBirds = () => {
   return (

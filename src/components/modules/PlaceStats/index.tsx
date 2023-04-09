@@ -1,13 +1,11 @@
 import React from 'react';
-import * as color from '../../../constants/color';
 import {View, Text, StyleSheet, Image} from 'react-native';
 import {typography} from '../../../constants/typography';
+import {localise} from '../../../services/lang/lang';
 import {Place} from '../../../interfaces/place';
-
 import Rating from '../../../assets/icon_rating.png';
 import Review from '../../../assets/icon_reviews.png';
 import Walk from '../../../assets/icon_walk.png';
-import {localise} from '../../../services/lang/lang';
 
 interface PlaceStatsProps {
   place: Place;

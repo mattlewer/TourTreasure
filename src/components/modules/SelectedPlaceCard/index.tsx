@@ -3,6 +3,7 @@ import * as color from '../../../constants/color';
 import {View, Text, StyleSheet, Pressable} from 'react-native';
 import {hasVisitedLocation} from '../../../services/userHandler';
 import {typography} from '../../../constants/typography';
+import {localise} from '../../../services/lang/lang';
 import {Place} from '../../../interfaces/place';
 import {User} from '../../../interfaces/user';
 import FloatingButton from '../FloatingButton';
@@ -45,7 +46,7 @@ const SelectedPlaceCard = (props: SelectedPlaceCardProps) => {
           <PlaceStats place={props.place} />
         </View>
         <TextButton
-          text="Navigate"
+          text={localise('NAVIGATE')}
           type="primary"
           onPress={() => {
             props.setNavigationPlace(props.place);

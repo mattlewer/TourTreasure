@@ -6,11 +6,11 @@ import {typography} from '../../../constants/typography';
 import {localise} from '../../../services/lang/lang';
 import SavedPlaceListItem from '../../modules/SavedPlaceListItem';
 import ScreenContainer from '../../modules/ScreenContainer';
+import HomeStatePoints from '../../modules/HomeStatPoints';
 import TextInputField from '../../modules/TextInputField';
+import LinearGradient from 'react-native-linear-gradient';
 import HomeStatCard from '../../modules/HomeStatCard';
 import useHomeScreenViewModel from '../../../services/viewModels/screens/useHomeScreenViewModel';
-import HomeStatePoints from '../../modules/HomeStatPoints';
-import LinearGradient from 'react-native-linear-gradient';
 
 const HomeScreen = () => {
   const viewModel = useHomeScreenViewModel();

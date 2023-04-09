@@ -1,13 +1,13 @@
 import React from 'react';
 import {View, Text, Dimensions, StyleSheet} from 'react-native';
+import {localise} from '../../../services/lang/lang';
 import * as color from '../../../constants/color';
+import ScreenContainer from '../../modules/ScreenContainer';
 import HowToUseCard from '../../modules/HowToUseCard';
 import TextButton from '../../modules/TextButton';
 import Carousel from 'react-native-reanimated-carousel';
 import Dots from 'react-native-dots-pagination';
 import useHowToUserViewModel from '../../../services/viewModels/screens/useHowToUserViewModel';
-import ScreenContainer from '../../modules/ScreenContainer';
-import {localise} from '../../../services/lang/lang';
 
 const HowToUse = () => {
   const viewModel = useHowToUserViewModel();

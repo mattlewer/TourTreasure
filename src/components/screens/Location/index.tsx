@@ -1,7 +1,10 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
+import {findIndexOfPlace} from '../../../services/userHandler';
 import Map from '../../modules/Map';
+import BackIcon from '../../../assets/back_icon.png';
 import PlaceHeader from '../../modules/PlaceHeader';
+import FloatingButton from '../../modules/FloatingButton';
 import SaveIconEnabled from '../../../assets/heart_enabled.png';
 import ScreenContainer from '../../modules/ScreenContainer';
 import SaveIconDisabled from '../../../assets/heart_disabled.png';
@@ -10,9 +13,6 @@ import AnimatedBottomSheet from '../../modules/BottomSheet';
 import NavigationPlaceCard from '../../modules/NavigationPlaceCard';
 import SuccessAnimationModal from '../../modules/SuccessAnimationModal';
 import useLocationScreenViewModel from '../../../services/viewModels/screens/useLocationScreenViewModel';
-import FloatingButton from '../../modules/FloatingButton';
-import BackIcon from '../../../assets/back_icon.png';
-import {findIndexOfPlace} from '../../../services/userHandler';
 
 const Location = () => {
   const viewModel = useLocationScreenViewModel();
@@ -32,9 +32,9 @@ const Location = () => {
       <Map
         user={viewModel.userValue}
         places={viewModel.shownPlaces}
-        navigationPlace={viewModel.navigationPlace}
         userLocation={viewModel.userLocation.location}
         selectedPlace={viewModel.selectedPlace}
+        navigationPlace={viewModel.navigationPlace}
         setSelectedPlace={viewModel.setSelectedPlace}
         setNavigationPlace={viewModel.setNavigationPlace}
         setTimeToNavigationPlace={viewModel.setTimeToNavigationPlace}

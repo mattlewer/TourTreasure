@@ -3,11 +3,11 @@ import BottomSheet, {
   BottomSheetFlatList,
   BottomSheetFlatListMethods,
 } from '@gorhom/bottom-sheet';
+import {hasVisitedLocation} from '../../../services/userHandler';
 import {StyleSheet} from 'react-native';
 import {Place} from '../../../interfaces/place';
-import PlaceInfoRow from '../PlaceInfoRow';
-import {hasVisitedLocation} from '../../../services/userHandler';
 import {User} from '../../../interfaces/user';
+import PlaceInfoRow from '../PlaceInfoRow';
 
 interface BottomSheetProps {
   user: User;
