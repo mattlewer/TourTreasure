@@ -16,6 +16,7 @@ import {Place} from '../../../interfaces/place';
 import {User} from '../../../interfaces/user';
 import useLocation from '../../hooks/useLocation';
 import {CreateAlert} from '../../../components/modules/Alert';
+import { localise } from '../../lang/lang';
 
 type LocationScreenRouteProp = RouteProp<AppStackParams, 'Location'>;
 
@@ -86,11 +87,11 @@ const useLocationScreenViewModel = () => {
   const saveOrRemove = () => {
     if (hasSavedPlace(userValue, searchedPlaceName) >= 0) {
       CreateAlert(
-        'Are you sure?',
-        'Unsaving means you will lose all current progress for this location',
+        localise('ARE_YOU_SURE'),
+        localise('UNSAVING_WARNING'),
         () => onRemoveSearchedPlace(),
-        'No',
-        'Yes',
+        localise('NO'),
+        localise('YES'),
       );
     } else {
       onSaveSearchedPlace();
