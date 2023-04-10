@@ -35,5 +35,9 @@
   "ARE_YOU_SURE": "Are you sure?",
   "UNSAVING_WARNING": "Unsaving means you will lose all current progress for this location",
   "YES": "Yes",
-  "NO": "No"
+  "NO": "No",
+  
+  "NO_RESULTS_TITLE": "No results found",
+  "NO_RESULTS_DESC": "No points of interest found for your entered place",
+  
 }
