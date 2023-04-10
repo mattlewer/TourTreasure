@@ -5,6 +5,8 @@ import {hasVisitedLocation} from '../../../services/userHandler';
 import {typography} from '../../../constants/typography';
 import {Place} from '../../../interfaces/place';
 import {User} from '../../../interfaces/user';
+import FloatingButton from '../FloatingButton';
+import CloseIcon from '../../../assets/close.png';
 import PlaceStats from '../PlaceStats';
 import MapPin from '../MapPin';
 
@@ -13,16 +15,26 @@ interface NavigationPlaceCardProps {
   place: Place;
   timeToPlace?: number;
   placeNumber: number;
+  setNavigationPlace: (place: undefined) => void;
 }
 const NavigationPlaceCard = (props: NavigationPlaceCardProps) => {
   return (
     <View style={style.modalContent}>
+      <View style={style.modalCloseButton}>
+        <FloatingButton
+          onPress={() => props.setNavigationPlace(undefined)}
+          image={CloseIcon}
+          removeElevation
+        />
+      </View>
       <View style={style.column}>
         <View style={style.placeNameNumberContainer}>
-          <MapPin
-            placeNumber={props.placeNumber}
-            isVisited={hasVisitedLocation(props.place, props.user)}
-          />
+          <View style={style.mapPinContainer}>
+            <MapPin
+              placeNumber={props.placeNumber}
+              isVisited={hasVisitedLocation(props.place, props.user)}
+            />
+          </View>
           <Text style={[typography.HeaderReg, style.headingText]}>
             {props.place.name}
           </Text>
@@ -50,6 +62,14 @@ const style = StyleSheet.create({
     alignItems: 'center',
     padding: 10,
   },
+  modalCloseButton: {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+    zIndex: 100,
+  },
   column: {
     width: '100%',
     justifyContent: 'center',
@@ -59,11 +79,20 @@ const style = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 10,
+    paddingRight: 43,
+    paddingLeft: 43,
+    width: '100%',
+  },
+  mapPinContainer: {
+    justifyContent: 'flex-start',
+    alignSelf: 'flex-start',
+    marginTop: 5,
   },
   headingText: {
     paddingLeft: 10,
     fontWeight: '600',
     color: color.PRIMARY,
+    textAlign: 'center',
   },
   statsContainer: {
     flex: 1,
