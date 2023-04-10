@@ -1,12 +1,13 @@
 import {useState} from 'react';
 import {Keyboard} from 'react-native';
+import {hasSavedPlace, totalFoundPlaces} from '../../userHandler';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {getPointsOfInterest} from '../../hooks/api/useFindPointsOfInterest';
 import {AppStackParams} from '../../../navigation/AppStackNav';
 import {useRecoilState} from 'recoil';
 import {useNavigation} from '@react-navigation/native';
-import {hasSavedPlace, totalFoundPlaces} from '../../userHandler';
 import {userState} from '../../../state/userState';
+import {localise} from '../../lang/lang';
 import Toast from 'react-native-toast-message';
 
 const useHomeScreenViewModel = () => {
@@ -37,11 +38,11 @@ const useHomeScreenViewModel = () => {
           places: foundPlaces,
           searchedPlaceName: place,
         });
-      }else{
+      } else {
         Toast.show({
           type: 'error',
-          text1: 'No results found',
-          text2: 'No points of interest found for your entered place',
+          text1: localise('NO_RESULTS_TITLE'),
+          text2: localise('NO_RESULTS_DESC'),
           position: 'bottom',
           visibilityTime: 4000,
         });
