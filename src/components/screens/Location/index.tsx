@@ -60,6 +60,7 @@ const Location = () => {
             viewModel.navigationPlace,
             viewModel.shownPlaces,
           ) +1}
+          setNavigationPlace={viewModel.setNavigationPlace}
         />
       )}
       {viewModel.placeFound && (

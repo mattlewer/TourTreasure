@@ -28,6 +28,7 @@ const TextInputField = (props: TextInputFieldProps) => {
       </Text>
       <View style={style.inputFieldContainer}>
         <TextInput
+        maxLength={30}
           style={style.inputField}
           onChangeText={props.onChange}
           onSubmitEditing={props.onSubmit}

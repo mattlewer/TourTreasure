@@ -34,10 +34,12 @@ const SelectedPlaceCard = (props: SelectedPlaceCardProps) => {
           />
         </View>
         <View style={style.placeNameNumberContainer}>
-          <MapPin
-            placeNumber={props.placeNumber}
-            isVisited={hasVisitedLocation(props.place, props.user)}
-          />
+          <View style={style.mapPinContainer}>
+            <MapPin
+              placeNumber={props.placeNumber}
+              isVisited={hasVisitedLocation(props.place, props.user)}
+            />
+          </View>
           <Text style={[typography.HeaderReg, style.headingText]}>
             {props.place.name}
           </Text>
@@ -94,12 +96,22 @@ const style = StyleSheet.create({
   placeNameNumberContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
     marginBottom: 10,
+    paddingRight: 43,
+    paddingLeft: 43,
+    width: '100%',
+  },
+  mapPinContainer: {
+    justifyContent: 'flex-start',
+    alignSelf: 'flex-start',
+    marginTop: 5,
   },
   headingText: {
     paddingLeft: 10,
     fontWeight: '600',
     color: color.PRIMARY,
+    textAlign: 'center',
   },
 });
 
