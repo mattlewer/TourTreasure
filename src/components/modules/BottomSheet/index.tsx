@@ -12,6 +12,7 @@ import PlaceInfoRow from '../PlaceInfoRow';
 interface BottomSheetProps {
   user: User;
   places: Place[];
+  searchedPlaceName: string;
   onSelectItem: (place: Place) => void;
 }
 
@@ -46,7 +47,7 @@ const AnimatedBottomSheet = (props: BottomSheetProps) => {
               place={item}
               onPress={onSelect}
               placeNumber={index + 1}
-              isVisited={hasVisitedLocation(item, props.user)}
+              isVisited={hasVisitedLocation(item, props.user, props.searchedPlaceName)}
             />
           );
         }}

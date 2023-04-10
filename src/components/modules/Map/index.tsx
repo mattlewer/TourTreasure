@@ -20,6 +20,7 @@ interface MapProps {
   userLocation?: GpsLocation;
   selectedPlace?: Place;
   navigationPlace?: Place;
+  searchedPlaceName: string;
   setSelectedPlace: (place: Place | undefined) => void;
   setNavigationPlace: (place: undefined) => void;
   setTimeToNavigationPlace: (duration: number) => void;
@@ -119,7 +120,7 @@ const Map = (props: MapProps) => {
               placeNumber={
                 findIndexOfPlace(props.navigationPlace, props.places) + 1
               }
-              isVisited={hasVisitedLocation(props.navigationPlace, props.user)}
+              isVisited={hasVisitedLocation(props.navigationPlace, props.user, props.searchedPlaceName)}
             />
           </Marker>
         ) : (
@@ -137,7 +138,7 @@ const Map = (props: MapProps) => {
               }}>
               <MapPin
                 placeNumber={index + 1}
-                isVisited={hasVisitedLocation(place, props.user)}
+                isVisited={hasVisitedLocation(place, props.user, props.searchedPlaceName)}
               />
             </Marker>
           ))
