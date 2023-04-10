@@ -29,7 +29,7 @@ const useHomeScreenViewModel = () => {
       });
     } else {
       const foundPlaces = await getPointsOfInterest(place);
-      if (foundPlaces) {
+      if (foundPlaces.length > 0) {
         navigation.navigate('Location', {
           places: foundPlaces,
           searchedPlaceName: place,

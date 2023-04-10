@@ -55,7 +55,7 @@ const style = StyleSheet.create({
     shadowOpacity: 1,
     flexDirection: 'row',
     position: 'absolute',
-    top: 80,
+    top: 90,
     width: '90%',
     backgroundColor: '#ffffff',
     borderRadius: 8,
@@ -78,6 +78,7 @@ const style = StyleSheet.create({
   placeNameNumberContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
     marginBottom: 10,
     paddingRight: 43,
     paddingLeft: 43,

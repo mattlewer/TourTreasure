@@ -2,33 +2,25 @@ import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import {findIndexOfPlace} from '../../../services/userHandler';
 import Map from '../../modules/Map';
-import BackIcon from '../../../assets/back_icon.png';
-import PlaceHeader from '../../modules/PlaceHeader';
-import FloatingButton from '../../modules/FloatingButton';
-import SaveIconEnabled from '../../../assets/heart_enabled.png';
 import ScreenContainer from '../../modules/ScreenContainer';
-import SaveIconDisabled from '../../../assets/heart_disabled.png';
 import SelectedPlaceCard from '../../modules/SelectedPlaceCard';
 import AnimatedBottomSheet from '../../modules/BottomSheet';
 import NavigationPlaceCard from '../../modules/NavigationPlaceCard';
 import SuccessAnimationModal from '../../modules/SuccessAnimationModal';
 import useLocationScreenViewModel from '../../../services/viewModels/screens/useLocationScreenViewModel';
+import LocationScreenHeader from '../../modules/LocationScreenHeader';
 
 const Location = () => {
   const viewModel = useLocationScreenViewModel();
 
   return (
     <ScreenContainer stripPadding>
-      <View style={style.backButtonContainer}>
-        <FloatingButton onPress={viewModel.onNavigateBack} image={BackIcon} />
-      </View>
-      <View style={style.saveButtonContainer}>
-        <FloatingButton
-          onPress={viewModel.saveOrRemove}
-          image={viewModel.isSaved ? SaveIconEnabled : SaveIconDisabled}
-        />
-      </View>
-      <PlaceHeader placeName={viewModel.searchedPlaceName} />
+      <LocationScreenHeader
+        isSaved={viewModel.isSaved}
+        saveOrRemove={viewModel.saveOrRemove}
+        onNavigateBack={viewModel.onNavigateBack}
+        searchedPlaceName={viewModel.searchedPlaceName}
+      />
       <Map
         user={viewModel.userValue}
         places={viewModel.shownPlaces}
@@ -43,10 +35,9 @@ const Location = () => {
         <SelectedPlaceCard
           user={viewModel.userValue}
           place={viewModel.selectedPlace}
-          placeNumber={findIndexOfPlace(
-            viewModel.selectedPlace,
-            viewModel.shownPlaces,
-          ) +1}
+          placeNumber={
+            findIndexOfPlace(viewModel.selectedPlace, viewModel.shownPlaces) + 1
+          }
           setSelectedPlace={viewModel.setSelectedPlace}
           setNavigationPlace={viewModel.setNavigationPlace}
         />
@@ -56,10 +47,10 @@ const Location = () => {
           user={viewModel.userValue}
           place={viewModel.navigationPlace}
           timeToPlace={viewModel.timeToNavigationPlace}
-          placeNumber={findIndexOfPlace(
-            viewModel.navigationPlace,
-            viewModel.shownPlaces,
-          ) +1}
+          placeNumber={
+            findIndexOfPlace(viewModel.navigationPlace, viewModel.shownPlaces) +
+            1
+          }
           setNavigationPlace={viewModel.setNavigationPlace}
         />
       )}
