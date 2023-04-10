@@ -16,6 +16,7 @@ interface SelectedPlaceCardProps {
   user: User;
   place: Place;
   placeNumber: number;
+  searchedPlaceName: string;
   setSelectedPlace: (place: undefined) => void;
   setNavigationPlace: (place: Place) => void;
 }
@@ -37,7 +38,7 @@ const SelectedPlaceCard = (props: SelectedPlaceCardProps) => {
           <View style={style.mapPinContainer}>
             <MapPin
               placeNumber={props.placeNumber}
-              isVisited={hasVisitedLocation(props.place, props.user)}
+              isVisited={hasVisitedLocation(props.place, props.user, props.searchedPlaceName)}
             />
           </View>
           <Text style={[typography.HeaderReg, style.headingText]}>

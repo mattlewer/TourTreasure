@@ -54,9 +54,16 @@ export const deletePlace = (user: User, searchedPlaceName: string): User => {
 export const hasSavedPlace = (user: User, placeName: string): number =>
   user.savedPlaces.findIndex(place => place.name === placeName);
 
-export const hasVisitedLocation = (place: Place, user: User): boolean => {
+export const hasVisitedLocation = (
+  place: Place,
+  user: User,
+  placeName: string,
+): boolean => {
   for (let x of user.savedPlaces) {
-    if (x.visitedPlaces.findIndex(p => p.place_id === place.place_id) >= 0) {
+    if (
+      x.name === placeName &&
+      x.visitedPlaces.findIndex(p => p.place_id === place.place_id) >= 0
+    ) {
       return true;
     }
   }

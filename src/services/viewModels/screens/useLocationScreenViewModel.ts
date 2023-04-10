@@ -16,7 +16,7 @@ import {Place} from '../../../interfaces/place';
 import {User} from '../../../interfaces/user';
 import useLocation from '../../hooks/useLocation';
 import {CreateAlert} from '../../../components/modules/Alert';
-import { localise } from '../../lang/lang';
+import {localise} from '../../lang/lang';
 
 type LocationScreenRouteProp = RouteProp<AppStackParams, 'Location'>;
 
@@ -54,10 +54,10 @@ const useLocationScreenViewModel = () => {
   };
 
   const checkAlreadyFound = () => {
-    if (navigationPlace && !hasVisitedLocation(navigationPlace, userValue)) {
+    if (navigationPlace && !hasVisitedLocation(navigationPlace, userValue, searchedPlaceName)) {
       setPlaceFound(true);
     }
-    if (selectedPlace && !hasVisitedLocation(selectedPlace, userValue)) {
+    if (selectedPlace && !hasVisitedLocation(selectedPlace, userValue, searchedPlaceName)) {
       setPlaceFound(true);
     }
   };
@@ -68,10 +68,10 @@ const useLocationScreenViewModel = () => {
       userToUpdate = savePlace(userValue, searchedPlaceName, shownPlaces);
       setIsSaved(true);
     }
-    if (navigationPlace && !hasVisitedLocation(navigationPlace, userValue)) {
+    if (navigationPlace && !hasVisitedLocation(navigationPlace, userValue, searchedPlaceName)) {
       onAddFoundPlace(navigationPlace, userToUpdate);
     }
-    if (selectedPlace && !hasVisitedLocation(selectedPlace, userValue)) {
+    if (selectedPlace && !hasVisitedLocation(selectedPlace, userValue, searchedPlaceName)) {
       onAddFoundPlace(selectedPlace, userToUpdate);
     }
   };

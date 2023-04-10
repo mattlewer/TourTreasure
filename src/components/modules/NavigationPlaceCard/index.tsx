@@ -15,6 +15,7 @@ interface NavigationPlaceCardProps {
   place: Place;
   timeToPlace?: number;
   placeNumber: number;
+  searchedPlaceName: string;
   setNavigationPlace: (place: undefined) => void;
 }
 const NavigationPlaceCard = (props: NavigationPlaceCardProps) => {
@@ -32,7 +33,7 @@ const NavigationPlaceCard = (props: NavigationPlaceCardProps) => {
           <View style={style.mapPinContainer}>
             <MapPin
               placeNumber={props.placeNumber}
-              isVisited={hasVisitedLocation(props.place, props.user)}
+              isVisited={hasVisitedLocation(props.place, props.user, props.searchedPlaceName)}
             />
           </View>
           <Text style={[typography.HeaderReg, style.headingText]}>

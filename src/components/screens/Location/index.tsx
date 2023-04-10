@@ -27,6 +27,7 @@ const Location = () => {
         userLocation={viewModel.userLocation.location}
         selectedPlace={viewModel.selectedPlace}
         navigationPlace={viewModel.navigationPlace}
+        searchedPlaceName={viewModel.searchedPlaceName}
         setSelectedPlace={viewModel.setSelectedPlace}
         setNavigationPlace={viewModel.setNavigationPlace}
         setTimeToNavigationPlace={viewModel.setTimeToNavigationPlace}
@@ -40,6 +41,7 @@ const Location = () => {
           }
           setSelectedPlace={viewModel.setSelectedPlace}
           setNavigationPlace={viewModel.setNavigationPlace}
+          searchedPlaceName={viewModel.searchedPlaceName}
         />
       )}
       {viewModel.navigationPlace && (
@@ -52,6 +54,7 @@ const Location = () => {
             1
           }
           setNavigationPlace={viewModel.setNavigationPlace}
+          searchedPlaceName={viewModel.searchedPlaceName}
         />
       )}
       {viewModel.placeFound && (
@@ -62,6 +65,7 @@ const Location = () => {
           user={viewModel.userValue}
           places={viewModel.shownPlaces}
           onSelectItem={viewModel.setSelectedPlace}
+          searchedPlaceName={viewModel.searchedPlaceName}
         />
       )}
     </ScreenContainer>
