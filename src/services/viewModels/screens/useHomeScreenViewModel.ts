@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import {Keyboard} from 'react-native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {getPointsOfInterest} from '../../hooks/api/useFindPointsOfInterest';
 import {AppStackParams} from '../../../navigation/AppStackNav';
@@ -6,6 +7,7 @@ import {useRecoilState} from 'recoil';
 import {useNavigation} from '@react-navigation/native';
 import {hasSavedPlace, totalFoundPlaces} from '../../userHandler';
 import {userState} from '../../../state/userState';
+import Toast from 'react-native-toast-message';
 
 const useHomeScreenViewModel = () => {
   const navigation = useNavigation<StackNavigationProp<AppStackParams>>();
@@ -21,6 +23,7 @@ const useHomeScreenViewModel = () => {
   };
 
   const onSearchLocation = async (place: string) => {
+    Keyboard.dismiss();
     const isSavedPlaceIndex = hasSavedPlace(userValue, place);
     if (isSavedPlaceIndex >= 0) {
       navigation.navigate('Location', {
@@ -33,6 +36,14 @@ const useHomeScreenViewModel = () => {
         navigation.navigate('Location', {
           places: foundPlaces,
           searchedPlaceName: place,
+        });
+      }else{
+        Toast.show({
+          type: 'error',
+          text1: 'No results found',
+          text2: 'No points of interest found for your entered place',
+          position: 'bottom',
+          visibilityTime: 4000,
         });
       }
     }
