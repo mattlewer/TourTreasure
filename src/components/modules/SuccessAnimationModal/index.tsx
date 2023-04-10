@@ -1,26 +1,43 @@
-import React from 'react';
-import {Modal, StyleSheet, Pressable, Animated} from 'react-native';
+import React, {useEffect, useRef} from 'react';
+import {Modal, StyleSheet, Pressable, Animated, Vibration} from 'react-native';
 import {localise} from '../../../services/lang/lang';
 import * as color from '../../../constants/color';
 import Lottie from 'lottie-react-native';
+import AnimatedLottieView from 'lottie-react-native';
 
 interface SuccessAnimationModalProps {
   onClose: () => void;
 }
 
 const SuccessAnimationModal = (props: SuccessAnimationModalProps) => {
+  const lottieRef = useRef<AnimatedLottieView>(null);
+
+  const PATTERN = [
+    0,
+    50,
+    200,
+    50,
+    50,
+    50,
+    50,
+    500,
+  ];
+
+  useEffect(() => {
+    Vibration.vibrate(PATTERN)
+    if(lottieRef.current){
+      setTimeout(() => {
+          lottieRef.current?.play();
+      }, 200)
+    }
+  }, [])
+
   return (
     <Modal visible animationType={'fade'} style={style.modal} transparent>
       <Pressable style={style.modalContainer} onPress={props.onClose}>
         <Lottie
-          source={require('../../../assets/confetti.json')}
-          autoPlay
-          loop={false}
-          style={{zIndex: 600}}
-        />
-        <Lottie
-          source={require('../../../assets/chest1.json')}
-          autoPlay
+          ref={lottieRef}
+          source={require('../../../assets/chest.json')}
           loop={false}
           onAnimationFinish={props.onClose}
           style={{zIndex: 400, width: '100%'}}
@@ -31,7 +48,7 @@ const SuccessAnimationModal = (props: SuccessAnimationModalProps) => {
             color: color.PRIMARY,
             fontWeight: '600',
           }}>
-          5{localise('POINTS_GAINED')}
+          +5{localise('POINTS_GAINED')}
         </Animated.Text>
       </Pressable>
     </Modal>
@@ -49,7 +66,7 @@ const style = StyleSheet.create({
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
-    paddingBottom: '53%',
+    paddingBottom: '30%',
   },
 });
 export default SuccessAnimationModal;
