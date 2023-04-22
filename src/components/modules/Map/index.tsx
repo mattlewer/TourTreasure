@@ -105,6 +105,7 @@ const Map = (props: MapProps) => {
         customMapStyle={MapStyle}
         style={style.map}
         loadingEnabled={true}
+        loadingIndicatorColor={color.PRIMARY}
         tintColor={'#000'}
         showsMyLocationButton={false}
         initialRegion={centeredPlace}>
