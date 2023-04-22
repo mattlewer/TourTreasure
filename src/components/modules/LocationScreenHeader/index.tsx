@@ -21,11 +21,7 @@ const LocationScreenHeader = (props: LocationScreenHeaderProps) => {
           <FloatingButton onPress={props.onNavigateBack} image={BackIcon} />
         </View>
         <View style={style.placeTextContainer}>
-          <Text
-            style={[
-              typography.HeaderReg,
-              {color: color.PRIMARY, textAlign: 'center'},
-            ]}>
+          <Text style={[typography.HeaderReg, style.placeText]}>
             {props.searchedPlaceName}
           </Text>
         </View>
@@ -47,7 +43,7 @@ const style = StyleSheet.create({
     left: 0,
     zIndex: 200,
   },
-  innerContainer:{
+  innerContainer: {
     paddingHorizontal: 20,
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -61,14 +57,18 @@ const style = StyleSheet.create({
     marginHorizontal: 20,
     paddingVertical: 4,
     paddingHorizontal: 16,
-    justifyContent:'center',
+    justifyContent: 'center',
     maxWidth: '65%',
     borderRadius: 8,
-    backgroundColor: '#fff',
+    backgroundColor: color.WHITE,
     elevation: 2,
     shadowOffset: {width: 0, height: 2},
-    shadowColor: '#000',
+    shadowColor: color.BLACK,
     shadowOpacity: 1,
+  },
+  placeText: {
+    color: color.PRIMARY,
+    textAlign: 'center',
   },
   saveButtonContainer: {
     justifyContent: 'center',

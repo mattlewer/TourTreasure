@@ -33,7 +33,7 @@ const style = StyleSheet.create({
         marginVertical: 9,
         borderRadius: 12,
         width: '100%',
-        backgroundColor: '#fff7f9',
+        backgroundColor: color.WHITE_PRIMARY,
         flexDirection: 'column',
         elevation: 2,
         zIndex: 20,
@@ -45,7 +45,7 @@ const style = StyleSheet.create({
         paddingBottom: 10,
     },
     text: {
-        color: color.BLACK,
+        color: color.TEXT_DARK,
         fontSize: 20,
       },
     bottomRow:{

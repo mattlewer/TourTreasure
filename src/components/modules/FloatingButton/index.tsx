@@ -1,5 +1,6 @@
 import React from 'react';
 import {Pressable, Image, StyleSheet} from 'react-native';
+import * as color from '../../../constants/color';
 
 interface FloatingButtonProps {
   onPress: () => void;
@@ -22,14 +23,14 @@ const style = StyleSheet.create({
     width: 40,
     height: 40,
     borderRadius: 20,
-    backgroundColor: '#fff',
+    backgroundColor: color.WHITE,
     justifyContent: 'center',
     alignItems: 'center',
   },
   elevation: {
     elevation: 2,
     shadowOffset: {width: 0, height: 2},
-    shadowColor: '#000',
+    shadowColor: color.BLACK,
     shadowOpacity: 1,
   },
   icon: {

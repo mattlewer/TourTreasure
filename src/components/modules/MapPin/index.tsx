@@ -32,7 +32,7 @@ const style = StyleSheet.create({
     backgroundColor: color.PRIMARY,
   },
   mapPinVisited: {
-    backgroundColor: '#fff',
+    backgroundColor: color.WHITE,
     borderWidth: 1,
     borderColor: color.PRIMARY,
   },
@@ -41,7 +41,7 @@ const style = StyleSheet.create({
     marginBottom: 2,
   },
   mapPinTextNotVisited: {
-    color: '#fff',
+    color: color.WHITE,
   },
   mapPinTextVisited: {
     color: color.PRIMARY,

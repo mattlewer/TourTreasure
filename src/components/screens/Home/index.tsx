@@ -84,10 +84,10 @@ const style = StyleSheet.create({
     alignItems: 'center',
   },
   text: {
-    color: color.BLACK,
+    color: color.TEXT_DARK,
   },
   headerText: {
-    color: color.BLACK,
+    color: color.TEXT_DARK,
     fontSize: 48,
     paddingVertical: 50,
     alignSelf: 'flex-start',

@@ -54,7 +54,7 @@ const style = StyleSheet.create({
   inputLabel: {
     width:'100%',
     marginBottom: 4,
-    color: color.BLACK,
+    color: color.TEXT_DARK,
   },
   inputFieldContainer: {
     flexDirection: 'row',

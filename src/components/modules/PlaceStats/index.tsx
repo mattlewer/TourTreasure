@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet, Image} from 'react-native';
+import * as color from '../../../constants/color';
 import {typography} from '../../../constants/typography';
 import {localise} from '../../../services/lang/lang';
 import {Place} from '../../../interfaces/place';
@@ -71,7 +72,7 @@ const style = StyleSheet.create({
   },
   statText: {
     textAlign: 'center',
-    color: '#000',
+    color: color.BLACK,
   },
 });
 export default PlaceStats;
