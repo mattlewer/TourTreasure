@@ -10,14 +10,12 @@ export const hasUserFoundLocation = (
 ) => {
   if (
     navigationPlace &&
-    navigationPlace.has_user_visited === false &&
     userLocation &&
     isTriggerDistance(userLocation, navigationPlace)
   ) {
     return true;
   } else if (
     selectedPlace &&
-    selectedPlace.has_user_visited === false &&
     userLocation &&
     isTriggerDistance(userLocation, selectedPlace)
   ) {
