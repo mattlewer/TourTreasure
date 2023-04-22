@@ -10,9 +10,6 @@ export const getPointsOfInterest = async (
   const result = await response.json();
   if(result.results){
     result.results.sort((a: Place, b: Place) => (b.user_ratings_total - a.user_ratings_total));
-    result.results.map((place: Place) => {
-      place.has_user_visited = false;
-    })
   }
   return result.results;
 };

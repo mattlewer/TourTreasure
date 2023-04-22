@@ -1,5 +1,4 @@
 export interface Place {
-  has_user_visited: boolean;
   business_status: string;
   formatted_address: string;
   geometry: {
