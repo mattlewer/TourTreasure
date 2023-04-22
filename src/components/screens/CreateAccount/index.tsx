@@ -49,7 +49,7 @@ const style = StyleSheet.create({
     width: '100%',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    backgroundColor: '#fff',
+    backgroundColor: color.WHITE,
     marginTop: 40,
   },
   iconHeaderContainer: {

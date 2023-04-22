@@ -1,5 +1,5 @@
 import React, {useEffect, useRef} from 'react';
-import {Modal, StyleSheet, Pressable, Animated, Vibration} from 'react-native';
+import {Modal, StyleSheet, Pressable, Text, Vibration} from 'react-native';
 import {localise} from '../../../services/lang/lang';
 import * as color from '../../../constants/color';
 import Lottie from 'lottie-react-native';
@@ -42,14 +42,14 @@ const SuccessAnimationModal = (props: SuccessAnimationModalProps) => {
           onAnimationFinish={props.onClose}
           style={{zIndex: 400, width: '100%'}}
         />
-        <Animated.Text
+        <Text
           style={{
             fontSize: 72,
             color: color.PRIMARY,
             fontWeight: '600',
           }}>
           +5{localise('POINTS_GAINED')}
-        </Animated.Text>
+        </Text>
       </Pressable>
     </Modal>
   );
@@ -61,7 +61,7 @@ const style = StyleSheet.create({
     width: '100%',
   },
   modalContainer: {
-    backgroundColor: '#ffffffcc',
+    backgroundColor: color.WHITE + 'cc',
     flex: 1,
     width: '100%',
     justifyContent: 'center',

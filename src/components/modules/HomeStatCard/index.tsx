@@ -19,7 +19,7 @@ const style = StyleSheet.create({
     height: 90,
     width: 90,
     margin: 2,
-    borderRadius: 55,
+    borderRadius: 45,
     backgroundColor: color.WHITE,
     justifyContent: 'center',
     alignItems: 'center',
@@ -30,7 +30,7 @@ const style = StyleSheet.create({
   },
   textDesc: {
     fontSize: 12,
-    color: color.BLACK,
+    color: color.TEXT_DARK,
     fontWeight: '500',
     flexWrap: 'wrap',
     textAlign: 'center',

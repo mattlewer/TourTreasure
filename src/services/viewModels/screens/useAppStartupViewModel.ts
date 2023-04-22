@@ -13,10 +13,10 @@ const useAppStartupViewModel = () => {
   }, []);
 
   useEffect(() => {
-    if(userValue){
+    if (userValue) {
       handleUserData.storeUser(userValue);
     }
-  }, [userValue])
+  }, [userValue]);
 
   const loadData = async () => {
     await handleUserData.loadUser();

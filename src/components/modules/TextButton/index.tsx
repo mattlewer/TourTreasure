@@ -18,13 +18,13 @@ const TextButton = (props: TextButtonProps) => {
       backgroundColor: color.PRIMARY,
     };
     textStyle = {
-      color: '#fff',
+      color: color.WHITE,
     };
   } else {
     buttonStyle = {
       borderWidth: 1,
       borderColor: color.PRIMARY,
-      backgroundColor: '#fff',
+      backgroundColor: color.WHITE,
     };
     textStyle = {
       color: color.PRIMARY,
@@ -46,7 +46,7 @@ const style = StyleSheet.create({
   buttonContainer: {
     elevation: 5,
     shadowOffset: {width: 0, height: 2},
-    shadowColor: '#000',
+    shadowColor: color.BLACK,
     shadowOpacity: 1,
     width: '90%',
     height: 48,

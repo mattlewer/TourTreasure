@@ -13,7 +13,7 @@ const HowToUseCard = (props: HowToUseCardProps) => {
   return (
     <View style={style.slideContainer}>
       <View style={style.howToCard}>
-        <Image source={props.image} style={style.logo} />
+        <Image source={props.image} style={style.howToUseImage} />
         <View style={style.textContainer}>
           <Text style={[typography.HeaderReg, style.headerText]}>
             {props.title}
@@ -39,14 +39,14 @@ const style = StyleSheet.create({
     margin: 20,
     padding: 16,
     borderRadius: 12,
-    backgroundColor: '#fff7f9',
+    backgroundColor: color.WHITE_PRIMARY,
     alignItems: 'center',
     elevation: 5,
     shadowOffset: {width: 0, height: 2},
-    shadowColor: '#000',
+    shadowColor: color.BLACK,
     shadowOpacity: 1,
   },
-  logo: {
+  howToUseImage: {
     height: 300,
     width: 140,
     resizeMode: 'contain',

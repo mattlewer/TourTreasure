@@ -40,7 +40,7 @@ const style = StyleSheet.create({
     fontSize: 40,
   },
   textDesc: {
-    color: color.BLACK,
+    color: color.TEXT_DARK,
     fontSize: 12,
     fontWeight: '500',
     flexWrap: 'wrap',
