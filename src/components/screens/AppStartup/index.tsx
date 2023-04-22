@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text} from 'react-native';
+import {View} from 'react-native';
 import useAppStartupViewModel from '../../../services/viewModels/screens/useAppStartupViewModel';
 
 interface AppStartupProps {
@@ -9,7 +9,11 @@ const AppStartup = (props: AppStartupProps) => {
   const viewModel = useAppStartupViewModel();
   return (
     <>
-      {viewModel.loading ? <Text>LOADING...</Text> : props.children}
+      {viewModel.loading ? (
+        <View style={{flex: 1, width: '100%', backgroundColor: '#ffffff'}} />
+      ) : (
+        props.children
+      )}
     </>
   );
 };
