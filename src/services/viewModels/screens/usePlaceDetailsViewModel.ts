@@ -21,7 +21,6 @@ const usePlaceDetailsViewModel = () => {
       const retrievedDetails: PlaceDetails = await getPlaceDetailsFromPlaceId(
         place.place_id,
       );
-      console.log(retrievedDetails)
       setPlaceDetails(retrievedDetails);
     };
     getPlaceDetails();

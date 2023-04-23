@@ -9,7 +9,6 @@ interface HoursProps {
 }
 
 const Hours = (props: HoursProps) => {
-  console.log(props.details.opening_hours)
   return (
     <View style={style.openingTextContainer}>
       {props.details.opening_hours.weekday_text.map(day => {
