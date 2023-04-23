@@ -17,6 +17,7 @@ import {User} from '../../../interfaces/user';
 import useLocation from '../../hooks/useLocation';
 import {CreateAlert} from '../../../components/modules/Alert';
 import {localise} from '../../lang/lang';
+import { getPlaceDetailsFromPlaceId } from '../../hooks/api/useFindPointsOfInterest';
 
 type LocationScreenRouteProp = RouteProp<AppStackParams, 'Location'>;
 
@@ -53,8 +54,9 @@ const useLocationScreenViewModel = () => {
     navigation.goBack();
   };
 
-  const onViewPlaceDetails = (place: Place) => {
-    navigation.navigate('PlaceDetails', {place: place})
+  const onViewPlaceDetails = async (place: Place) => {
+    const placeDetails = await getPlaceDetailsFromPlaceId(place.place_id);
+    navigation.navigate('PlaceDetails', {placeDetails: placeDetails})
   }
 
   const checkAlreadyFound = () => {

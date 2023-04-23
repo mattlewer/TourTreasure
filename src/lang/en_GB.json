@@ -40,9 +40,11 @@
   "NO_RESULTS_TITLE": "No results found",
   "NO_RESULTS_DESC": "No points of interest found for your entered place",
 
+  "HOURS_TAB": "Hours",
+  "REVIEWS_TAB": "Reviews",
+  "CONTACT_TAB": "Contact",
   "NO_REVIEWS": "No reviews...",
   "NO_OPENING_HOURS": "No opening hours available...",
-
   "ADDRESS": "Address",
   "TELEPHONE": "Telephone",
   "WEBSITE": "Website",

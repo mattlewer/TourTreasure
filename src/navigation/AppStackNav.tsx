@@ -7,7 +7,8 @@ import {
 
 import HomeScreen from '../components/screens/Home';
 import LocationScreen from '../components/screens/Location';
-import PlaceDetails from '../components/screens/PlaceDetails';
+import PlaceDetailsScreen from '../components/screens/PlaceDetails';
+import {PlaceDetails} from '../interfaces/placeDetails';
 
 export type AppStackParams = {
   Home: undefined;
@@ -16,7 +17,7 @@ export type AppStackParams = {
     places: Place[];
   };
   PlaceDetails: {
-    place: Place;
+    placeDetails: PlaceDetails;
   };
 };
 const AppStack = createStackNavigator<AppStackParams>();
@@ -43,7 +44,7 @@ const AppStackNav = () => {
       <AppStack.Screen
         options={{headerShown: false}}
         name="PlaceDetails"
-        component={PlaceDetails}
+        component={PlaceDetailsScreen}
       />
     </AppStack.Navigator>
   );
