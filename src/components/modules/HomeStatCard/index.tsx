@@ -8,7 +8,7 @@ interface HomeStatCardProps{
 }
 const HomeStatCard = (props: HomeStatCardProps) => {
   return (
-    <View style={style.container}>
+    <View style={style.container} accessible>
       <Text style={style.textDesc}>{props.desc}</Text>
       <Text style={style.textStat}>{props.stat}</Text>
     </View>

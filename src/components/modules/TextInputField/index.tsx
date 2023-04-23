@@ -22,10 +22,7 @@ const TextInputField = (props: TextInputFieldProps) => {
   const [isPressed, setIsPressed] = useState(false);
   return (
     <View style={[style.container, {opacity: isPressed ? 0.7 : 1}]}>
-      <Text
-        style={[typography.BodyReg, style.inputLabel]}>
-        {props.label}
-      </Text>
+      <Text style={[typography.BodyReg, style.inputLabel]}>{props.label}</Text>
       <View style={style.inputFieldContainer}>
         <TextInput
           maxLength={30}
@@ -35,6 +32,7 @@ const TextInputField = (props: TextInputFieldProps) => {
         />
         {props.isSearch && (
           <Pressable
+            accessibilityHint={'search'}
             style={style.searchBtnContainer}
             onPress={props.onSubmit}
             onPressIn={() => setIsPressed(true)}
@@ -52,7 +50,7 @@ const style = StyleSheet.create({
     width: '100%',
   },
   inputLabel: {
-    width:'100%',
+    width: '100%',
     marginBottom: 4,
     color: color.TEXT_DARK,
   },

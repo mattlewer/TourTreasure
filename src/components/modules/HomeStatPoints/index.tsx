@@ -10,7 +10,7 @@ interface HomeStatPointsProps {
 const HomeStatePoints = (props: HomeStatPointsProps) => {
   return (
     <View style={style.outerContainer}>
-      <View style={style.container}>
+      <View style={style.container} accessible>
         <Text style={style.textDesc}>{props.desc}</Text>
         <Text style={[typography.PointsStat, style.textStat]}>
           {props.stat}
