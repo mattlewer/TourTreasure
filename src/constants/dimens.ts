@@ -1,1 +1,1 @@
-export const DISTANCE_TO_TRIGGER = 0.15;
+export const DISTANCE_TO_TRIGGER = 0.10;
