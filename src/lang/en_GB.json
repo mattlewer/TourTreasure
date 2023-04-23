@@ -36,8 +36,15 @@
   "UNSAVING_WARNING": "Unsaving means you will lose all current progress for this location",
   "YES": "Yes",
   "NO": "No",
-  
+
   "NO_RESULTS_TITLE": "No results found",
   "NO_RESULTS_DESC": "No points of interest found for your entered place",
-  
+
+  "NO_REVIEWS": "No reviews...",
+  "NO_OPENING_HOURS": "No opening hours available...",
+
+  "ADDRESS": "Address",
+  "TELEPHONE": "Telephone",
+  "WEBSITE": "Website",
+  "NO_CONTACT_INFO": "No contact info..."
 }

@@ -53,6 +53,10 @@ const useLocationScreenViewModel = () => {
     navigation.goBack();
   };
 
+  const onViewPlaceDetails = (place: Place) => {
+    navigation.navigate('PlaceDetails', {place: place})
+  }
+
   const checkAlreadyFound = () => {
     if (navigationPlace && !hasVisitedLocation(navigationPlace, userValue, searchedPlaceName)) {
       setPlaceFound(true);
@@ -126,6 +130,7 @@ const useLocationScreenViewModel = () => {
     onNavigateBack,
     setSelectedPlace,
     setNavigationPlace,
+    onViewPlaceDetails,
     setTimeToNavigationPlace,
   };
 };

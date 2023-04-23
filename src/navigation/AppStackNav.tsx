@@ -7,12 +7,16 @@ import {
 
 import HomeScreen from '../components/screens/Home';
 import LocationScreen from '../components/screens/Location';
+import PlaceDetails from '../components/screens/PlaceDetails';
 
 export type AppStackParams = {
   Home: undefined;
   Location: {
-    searchedPlaceName: string,
+    searchedPlaceName: string;
     places: Place[];
+  };
+  PlaceDetails: {
+    place: Place;
   };
 };
 const AppStack = createStackNavigator<AppStackParams>();
@@ -35,6 +39,11 @@ const AppStackNav = () => {
         options={{headerShown: false}}
         name="Location"
         component={LocationScreen}
+      />
+      <AppStack.Screen
+        options={{headerShown: false}}
+        name="PlaceDetails"
+        component={PlaceDetails}
       />
     </AppStack.Navigator>
   );

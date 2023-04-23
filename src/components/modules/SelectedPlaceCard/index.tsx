@@ -19,6 +19,7 @@ interface SelectedPlaceCardProps {
   searchedPlaceName: string;
   setSelectedPlace: (place: undefined) => void;
   setNavigationPlace: (place: Place) => void;
+  onViewPlaceDetails: (place: Place) => void;
 }
 
 const SelectedPlaceCard = (props: SelectedPlaceCardProps) => {
@@ -38,7 +39,11 @@ const SelectedPlaceCard = (props: SelectedPlaceCardProps) => {
           <View style={style.mapPinContainer}>
             <MapPin
               placeNumber={props.placeNumber}
-              isVisited={hasVisitedLocation(props.place, props.user, props.searchedPlaceName)}
+              isVisited={hasVisitedLocation(
+                props.place,
+                props.user,
+                props.searchedPlaceName,
+              )}
             />
           </View>
           <Text style={[typography.HeaderReg, style.headingText]}>
@@ -48,14 +53,25 @@ const SelectedPlaceCard = (props: SelectedPlaceCardProps) => {
         <View style={{flex: 1, margin: 10}}>
           <PlaceStats place={props.place} />
         </View>
-        <TextButton
-          text={localise('NAVIGATE')}
-          type="primary"
-          onPress={() => {
-            props.setNavigationPlace(props.place);
-            props.setSelectedPlace(undefined);
-          }}
-        />
+        <View style={style.actionButtonContainer}>
+          <View style={{width: '50%'}}>
+            <TextButton
+              text={'Info'}
+              type={'secondary'}
+              onPress={() => props.onViewPlaceDetails(props.place)}
+            />
+          </View>
+          <View style={{width: '50%'}}>
+            <TextButton
+              text={localise('NAVIGATE')}
+              type="primary"
+              onPress={() => {
+                props.setNavigationPlace(props.place);
+                props.setSelectedPlace(undefined);
+              }}
+            />
+          </View>
+        </View>
       </View>
     </Pressable>
   );
@@ -113,6 +129,10 @@ const style = StyleSheet.create({
     fontWeight: '600',
     color: color.PRIMARY,
     textAlign: 'center',
+  },
+  actionButtonContainer: {
+    flexDirection: 'row',
+    paddingVertical: 5,
   },
 });
 

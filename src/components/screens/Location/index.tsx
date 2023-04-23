@@ -40,6 +40,7 @@ const Location = () => {
             findIndexOfPlace(viewModel.selectedPlace, viewModel.shownPlaces) + 1
           }
           setSelectedPlace={viewModel.setSelectedPlace}
+          onViewPlaceDetails={viewModel.onViewPlaceDetails}
           setNavigationPlace={viewModel.setNavigationPlace}
           searchedPlaceName={viewModel.searchedPlaceName}
         />
