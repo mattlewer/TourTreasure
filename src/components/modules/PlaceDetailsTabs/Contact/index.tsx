@@ -24,7 +24,7 @@ const Contact = (props: ContactProps) => {
       {props.details.formatted_address && (
         <View style={style.contactTypeContainer}>
           <Text style={style.contactTypeText}>{localise('ADDRESS')}</Text>
-          <Text style={[typography.BodyReg]}>
+          <Text style={[typography.BodyReg, style.contactText]}>
             {props.details.formatted_address}
           </Text>
         </View>
@@ -32,7 +32,7 @@ const Contact = (props: ContactProps) => {
       {props.details.international_phone_number && (
         <View style={style.contactTypeContainer}>
           <Text style={style.contactTypeText}>{localise('TELEPHONE')}</Text>
-          <Text selectable style={[typography.BodyReg]}>
+          <Text selectable style={[typography.BodyReg, style.contactText]}>
             {props.details.international_phone_number}
           </Text>
         </View>
@@ -75,11 +75,15 @@ const style = StyleSheet.create({
     color: color.PRIMARY,
     fontWeight: '500',
   },
+  contactText:{
+    textAlign: 'center',
+  },
   linkText: {
     color: color.LINK_COLOR,
     textDecorationLine: 'underline',
     textDecorationStyle: 'solid',
     textDecorationColor: color.LINK_COLOR,
+    textAlign: 'center',
   },
 });
 

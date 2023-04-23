@@ -16,9 +16,9 @@ const DetailsTabs = (props: DetailsTabsProps) => {
   const layout = useWindowDimensions();
   const [index, setIndex] = useState(0);
   const [routes] = React.useState([
-    {key: 'hours', title: 'Hours'},
-    {key: 'reviews', title: 'Reviews'},
-    {key: 'contact', title: 'Contact'},
+    {key: 'hours', title: localise('HOURS_TAB')},
+    {key: 'reviews', title: localise('REVIEWS_TAB')},
+    {key: 'contact', title: localise('CONTACT_TAB')},
   ]);
 
   const HoursRoute = () => {

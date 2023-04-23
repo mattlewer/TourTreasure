@@ -15,11 +15,7 @@ const Hours = (props: HoursProps) => {
         const timeParts = day.split(': ');
         return (
           <View style={style.openingTextRow}>
-            <Text
-              style={[
-                typography.BodyReg,
-                {textAlign: 'center', color: color.PRIMARY, fontWeight: '500'},
-              ]}>
+            <Text style={[typography.BodyReg, style.dayText]}>
               {timeParts[0]}
             </Text>
             <Text style={[typography.BodyReg, {textAlign: 'center'}]}>
@@ -40,6 +36,11 @@ const style = StyleSheet.create({
   openingTextRow: {
     textAlign: 'center',
     marginVertical: 5,
+  },
+  dayText: {
+    textAlign: 'center',
+    color: color.PRIMARY,
+    fontWeight: '500',
   },
 });
 export default Hours;

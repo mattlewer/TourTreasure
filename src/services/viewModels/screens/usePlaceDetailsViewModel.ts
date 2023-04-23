@@ -1,40 +1,31 @@
 import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {AppStackParams} from '../../../navigation/AppStackNav';
-import {useEffect, useState} from 'react';
-import {
-  getPlaceDetailsFromPlaceId,
-  getPlacePhoto,
-} from '../../hooks/api/useFindPointsOfInterest';
-import {PlaceDetails} from '../../../interfaces/placeDetails';
+import { useState } from 'react';
 
-type LocationScreenRouteProp = RouteProp<AppStackParams, 'PlaceDetails'>;
+type PlaceDetailsScreenRouteProp = RouteProp<AppStackParams, 'PlaceDetails'>;
 
-const usePlaceDetailsViewModel = () => {
+const usePlaceDetailsScreenViewModel = () => {
   const navigation = useNavigation<StackNavigationProp<AppStackParams>>();
-  const {place} = useRoute<LocationScreenRouteProp>().params;
-  const [placeDetails, setPlaceDetails] = useState<PlaceDetails>();
-  const photo = placeDetails?.photos[0].photo_reference ?? undefined;
+  const {placeDetails} = useRoute<PlaceDetailsScreenRouteProp>().params;
+  const [isLoadingImage, setIsLoadingImage] = useState(false);
 
-  useEffect(() => {
-    const getPlaceDetails = async () => {
-      const retrievedDetails: PlaceDetails = await getPlaceDetailsFromPlaceId(
-        place.place_id,
-      );
-      setPlaceDetails(retrievedDetails);
-    };
-    getPlaceDetails();
-  }, []);
-
+  let photo = undefined;
+  if(placeDetails && placeDetails.photos){
+    photo = placeDetails.photos[0].photo_reference
+  }
+  
   const onNavigateBack = () => {
     navigation.goBack();
   };
+
   return {
-    place,
     photo,
     placeDetails,
+    isLoadingImage,
     onNavigateBack,
+    setIsLoadingImage,
   };
 };
 
-export default usePlaceDetailsViewModel;
+export default usePlaceDetailsScreenViewModel;
