@@ -39,8 +39,12 @@ const DetailsTabs = (props: DetailsTabsProps) => {
     }
   };
 
+  const checkHasReviewsAfterFilter = () => {
+    return props.placeDetails.reviews.filter(review => review.text.length > 0).length > 0;
+  }
+
   const ReviewRoute = () => {
-    if (props.placeDetails.reviews) {
+    if (props.placeDetails.reviews && checkHasReviewsAfterFilter()) {
       return (
         <View style={{flex: 1, backgroundColor: color.WHITE}}>
           <Reviews reviews={props.placeDetails.reviews} />

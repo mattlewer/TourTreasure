@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet} from 'react-native';
 import {findIndexOfPlace} from '../../../services/userHandler';
 import Map from '../../modules/Map';
 import ScreenContainer from '../../modules/ScreenContainer';
@@ -61,14 +61,16 @@ const Location = () => {
       {viewModel.placeFound && (
         <SuccessAnimationModal onClose={viewModel.onPlaceFound} />
       )}
-      {viewModel.shownPlaces && !viewModel.navigationPlace && (
-        <AnimatedBottomSheet
-          user={viewModel.userValue}
-          places={viewModel.shownPlaces}
-          onSelectItem={viewModel.setSelectedPlace}
-          searchedPlaceName={viewModel.searchedPlaceName}
-        />
-      )}
+      {viewModel.shownPlaces &&
+        !viewModel.navigationPlace &&
+        !viewModel.selectedPlace && (
+          <AnimatedBottomSheet
+            user={viewModel.userValue}
+            places={viewModel.shownPlaces}
+            onSelectItem={viewModel.setSelectedPlace}
+            searchedPlaceName={viewModel.searchedPlaceName}
+          />
+        )}
     </ScreenContainer>
   );
 };
