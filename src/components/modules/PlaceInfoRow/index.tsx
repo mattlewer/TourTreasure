@@ -19,7 +19,7 @@ const PlaceInfoRow = (props: PlaceInfoRowProps) => {
       key={props.place.place_id}
       onPress={() => props.onPress(props.place)}>
       <View style={style.placeNameNumberContainer}>
-        <MapPin placeNumber={props.placeNumber} isVisited={props.isVisited}/>
+        <MapPin placeNumber={props.placeNumber} isVisited={props.isVisited} />
         <Text style={[typography.BodyReg, style.headingText]}>
           {props.place.name}
         </Text>
@@ -44,9 +44,9 @@ const style = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-evenly',
   },
-  placeNameNumberContainer:{
+  placeNameNumberContainer: {
     flexDirection: 'row',
-    alignItems:'center',
+    alignItems: 'center',
     marginBottom: 10,
   },
   headingText: {

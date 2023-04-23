@@ -16,7 +16,7 @@ const SavedPlaceListItem = (props: SavedPlaceListItem) => {
             <Text style={style.text}>
                 {props.name}
             </Text>
-            <Text style={style.text}>
+            <Text style={style.text} accessibilityLabel={`${props.visitedPlaces} out of ${props.totalPlaces} places visited`}>
                 {props.visitedPlaces}/{props.totalPlaces}
             </Text>
         </View>
