@@ -14,7 +14,7 @@ function App(): JSX.Element {
     <RecoilRoot>
       <GestureHandlerRootView style={{flex: 1}}>
         <AppStartup>
-          {!onlineStatus.hasNetworkConnectivity && <OfflineBanner/>}
+          {!onlineStatus.hasNetworkConnectivity && <OfflineBanner />}
           <Router />
           <Toast config={toastConfig} />
         </AppStartup>

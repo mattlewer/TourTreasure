@@ -1,7 +1,7 @@
 import React from 'react';
-import {View, Text, StyleSheet, Image} from 'react-native';
 import * as color from '../../../constants/color';
-import { localise } from '../../../services/lang/lang';
+import {View, Text, StyleSheet, Image} from 'react-native';
+import {localise} from '../../../services/lang/lang';
 import WifiIcon from '../../../assets/wifi.png';
 
 const OfflineBanner = () => {
@@ -29,10 +29,10 @@ const style = StyleSheet.create({
     fontSize: 12,
     paddingRight: 10,
   },
-  wifiIcon:{
+  wifiIcon: {
     height: 20,
     width: 20,
     resizeMode: 'contain',
-  }
+  },
 });
 export default OfflineBanner;
