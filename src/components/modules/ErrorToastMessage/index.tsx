@@ -10,7 +10,7 @@ export const toastConfig: ToastConfig = {
         contentContainerStyle={{height: 100}}
         text1Style={[typography.HeaderReg, {color: '#e83427'}]}
         text2Style={[typography.BodyReg]}
-        text2NumberOfLines={2}
+        text2NumberOfLines={5}
       />
     );
   },
