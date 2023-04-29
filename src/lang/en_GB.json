@@ -43,8 +43,7 @@
   "NO_DIRECTIONS_DESC": "We couldn't find a route from your current location.",
   "NO_PERMISSION_TITLE": "Permission disabled",
   "NO_PERMISSION_DESC": "Please enable location permissions to receive directions.",
-  "OFFLINE_WARNING_TITLE": "Network conection",
-  "OFFLINE_WARNING_DESC": "You are currently offline.\nSaved places can still be viewed.",
+  "OFFLINE_WARNING_TITLE": "You are currently offline.\nSome functionality will be limited.",
   "NO_INFO_TILE": "No info",
   "NO_INFO_DESC": "Sorry, we couldn't get the information for this place.",
 
