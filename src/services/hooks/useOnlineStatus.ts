@@ -8,8 +8,6 @@ const useOnlineStatus = () => {
   useEffect(() => {
     if (netInfo.isConnected != null) {
       setNetworkConnectivity(netInfo.isConnected);
-    } else {
-      setNetworkConnectivity(false);
     }
   }, [netInfo.isConnected]);
 

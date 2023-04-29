@@ -45,6 +45,8 @@
   "NO_PERMISSION_DESC": "Please enable location permissions to receive directions.",
   "OFFLINE_WARNING_TITLE": "Network conection",
   "OFFLINE_WARNING_DESC": "You are currently offline.\nSaved places can still be viewed.",
+  "NO_INFO_TILE": "No info",
+  "NO_INFO_DESC": "Sorry, we couldn't get the information for this place.",
 
   "HOURS_TAB": "Hours",
   "REVIEWS_TAB": "Reviews",

@@ -20,7 +20,7 @@ const Router = () => {
         text2: localise('OFFLINE_WARNING_DESC'),
         position: 'bottom',
         bottomOffset: 100,
-        visibilityTime: 6000,
+        autoHide: false,
         onPress() {
           Toast.hide();
         },
