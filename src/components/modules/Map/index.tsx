@@ -177,7 +177,7 @@ const Map = (props: MapProps) => {
                   text2: localise('NO_DIRECTIONS_DESC'),
                   position: 'bottom',
                   bottomOffset: 100,
-                  visibilityTime: 4000,
+                  visibilityTime: 3000,
                 });
                 props.setNavigationPlace(undefined);
               }}

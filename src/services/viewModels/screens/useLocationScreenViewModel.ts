@@ -67,14 +67,15 @@ const useLocationScreenViewModel = () => {
         text2: localise('NO_PERMISSION_DESC'),
         position: 'bottom',
         bottomOffset: 100,
-        visibilityTime: 4000,
+        visibilityTime: 3000,
       });
     }
   };
 
   const onViewPlaceDetails = async (place: Place) => {
     const placeDetails = await getPlaceDetailsFromPlaceId(place.place_id);
-    navigation.navigate('PlaceDetails', {placeDetails: placeDetails});
+    placeDetails &&
+      navigation.navigate('PlaceDetails', {placeDetails: placeDetails});
   };
 
   const checkAlreadyFound = () => {
