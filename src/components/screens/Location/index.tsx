@@ -29,7 +29,7 @@ const Location = () => {
         navigationPlace={viewModel.navigationPlace}
         searchedPlaceName={viewModel.searchedPlaceName}
         setSelectedPlace={viewModel.setSelectedPlace}
-        setNavigationPlace={viewModel.setNavigationPlace}
+        setNavigationPlace={viewModel.onSetNavigationPlace}
         setTimeToNavigationPlace={viewModel.setTimeToNavigationPlace}
       />
       {viewModel.selectedPlace && !viewModel.placeFound && (
@@ -41,7 +41,7 @@ const Location = () => {
           }
           setSelectedPlace={viewModel.setSelectedPlace}
           onViewPlaceDetails={viewModel.onViewPlaceDetails}
-          setNavigationPlace={viewModel.setNavigationPlace}
+          setNavigationPlace={viewModel.onSetNavigationPlace}
           searchedPlaceName={viewModel.searchedPlaceName}
         />
       )}
@@ -54,7 +54,7 @@ const Location = () => {
             findIndexOfPlace(viewModel.navigationPlace, viewModel.shownPlaces) +
             1
           }
-          setNavigationPlace={viewModel.setNavigationPlace}
+          setNavigationPlace={viewModel.onSetNavigationPlace}
           searchedPlaceName={viewModel.searchedPlaceName}
         />
       )}

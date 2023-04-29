@@ -39,6 +39,10 @@
 
   "NO_RESULTS_TITLE": "No results found",
   "NO_RESULTS_DESC": "No points of interest found for your entered place",
+  "NO_DIRECTIONS_TITLE": "No directions found",
+  "NO_DIRECTIONS_DESC": "We couldn't find a route from your current location",
+  "NO_PERMISSION_TITLE": "Permission disabled",
+  "NO_PERMISSION_DESC": "Please enable location permissions to receive directions",
 
   "HOURS_TAB": "Hours",
   "REVIEWS_TAB": "Reviews",

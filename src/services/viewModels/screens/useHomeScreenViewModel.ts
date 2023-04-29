@@ -33,7 +33,7 @@ const useHomeScreenViewModel = () => {
       });
     } else {
       const foundPlaces = await getPointsOfInterest(place);
-      if (foundPlaces.length > 0) {
+      if (foundPlaces.length > 7) {
         navigation.navigate('Location', {
           places: foundPlaces,
           searchedPlaceName: place,
@@ -44,6 +44,7 @@ const useHomeScreenViewModel = () => {
           text1: localise('NO_RESULTS_TITLE'),
           text2: localise('NO_RESULTS_DESC'),
           position: 'bottom',
+          bottomOffset: 100,
           visibilityTime: 4000,
         });
       }
