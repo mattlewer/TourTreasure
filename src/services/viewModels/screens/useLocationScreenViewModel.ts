@@ -7,17 +7,19 @@ import {
   savePlace,
 } from '../../userHandler';
 import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
+import {getPlaceDetailsFromPlaceId} from '../../hooks/api/useFindPointsOfInterest';
+import {requestLocationPermission} from '../../hooks/usePermission';
 import {hasUserFoundLocation} from '../../checkIfTriggerDistance';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {AppStackParams} from '../../../navigation/AppStackNav';
 import {useRecoilState} from 'recoil';
+import {CreateAlert} from '../../../components/modules/Alert';
 import {userState} from '../../../state/userState';
+import {localise} from '../../lang/lang';
 import {Place} from '../../../interfaces/place';
 import {User} from '../../../interfaces/user';
 import useLocation from '../../hooks/useLocation';
-import {CreateAlert} from '../../../components/modules/Alert';
-import {localise} from '../../lang/lang';
-import { getPlaceDetailsFromPlaceId } from '../../hooks/api/useFindPointsOfInterest';
+import Toast from 'react-native-toast-message';
 
 type LocationScreenRouteProp = RouteProp<AppStackParams, 'Location'>;
 
@@ -54,16 +56,38 @@ const useLocationScreenViewModel = () => {
     navigation.goBack();
   };
 
+  const onSetNavigationPlace = async (place: Place | undefined) => {
+    const permission = await requestLocationPermission();
+    if (permission) {
+      setNavigationPlace(place);
+    } else {
+      Toast.show({
+        type: 'error',
+        text1: localise('NO_PERMISSION_TITLE'),
+        text2: localise('NO_PERMISSION_DESC'),
+        position: 'bottom',
+        bottomOffset: 100,
+        visibilityTime: 4000,
+      });
+    }
+  };
+
   const onViewPlaceDetails = async (place: Place) => {
     const placeDetails = await getPlaceDetailsFromPlaceId(place.place_id);
-    navigation.navigate('PlaceDetails', {placeDetails: placeDetails})
-  }
+    navigation.navigate('PlaceDetails', {placeDetails: placeDetails});
+  };
 
   const checkAlreadyFound = () => {
-    if (navigationPlace && !hasVisitedLocation(navigationPlace, userValue, searchedPlaceName)) {
+    if (
+      navigationPlace &&
+      !hasVisitedLocation(navigationPlace, userValue, searchedPlaceName)
+    ) {
       setPlaceFound(true);
     }
-    if (selectedPlace && !hasVisitedLocation(selectedPlace, userValue, searchedPlaceName)) {
+    if (
+      selectedPlace &&
+      !hasVisitedLocation(selectedPlace, userValue, searchedPlaceName)
+    ) {
       setPlaceFound(true);
     }
   };
@@ -74,10 +98,16 @@ const useLocationScreenViewModel = () => {
       userToUpdate = savePlace(userValue, searchedPlaceName, shownPlaces);
       setIsSaved(true);
     }
-    if (navigationPlace && !hasVisitedLocation(navigationPlace, userValue, searchedPlaceName)) {
+    if (
+      navigationPlace &&
+      !hasVisitedLocation(navigationPlace, userValue, searchedPlaceName)
+    ) {
       onAddFoundPlace(navigationPlace, userToUpdate);
     }
-    if (selectedPlace && !hasVisitedLocation(selectedPlace, userValue, searchedPlaceName)) {
+    if (
+      selectedPlace &&
+      !hasVisitedLocation(selectedPlace, userValue, searchedPlaceName)
+    ) {
       onAddFoundPlace(selectedPlace, userToUpdate);
     }
   };
@@ -131,8 +161,8 @@ const useLocationScreenViewModel = () => {
     setPlaceFound,
     onNavigateBack,
     setSelectedPlace,
-    setNavigationPlace,
     onViewPlaceDetails,
+    onSetNavigationPlace,
     setTimeToNavigationPlace,
   };
 };

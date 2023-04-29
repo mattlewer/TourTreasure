@@ -7,12 +7,14 @@ import {
 import MapView, {Marker, Region} from 'react-native-maps';
 import {StyleSheet, View} from 'react-native';
 import {GpsLocation} from '../../../interfaces/gpsLocation';
+import {localise} from '../../../services/lang/lang';
 import {MapStyle} from '../../../constants/mapStyle';
 import {Place} from '../../../interfaces/place';
 import {User} from '../../../interfaces/user';
 import MapViewDirections from 'react-native-maps-directions';
 import Config from 'react-native-config';
 import MapPin from '../MapPin';
+import Toast from 'react-native-toast-message';
 
 interface MapProps {
   user: User;
@@ -28,7 +30,6 @@ interface MapProps {
 
 const Map = (props: MapProps) => {
   const mapRef = useRef<MapView>(null);
-
   useEffect(() => {
     if (props.selectedPlace) {
       animateToPlace(props.selectedPlace);
@@ -121,7 +122,11 @@ const Map = (props: MapProps) => {
               placeNumber={
                 findIndexOfPlace(props.navigationPlace, props.places) + 1
               }
-              isVisited={hasVisitedLocation(props.navigationPlace, props.user, props.searchedPlaceName)}
+              isVisited={hasVisitedLocation(
+                props.navigationPlace,
+                props.user,
+                props.searchedPlaceName,
+              )}
             />
           </Marker>
         ) : (
@@ -139,7 +144,11 @@ const Map = (props: MapProps) => {
               }}>
               <MapPin
                 placeNumber={index + 1}
-                isVisited={hasVisitedLocation(place, props.user, props.searchedPlaceName)}
+                isVisited={hasVisitedLocation(
+                  place,
+                  props.user,
+                  props.searchedPlaceName,
+                )}
               />
             </Marker>
           ))
@@ -161,6 +170,17 @@ const Map = (props: MapProps) => {
               strokeColor={color.DIRECTION_LINE}
               mode="WALKING"
               onReady={res => props.setTimeToNavigationPlace(res.duration)}
+              onError={() => {
+                Toast.show({
+                  type: 'error',
+                  text1: localise('NO_DIRECTIONS_TITLE'),
+                  text2: localise('NO_DIRECTIONS_DESC'),
+                  position: 'bottom',
+                  bottomOffset: 100,
+                  visibilityTime: 4000,
+                });
+                props.setNavigationPlace(undefined);
+              }}
             />
           )}
       </MapView>

@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {View, Text, useWindowDimensions, StyleSheet} from 'react-native';
-import {SceneMap, TabBar, TabView, TabBarProps} from 'react-native-tab-view';
+import {SceneMap, TabBar, TabView} from 'react-native-tab-view';
 import {PlaceDetails} from '../../../../interfaces/placeDetails';
 import {typography} from '../../../../constants/typography';
 import {localise} from '../../../../services/lang/lang';
@@ -40,8 +40,11 @@ const DetailsTabs = (props: DetailsTabsProps) => {
   };
 
   const checkHasReviewsAfterFilter = () => {
-    return props.placeDetails.reviews.filter(review => review.text.length > 0).length > 0;
-  }
+    return (
+      props.placeDetails.reviews.filter(review => review.text.length > 0)
+        .length > 0
+    );
+  };
 
   const ReviewRoute = () => {
     if (props.placeDetails.reviews && checkHasReviewsAfterFilter()) {

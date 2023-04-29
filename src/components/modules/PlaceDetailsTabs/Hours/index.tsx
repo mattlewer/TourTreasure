@@ -11,10 +11,10 @@ interface HoursProps {
 const Hours = (props: HoursProps) => {
   return (
     <View style={style.openingTextContainer}>
-      {props.details.opening_hours.weekday_text.map(day => {
+      {props.details.opening_hours.weekday_text.map((day, index) => {
         const timeParts = day.split(': ');
         return (
-          <View style={style.openingTextRow}>
+          <View style={style.openingTextRow} key={index}>
             <Text style={[typography.BodyReg, style.dayText]}>
               {timeParts[0]}
             </Text>

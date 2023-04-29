@@ -19,7 +19,7 @@ const Reviews = (props: ReviewsProps) => {
           ? authorInitials.join('')
           : item.author_name[0];
         return (
-          <View style={style.reviewContainer}>
+          <View style={style.reviewContainer} key={index}>
             <View style={style.reviewStats}>
               <View style={style.authorTextContainer}>
                 <Text style={style.authorText}>{authorDisplay}</Text>
