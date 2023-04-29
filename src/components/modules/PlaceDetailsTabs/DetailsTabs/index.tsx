@@ -40,8 +40,11 @@ const DetailsTabs = (props: DetailsTabsProps) => {
   };
 
   const checkHasReviewsAfterFilter = () => {
-    return props.placeDetails.reviews.filter(review => review.text.length > 0).length > 0;
-  }
+    return (
+      props.placeDetails.reviews.filter(review => review.text.length > 0)
+        .length > 0
+    );
+  };
 
   const ReviewRoute = () => {
     if (props.placeDetails.reviews && checkHasReviewsAfterFilter()) {

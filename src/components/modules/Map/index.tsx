@@ -35,7 +35,7 @@ const Map = (props: MapProps) => {
       animateToPlace(props.selectedPlace);
     }
     if (props.navigationPlace && props.userLocation) {
-        animateToUser(props.userLocation);
+      animateToUser(props.userLocation);
     }
   }, [props.selectedPlace, props.navigationPlace]);
 
@@ -109,8 +109,7 @@ const Map = (props: MapProps) => {
         loadingIndicatorColor={color.PRIMARY}
         tintColor={'#000'}
         showsMyLocationButton={false}
-        initialRegion={centeredPlace}
-        >
+        initialRegion={centeredPlace}>
         {props.navigationPlace ? (
           <Marker
             identifier={props.navigationPlace.place_id}

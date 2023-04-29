@@ -75,7 +75,7 @@ const style = StyleSheet.create({
     color: color.PRIMARY,
     fontWeight: '500',
   },
-  contactText:{
+  contactText: {
     textAlign: 'center',
   },
   linkText: {
