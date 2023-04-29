@@ -74,7 +74,6 @@ const useLocationScreenViewModel = () => {
 
   const onViewPlaceDetails = async (place: Place) => {
     const placeDetails = await getPlaceDetailsFromPlaceId(place.place_id);
-    console.log(placeDetails)
     placeDetails &&
       navigation.navigate('PlaceDetails', {placeDetails: placeDetails});
   };
