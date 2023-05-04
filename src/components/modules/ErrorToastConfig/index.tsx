@@ -12,6 +12,7 @@ export const toastConfig: ToastConfig = {
         text1Style={[typography.HeaderReg, {color: color.ERROR_RED}]}
         text2Style={[typography.BodyReg]}
         text2NumberOfLines={5}
+        onPress={() => props.hide()}
       />
     );
   },

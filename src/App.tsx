@@ -1,6 +1,6 @@
 import React from 'react';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
-import {toastConfig} from './components/modules/ErrorToastMessage';
+import {toastConfig} from './components/modules/ErrorToastConfig';
 import {RecoilRoot} from 'recoil';
 import {Toast} from 'react-native-toast-message/lib/src/Toast';
 import AppStartup from './components/screens/AppStartup';

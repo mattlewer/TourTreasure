@@ -5,16 +5,15 @@ import {
   hasVisitedLocation,
 } from '../../../services/userHandler';
 import MapView, {Marker, Region} from 'react-native-maps';
+import {noDirectionsToast} from '../ErrorToasts';
 import {StyleSheet, View} from 'react-native';
 import {GpsLocation} from '../../../interfaces/gpsLocation';
-import {localise} from '../../../services/lang/lang';
 import {MapStyle} from '../../../constants/mapStyle';
 import {Place} from '../../../interfaces/place';
 import {User} from '../../../interfaces/user';
 import MapViewDirections from 'react-native-maps-directions';
 import Config from 'react-native-config';
 import MapPin from '../MapPin';
-import Toast from 'react-native-toast-message';
 
 interface MapProps {
   user: User;
@@ -171,14 +170,7 @@ const Map = (props: MapProps) => {
               mode="WALKING"
               onReady={res => props.setTimeToNavigationPlace(res.duration)}
               onError={() => {
-                Toast.show({
-                  type: 'error',
-                  text1: localise('NO_DIRECTIONS_TITLE'),
-                  text2: localise('NO_DIRECTIONS_DESC'),
-                  position: 'bottom',
-                  bottomOffset: 100,
-                  visibilityTime: 3000,
-                });
+                noDirectionsToast();
                 props.setNavigationPlace(undefined);
               }}
             />

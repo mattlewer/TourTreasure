@@ -1,13 +1,15 @@
 import Config from 'react-native-config';
 import {Place} from '../../../interfaces/place';
 import {PlaceDetails} from '../../../interfaces/placeDetails';
-import Toast from 'react-native-toast-message';
-import {localise} from '../../lang/lang';
+import {
+  noInfoToast,
+  noResultsToast,
+} from '../../../components/modules/ErrorToasts';
 
 export const getPointsOfInterest = async (
   location: string,
 ): Promise<Place[] | undefined> => {
-  try{
+  try {
     const response = await fetch(
       `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${location}&language=en&type=tourist_attraction&radius=11265&key=${Config.GOOGLE_MAPS_API_KEY}`,
     );
@@ -18,15 +20,8 @@ export const getPointsOfInterest = async (
       );
     }
     return result.results;
-  }catch(e){
-    Toast.show({
-      type: 'error',
-      text1: localise('NO_RESULTS_TITLE'),
-      text2: localise('NO_RESULTS_DESC'),
-      position: 'bottom',
-      bottomOffset: 100,
-      visibilityTime: 3000,
-    });
+  } catch (e) {
+    noResultsToast();
   }
 };
 
@@ -40,14 +35,7 @@ export const getPlaceDetailsFromPlaceId = async (
     const result = await response.json();
     return result.result;
   } catch (e) {
-    Toast.show({
-      type: 'error',
-      text1: localise('NO_INFO_TILE'),
-      text2: localise('NO_INFO_DESC'),
-      position: 'bottom',
-      bottomOffset: 100,
-      visibilityTime: 3000,
-    });
+    noInfoToast();
   }
 };
 

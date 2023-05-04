@@ -3,12 +3,11 @@ import {Keyboard} from 'react-native';
 import {hasSavedPlace, totalFoundPlaces} from '../../userHandler';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {getPointsOfInterest} from '../../hooks/api/useFindPointsOfInterest';
+import {noResultsToast} from '../../../components/modules/ErrorToasts';
 import {AppStackParams} from '../../../navigation/AppStackNav';
 import {useRecoilState} from 'recoil';
 import {useNavigation} from '@react-navigation/native';
 import {userState} from '../../../state/userState';
-import {localise} from '../../lang/lang';
-import Toast from 'react-native-toast-message';
 
 const useHomeScreenViewModel = () => {
   const navigation = useNavigation<StackNavigationProp<AppStackParams>>();
@@ -39,14 +38,7 @@ const useHomeScreenViewModel = () => {
           searchedPlaceName: place,
         });
       } else {
-        Toast.show({
-          type: 'error',
-          text1: localise('NO_RESULTS_TITLE'),
-          text2: localise('NO_RESULTS_DESC'),
-          position: 'bottom',
-          bottomOffset: 100,
-          visibilityTime: 3000,
-        });
+        noResultsToast();
       }
     }
   };

@@ -10,6 +10,7 @@ import useHandleUserData from '../../hooks/useHandleUserData';
 
 import Home from '../../../assets/app_example_home.png';
 import SelectedLocation from '../../../assets/app_selected_location.png';
+import LocationInfo from '../../../assets/app_example_info.png';
 import Navigation from '../../../assets/app_navigation.png';
 import Map from '../../../assets/app_example_map.png';
 import Points from '../../../assets/app_example_points.png';
@@ -42,11 +43,16 @@ const useHowToUserViewModel = () => {
     {
       title: localise('HOW_TO_CARD_TITLE_4'),
       content: localise('HOW_TO_CARD_DESC_4'),
-      image: Navigation,
+      image: LocationInfo,
     },
     {
       title: localise('HOW_TO_CARD_TITLE_5'),
       content: localise('HOW_TO_CARD_DESC_5'),
+      image: Navigation,
+    },
+    {
+      title: localise('HOW_TO_CARD_TITLE_6'),
+      content: localise('HOW_TO_CARD_DESC_6'),
       image: Points,
     },
   ];

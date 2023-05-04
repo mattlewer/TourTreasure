@@ -11,6 +11,7 @@ import {getPlaceDetailsFromPlaceId} from '../../hooks/api/useFindPointsOfInteres
 import {requestLocationPermission} from '../../hooks/usePermission';
 import {hasUserFoundLocation} from '../../checkIfTriggerDistance';
 import {StackNavigationProp} from '@react-navigation/stack';
+import {noPermissionToast} from '../../../components/modules/ErrorToasts';
 import {AppStackParams} from '../../../navigation/AppStackNav';
 import {useRecoilState} from 'recoil';
 import {CreateAlert} from '../../../components/modules/Alert';
@@ -19,7 +20,6 @@ import {localise} from '../../lang/lang';
 import {Place} from '../../../interfaces/place';
 import {User} from '../../../interfaces/user';
 import useLocation from '../../hooks/useLocation';
-import Toast from 'react-native-toast-message';
 
 type LocationScreenRouteProp = RouteProp<AppStackParams, 'Location'>;
 
@@ -61,14 +61,7 @@ const useLocationScreenViewModel = () => {
     if (permission) {
       setNavigationPlace(place);
     } else {
-      Toast.show({
-        type: 'error',
-        text1: localise('NO_PERMISSION_TITLE'),
-        text2: localise('NO_PERMISSION_DESC'),
-        position: 'bottom',
-        bottomOffset: 100,
-        visibilityTime: 3000,
-      });
+      noPermissionToast();
     }
   };
 
