@@ -14,11 +14,11 @@
   "HOW_TO_CARD_TITLE_3": "Destinations",
   "HOW_TO_CARD_DESC_3": "Tap a destination on the map or the list to select it, you can choose from here to view more information or receive directions.",
   "HOW_TO_CARD_TITLE_4": "Information",
-  "HOW_TO_CARD_DESC_4": "Selecting 'Info' will open a new screen where you can view opening hours, reviews and contact information where available",  
+  "HOW_TO_CARD_DESC_4": "Selecting 'Info' will open a new screen where you can view opening hours, reviews and contact information where available.",  
   "HOW_TO_CARD_TITLE_5": "Directions",
   "HOW_TO_CARD_DESC_5": "Selecting 'Navigate' will start a route to your destination as well as informing you of the time to get there.",
   "HOW_TO_CARD_TITLE_6": "Points",
-  "HOW_TO_CARD_DESC_6": "When you're within 150 meters of the location by either navigating or selecting the location on the map, you'll gain the points!",
+  "HOW_TO_CARD_DESC_6": "When you're within 100 meters of the location whilst navigating, or selecting the location on the map, you'll gain the points!",
 
   "WELCOME_USER": "Welcome,\n",
   "VISITED": "Visited",

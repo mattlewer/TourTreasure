@@ -8,6 +8,7 @@ import {AppStackParams} from '../../../navigation/AppStackNav';
 import {useRecoilState} from 'recoil';
 import {useNavigation} from '@react-navigation/native';
 import {userState} from '../../../state/userState';
+import {validateText} from '../../validateText';
 
 const useHomeScreenViewModel = () => {
   const navigation = useNavigation<StackNavigationProp<AppStackParams>>();
@@ -18,7 +19,11 @@ const useHomeScreenViewModel = () => {
 
   const onSearchNew = async () => {
     if (enteredLocation) {
-      onSearchLocation(enteredLocation);
+      if (validateText(enteredLocation)) {
+        onSearchLocation(enteredLocation);
+      }else{
+        noResultsToast();
+      }
     }
   };
 
