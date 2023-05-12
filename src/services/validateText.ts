@@ -1,5 +1,5 @@
 export const validateText = (name: string): boolean => {
-  const noSymbols = name.replace(/[A-Za-z|-|']/g, '').length === 0;
+  const noSymbols = name.replace(/[A-Za-z|-|'|\s]/g, '').length === 0;
   const nameNoSymbolsNoNumbers = name.replace(/[^A-Za-z]/g, '');
   const nameNoSpace = name.replace(/\s+/g, '');
   if (
