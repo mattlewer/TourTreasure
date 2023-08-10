@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1096740463609",
+    "project_id": "tourtreasure-49a61",
+    "storage_bucket": "tourtreasure-49a61.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1096740463609:android:61c518f7c9d4af18225328",
+        "android_client_info": {
+          "package_name": "com.tourtreasure"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1096740463609-eotmlnrf48ca07tndj6r8u63e5ddtekm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCP3mMja8TuI4CCLr-ge9BYFO2b-qHFreA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1096740463609-eotmlnrf48ca07tndj6r8u63e5ddtekm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
