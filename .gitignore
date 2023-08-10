@@ -33,7 +33,7 @@ local.properties
 .cxx/
 *.keystore
 !debug.keystore
-google-services.json
+app/google-services.json
 # node.js
 #
 node_modules/
