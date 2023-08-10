@@ -25,7 +25,6 @@ function App(): JSX.Element {
       }
     };
     setUp();
-    console.log('hello')
   }, []);
 
   return (
