@@ -5,7 +5,7 @@ import {
   hasVisitedLocation,
 } from '../../../services/userHandler';
 import MapView, {Marker, Region} from 'react-native-maps';
-import {noDirectionsToast} from '../ErrorToasts';
+import {noDirectionsToast} from '../../../services/toasts';
 import {StyleSheet, View} from 'react-native';
 import {GpsLocation} from '../../../interfaces/gpsLocation';
 import {MapStyle} from '../../../constants/mapStyle';

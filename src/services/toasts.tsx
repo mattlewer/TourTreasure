@@ -1,5 +1,5 @@
 import Toast from 'react-native-toast-message';
-import {localise} from '../../../services/lang/lang';
+import {localise} from './lang/lang';
 
 export const noDirectionsToast = () =>
   Toast.show({

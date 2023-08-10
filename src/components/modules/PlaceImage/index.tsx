@@ -1,7 +1,7 @@
 import {View, Image, ActivityIndicator, StyleSheet} from 'react-native';
 import * as color from '../../../constants/color';
 import React from 'react';
-import { getPlacePhoto } from '../../../services/hooks/api/useFindPointsOfInterest';
+import { getPlacePhoto } from '../../../services/hooks/api/place';
 import NoImage from '../../../assets/no_photos.png';
 
 interface PlaceImageProps{
