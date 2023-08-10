@@ -7,11 +7,11 @@ import {
   savePlace,
 } from '../../userHandler';
 import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
-import {getPlaceDetailsFromPlaceId} from '../../hooks/api/useFindPointsOfInterest';
-import {requestLocationPermission} from '../../hooks/usePermission';
+import {getPlaceDetailsFromPlaceId} from '../../hooks/api/place';
+import {requestLocationPermission} from '../../permissions';
 import {hasUserFoundLocation} from '../../checkIfTriggerDistance';
 import {StackNavigationProp} from '@react-navigation/stack';
-import {noPermissionToast} from '../../../components/modules/ErrorToasts';
+import {noPermissionToast} from '../../toasts';
 import {AppStackParams} from '../../../navigation/AppStackNav';
 import {useRecoilState} from 'recoil';
 import {CreateAlert} from '../../../components/modules/Alert';

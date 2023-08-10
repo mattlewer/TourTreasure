@@ -1,6 +1,6 @@
 import {useState} from 'react';
 import {CreateAccoundStackParams} from '../../../navigation/CreateAccountStackNav';
-import {invalidUsernameToast} from '../../../components/modules/ErrorToasts';
+import {invalidUsernameToast} from '../../toasts';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {useNavigation} from '@react-navigation/native';
 import {validateText} from '../../validateText';

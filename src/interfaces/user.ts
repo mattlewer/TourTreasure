@@ -1,4 +1,3 @@
-import { Place } from './place';
 import {SavedPlace} from './savedPlace';
 
 export interface User {

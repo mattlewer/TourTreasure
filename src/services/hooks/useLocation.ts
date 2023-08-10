@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react';
 import {GpsLocation} from '../../interfaces/gpsLocation';
 import Geolocation from 'react-native-geolocation-service';
-import {requestLocationPermission} from './usePermission';
+import {requestLocationPermission} from '../permissions';
 
 const useLocation = () => {
   const [location, setLocation] = useState<GpsLocation>({

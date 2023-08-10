@@ -1,4 +1,4 @@
-import {distanceInKmBetweenCoordinates} from './hooks/useDistance';
+import {distanceInKmBetweenCoordinates} from './calculateDistance';
 import {DISTANCE_TO_TRIGGER} from '../constants/dimens';
 import {GpsLocation} from '../interfaces/gpsLocation';
 import {Place} from '../interfaces/place';
