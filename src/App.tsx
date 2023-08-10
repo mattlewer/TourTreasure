@@ -8,14 +8,26 @@ import Router from './Router';
 import useOnlineStatus from './services/hooks/useOnlineStatus';
 import OfflineBanner from './components/modules/OfflineBanner';
 import {notificationListener} from './services/notifications';
-import {requestNotificationPermission} from './services/permissions';
+import {
+  requestLocationPermission,
+  requestNotificationPermission,
+} from './services/permissions';
 
 function App(): JSX.Element {
   const onlineStatus = useOnlineStatus();
+
   useEffect(() => {
-    requestNotificationPermission();
-    notificationListener();
+    const setUp = async () => {
+      const notificationPermission = await requestNotificationPermission();
+      await requestLocationPermission();
+      if (notificationPermission) {
+        notificationListener();
+      }
+    };
+    setUp();
+    console.log('hello')
   }, []);
+
   return (
     <RecoilRoot>
       <GestureHandlerRootView style={{flex: 1}}>

@@ -15,11 +15,13 @@ export const requestLocationPermission = async () => {
   }
 };
 
-
-export const requestNotificationPermission = async(): Promise<Boolean> => {
-  const authStatus = await messaging().requestPermission();
-  const enabled =
-    authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
-    authStatus === messaging.AuthorizationStatus.PROVISIONAL;
-  return enabled;
-}
+export const requestNotificationPermission = async (): Promise<Boolean> => {
+  if (Platform.OS === 'android') {
+    const statuses = await requestMultiple([
+      PERMISSIONS.ANDROID.POST_NOTIFICATIONS,
+    ]);
+    return statuses[PERMISSIONS.ANDROID.POST_NOTIFICATIONS] === 'granted';
+  } else {
+    return false;
+  }
+};
