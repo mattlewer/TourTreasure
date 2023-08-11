@@ -1,4 +1,4 @@
-import {distanceInKmBetweenCoordinates} from '../../../src/services/hooks/useDistance';
+import {distanceInKmBetweenCoordinates} from '../../../src/services/calculateDistance';
 
 describe('useDistance', () => {
     test('returns correct distance', () => {

@@ -3,6 +3,7 @@ import {Review} from '../../../../interfaces/placeDetails';
 import {typography} from '../../../../constants/typography';
 import {Text, FlatList, StyleSheet, View} from 'react-native';
 import * as color from '../../../../constants/color';
+import {generateInitials} from '../../../../services/generateInitals';
 
 interface ReviewsProps {
   reviews: Review[];
@@ -14,15 +15,12 @@ const Reviews = (props: ReviewsProps) => {
       contentContainerStyle={{padding: 10}}
       data={props.reviews}
       renderItem={({item, index}) => {
-        const authorInitials = item.author_name.match(/[A-Z]/g);
-        const authorDisplay = authorInitials
-          ? authorInitials.join('')
-          : item.author_name[0];
+        const authorInitials = generateInitials(item.author_name);
         return (
           <View style={style.reviewContainer} key={index}>
             <View style={style.reviewStats}>
               <View style={style.authorTextContainer}>
-                <Text style={style.authorText}>{authorDisplay}</Text>
+                <Text style={style.authorText}>{authorInitials}</Text>
               </View>
               <Text style={[typography.BodyReg, style.dateText]}>
                 {item.relative_time_description}

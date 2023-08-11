@@ -11,16 +11,14 @@ import TextInputField from '../../modules/TextInputField';
 import LinearGradient from 'react-native-linear-gradient';
 import HomeStatCard from '../../modules/HomeStatCard';
 import useHomeScreenViewModel from '../../../services/viewModels/screens/useHomeScreenViewModel';
+import UserBanner from '../../modules/UserBanner';
 
 const HomeScreen = () => {
   const viewModel = useHomeScreenViewModel();
   return (
     <ScreenContainer scrollable stripPadding>
       <View style={style.contents}>
-        <Text style={style.headerText}>
-          {localise('WELCOME_USER')}
-          {viewModel.userValue.name}
-        </Text>
+        <UserBanner name={viewModel.userValue.name} />
         <LinearGradient
           colors={['#D63357', '#e4768f']}
           start={{x: 0, y: 0}}
@@ -85,13 +83,6 @@ const style = StyleSheet.create({
   },
   text: {
     color: color.TEXT_DARK,
-  },
-  headerText: {
-    color: color.TEXT_DARK,
-    fontSize: 48,
-    paddingVertical: 50,
-    alignSelf: 'flex-start',
-    paddingLeft: 16,
   },
   headerAndStatsContainer: {
     zIndex: 10,
