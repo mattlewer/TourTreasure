@@ -1,7 +1,10 @@
 {
+  "APP_NAME": "Tour Treasure",
   "WELCOME": "Welcome to Tour Treasure",
   "ENTER_USERNAME_TO_START": "Enter a username to get started!",
   "USERNAME": "Username",
+
+  "SIGN_OUT": "Sign out",
 
   "GET_STARTED": "Get started!",
   "SKIP": "SKIP",
@@ -24,7 +27,8 @@
   "VISITED": "Visited",
   "POINTS": "Points",
   "LOCATIONS": "Locations",
-  "SEARCH_LOCATION": "Search location",
+  "POPULAR_LOCATIONS": "Popular locations",
+  "SEARCH_LOCATION": "Search location...",
   "SAVED_PLACES": "Saved places",
   "NO_SAVED_PLACES": "No saved places...",
   "RATING": "Rating:",

@@ -11,7 +11,7 @@ export const getPointsOfInterest = async (
 ): Promise<Place[] | undefined> => {
   try {
     const response = await fetch(
-      `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${location}&language=en&type=tourist_attraction&radius=11265&key=${Config.GOOGLE_MAPS_API_KEY}`,
+      `https://maps.googleapis.com/maps/api/place/textsearch/json?query=things+to+do+in+${location}&language=en&radius=11265&key=${Config.GOOGLE_MAPS_API_KEY}`,
     );
     const result = await response.json();
     if (result.results) {

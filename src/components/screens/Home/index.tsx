@@ -1,127 +1,105 @@
 import React from 'react';
 import * as color from '../../../constants/color';
 import {View, StyleSheet, Text} from 'react-native';
-import {totalFoundPlaces} from '../../../services/userHandler';
-import {typography} from '../../../constants/typography';
 import {localise} from '../../../services/lang/lang';
-import SavedPlaceListItem from '../../modules/SavedPlaceListItem';
 import ScreenContainer from '../../modules/ScreenContainer';
-import HomeStatePoints from '../../modules/HomeStatPoints';
-import TextInputField from '../../modules/TextInputField';
-import LinearGradient from 'react-native-linear-gradient';
-import HomeStatCard from '../../modules/HomeStatCard';
 import useHomeScreenViewModel from '../../../services/viewModels/screens/useHomeScreenViewModel';
-import UserBanner from '../../modules/UserBanner';
+import HomeStatList from '../../modules/HomeStatList';
+import SavedLocationList from '../../modules/SavedLocationList';
+import PopularLocationList from '../../modules/PopularLocationList';
+import PlaceSearchField from '../../modules/PlaceSearchField';
+import Avatar from '../../modules/Avatar';
+import MenuButton from '../../modules/MenuButton';
 
 const HomeScreen = () => {
   const viewModel = useHomeScreenViewModel();
   return (
     <ScreenContainer scrollable stripPadding>
-      <View style={style.contents}>
-        <UserBanner name={viewModel.userValue.name} />
-        <LinearGradient
-          colors={['#D63357', '#e4768f']}
-          start={{x: 0, y: 0}}
-          end={{x: 1, y: 1}}
-          style={style.headerAndStatsContainer}>
-          <HomeStatCard
-            stat={totalFoundPlaces(viewModel.userValue).toString()}
-            desc={localise('VISITED')}
-          />
-          <HomeStatePoints
-            stat={viewModel.points.toString()}
-            desc={localise('POINTS')}
-          />
-          <HomeStatCard
-            stat={viewModel.userValue.savedPlaces.length.toString()}
-            desc={localise('LOCATIONS')}
-          />
-        </LinearGradient>
-        <View style={{width: '90%'}}>
-          <View style={style.inputFieldContainer}>
-            <TextInputField
-              isSearch
-              label={localise('SEARCH_LOCATION')}
-              onChange={viewModel.setEnteredLocation}
-              onSubmit={viewModel.onSearchNew}
-            />
+      <MenuButton navigation={viewModel.navigation} />
+      <View style={style.header}>
+        <View style={style.greetingContainer}>
+          <Avatar name={viewModel.userValue.name} />
+          <View style={style.greetingText}>
+            <Text style={{color: color.WHITE}}>{localise('WELCOME_USER')}</Text>
+            <Text style={style.nameText}>{viewModel.userValue.name}</Text>
           </View>
-          <Text style={[style.text, {alignSelf: 'flex-start'}]}>
-            {localise('SAVED_PLACES')}
-          </Text>
-          {viewModel.userValue.savedPlaces.length > 0 ? (
-            <View style={style.savedPlacesListContainer}>
-              {viewModel.userValue.savedPlaces.map((item, index) => {
-                return (
-                  <SavedPlaceListItem
-                    key={index}
-                    name={item.name}
-                    onPress={() => viewModel.onSearchLocation(item.name)}
-                    visitedPlaces={item.visitedPlaces.length}
-                    totalPlaces={item.places.length}
-                  />
-                );
-              })}
-            </View>
-          ) : (
-            <View style={style.noSavedPlacesContainer}>
-              <Text style={[typography.BodyReg, {color: color.PRIMARY}]}>
-                {localise('NO_SAVED_PLACES')}
-              </Text>
-            </View>
-          )}
         </View>
+        <View style={style.inputFieldContainer}>
+          <PlaceSearchField
+            onChange={viewModel.setEnteredLocation}
+            onSearch={viewModel.onSearchNew}
+          />
+        </View>
+        <View style={style.statContainer}>
+          <HomeStatList user={viewModel.userValue} />
+        </View>
+      </View>
+      <View style={style.inner}>
+        <View style={style.popularLocationContainer}>
+          <PopularLocationList
+            locations={viewModel.popularLocations}
+            onSearchLocation={viewModel.onSearchLocation}
+          />
+        </View>
+        <Text style={[style.text, {alignSelf: 'flex-start'}]}>
+          {localise('SAVED_PLACES')}
+        </Text>
+        <SavedLocationList
+          user={viewModel.userValue}
+          onSearchLocation={viewModel.onSearchLocation}
+        />
       </View>
     </ScreenContainer>
   );
 };
 const style = StyleSheet.create({
-  contents: {
-    flex: 1,
+  header: {
+    backgroundColor: color.PRIMARY,
     width: '100%',
+    justifyContent: 'center',
     alignItems: 'center',
+    paddingHorizontal: 20,
+    paddingTop: 50,
+    paddingBottom: 15,
+  },
+  greetingContainer: {
+    alignSelf: 'flex-start',
+    flexDirection: 'row',
+  },
+  greetingText: {
+    paddingLeft: 10,
+  },
+  nameText: {
+    color: color.WHITE,
+    fontWeight: '600',
+    fontSize: 24,
+  },
+  statContainer: {
+    flexDirection: 'row',
+    paddingVertical: 20,
+  },
+  inputFieldContainer: {
+    width: '100%',
+    paddingTop: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  inner: {
+    width: '100%',
+    paddingHorizontal: 20,
+    paddingTop: 20,
+    flex: 1,
+    paddingBottom: 20,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    backgroundColor: color.WHITE,
+    marginTop: -15,
   },
   text: {
     color: color.TEXT_DARK,
   },
-  headerAndStatsContainer: {
-    zIndex: 10,
-    width: '97%',
-    flexDirection: 'row',
-    alignSelf: 'flex-start',
-    justifyContent: 'space-between',
-    alignItems: 'flex-end',
-    backgroundColor: color.PRIMARY,
-    borderTopRightRadius: 50,
-    borderBottomRightRadius: 50,
-    paddingHorizontal: 10,
-    paddingTop: 20,
-    marginBottom: 40,
-    paddingBottom: 20,
-    elevation: 10,
-  },
-  statText: {
-    color: color.PRIMARY,
-  },
-  inputFieldContainer: {
-    paddingBottom: 40,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  savedPlacesListContainer: {
-    flex: 1,
-    width: '100%',
-    margin: 0,
-  },
-  noSavedPlacesContainer: {
-    flex: 1,
-    height: 140,
-    borderRadius: 4,
-    width: '100%',
-    marginTop: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: color.PRIMARY + '11',
+  popularLocationContainer: {
+    paddingBottom: 30,
   },
 });
 export default HomeScreen;
