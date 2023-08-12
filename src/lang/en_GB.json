@@ -1,7 +1,10 @@
 {
+  "APP_NAME": "Tour Treasure",
   "WELCOME": "Welcome to Tour Treasure",
   "ENTER_USERNAME_TO_START": "Enter a username to get started!",
   "USERNAME": "Username",
+
+  "SIGN_OUT": "Sign out",
 
   "GET_STARTED": "Get started!",
   "SKIP": "SKIP",
@@ -20,11 +23,12 @@
   "HOW_TO_CARD_TITLE_6": "Points",
   "HOW_TO_CARD_DESC_6": "When you're within 100 meters of the location whilst navigating, or selecting the location on the map, you'll gain the points!",
 
-  "WELCOME_USER": "Welcome,\n",
+  "WELCOME_USER": "Welcome,",
   "VISITED": "Visited",
   "POINTS": "Points",
   "LOCATIONS": "Locations",
-  "SEARCH_LOCATION": "Search location",
+  "POPULAR_LOCATIONS": "Popular locations",
+  "SEARCH_LOCATION": "Search location...",
   "SAVED_PLACES": "Saved places",
   "NO_SAVED_PLACES": "No saved places...",
   "RATING": "Rating:",

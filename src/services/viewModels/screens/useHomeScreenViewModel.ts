@@ -1,6 +1,6 @@
 import {useState} from 'react';
 import {Keyboard} from 'react-native';
-import {hasSavedPlace, totalFoundPlaces} from '../../userHandler';
+import {hasSavedPlace} from '../../userHandler';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {getPointsOfInterest} from '../../hooks/api/place';
 import {noResultsToast} from '../../toasts';
@@ -14,14 +14,21 @@ const useHomeScreenViewModel = () => {
   const navigation = useNavigation<StackNavigationProp<AppStackParams>>();
   const [userValue, setUserValue] = useRecoilState(userState);
   const [enteredLocation, setEnteredLocation] = useState<string>();
-
-  const points = totalFoundPlaces(userValue) * 5;
+  const popularLocations = [
+    'London',
+    'Paris',
+    'New york',
+    'Rome',
+    'Amsterdam',
+    'Tokyo',
+    'Barcelona',
+  ];
 
   const onSearchNew = async () => {
     if (enteredLocation) {
       if (validateText(enteredLocation)) {
         onSearchLocation(enteredLocation);
-      }else{
+      } else {
         noResultsToast();
       }
     }
@@ -37,7 +44,7 @@ const useHomeScreenViewModel = () => {
       });
     } else {
       const foundPlaces = await getPointsOfInterest(place);
-      if (foundPlaces && foundPlaces.length > 7) {
+      if (foundPlaces && foundPlaces.length > 3) {
         navigation.navigate('Location', {
           places: foundPlaces,
           searchedPlaceName: place,
@@ -49,11 +56,12 @@ const useHomeScreenViewModel = () => {
   };
 
   return {
+    userValue,
+    navigation,
+    popularLocations,
     onSearchNew,
     onSearchLocation,
     setEnteredLocation,
-    userValue,
-    points,
   };
 };
 

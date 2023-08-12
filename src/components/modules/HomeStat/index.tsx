@@ -2,39 +2,35 @@ import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import * as color from '../../../constants/color';
 
-interface HomeStatCardProps{
-    stat: string;
-    desc: string;
+interface HomeStatProps {
+  stat: string;
+  desc: string;
 }
-const HomeStatCard = (props: HomeStatCardProps) => {
+const HomeStat = (props: HomeStatProps) => {
   return (
     <View style={style.container} accessible>
-      <Text style={style.textDesc}>{props.desc}</Text>
       <Text style={style.textStat}>{props.stat}</Text>
+      <Text style={style.textDesc}>{props.desc}</Text>
     </View>
   );
 };
 const style = StyleSheet.create({
   container: {
-    height: 90,
-    width: 90,
-    margin: 2,
-    borderRadius: 45,
-    backgroundColor: color.WHITE,
+    flexShrink: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },
-  textStat: {
-    color: color.PRIMARY,
-    fontSize: 30,
-  },
   textDesc: {
-    fontSize: 12,
-    color: color.TEXT_DARK,
-    fontWeight: '500',
+    fontSize: 14,
+    color: color.WHITE,
     flexWrap: 'wrap',
     textAlign: 'center',
   },
+  textStat: {
+    color: color.WHITE,
+    fontSize: 20,
+    fontWeight: '600',
+  },
 });
 
-export default HomeStatCard;
+export default HomeStat;

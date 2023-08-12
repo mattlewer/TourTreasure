@@ -1,3 +1,4 @@
+import 'react-native-gesture-handler';
 import React, {useEffect} from 'react';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import {toastConfig} from './components/modules/ErrorToastConfig';
@@ -18,8 +19,8 @@ function App(): JSX.Element {
 
   useEffect(() => {
     const setUp = async () => {
-      const notificationPermission = await requestNotificationPermission();
       await requestLocationPermission();
+      const notificationPermission = await requestNotificationPermission();
       if (notificationPermission) {
         notificationListener();
       }
