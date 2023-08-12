@@ -33,17 +33,17 @@ const PlaceDetailsScreen = () => {
   );
 };
 const style = StyleSheet.create({
-  floatingBackButton: {
-    position: 'absolute',
-    top: 24,
-    left: 20,
-    zIndex: 200,
-  },
   placeInfoContainer: {
     flex: 1,
     width: '100%',
     backgroundColor: color.WHITE,
     alignItems: 'center',
+  },
+  floatingBackButton: {
+    position: 'absolute',
+    top: 24,
+    left: 20,
+    zIndex: 200,
   },
   headerText: {
     paddingHorizontal: 20,

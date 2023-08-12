@@ -1,5 +1,4 @@
 import React from 'react';
-import {StyleSheet} from 'react-native';
 import {findIndexOfPlace} from '../../../services/userHandler';
 import Map from '../../modules/Map';
 import ScreenContainer from '../../modules/ScreenContainer';
@@ -12,7 +11,6 @@ import LocationScreenHeader from '../../modules/LocationScreenHeader';
 
 const Location = () => {
   const viewModel = useLocationScreenViewModel();
-
   return (
     <ScreenContainer stripPadding>
       <LocationScreenHeader
@@ -74,22 +72,4 @@ const Location = () => {
     </ScreenContainer>
   );
 };
-const style = StyleSheet.create({
-  backButtonContainer: {
-    position: 'absolute',
-    top: 28,
-    left: 20,
-    justifyContent: 'center',
-    alignItems: 'flex-start',
-    zIndex: 100,
-  },
-  saveButtonContainer: {
-    position: 'absolute',
-    top: 28,
-    right: 20,
-    justifyContent: 'center',
-    alignItems: 'flex-start',
-    zIndex: 100,
-  },
-});
 export default Location;

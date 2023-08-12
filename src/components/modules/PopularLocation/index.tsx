@@ -27,6 +27,8 @@ const style = StyleSheet.create({
     height: 50,
     borderRadius: 25,
     backgroundColor: color.WHITE_PRIMARY,
+    borderWidth: 0.2,
+    borderColor: color.PRIMARY,
   },
   title: {
     color: color.PRIMARY,

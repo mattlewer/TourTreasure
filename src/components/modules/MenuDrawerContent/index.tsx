@@ -1,5 +1,5 @@
-import {View, Image, StyleSheet, Text, Pressable} from 'react-native';
 import React from 'react';
+import {View, Image, StyleSheet, Text, Pressable} from 'react-native';
 import {
   DrawerContentScrollView,
   DrawerItemList,

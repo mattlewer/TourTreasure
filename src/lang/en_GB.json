@@ -4,6 +4,11 @@
   "ENTER_USERNAME_TO_START": "Enter a username to get started!",
   "USERNAME": "Username",
 
+  "HOME": "Home",
+  "ACTIVITY_FEED": "Activity feed",
+  "PROFILE": "Profile",
+  "SUPPORT": "Support & feedback",
+  "ABOUT_US": "About us",
   "SIGN_OUT": "Sign out",
 
   "GET_STARTED": "Get started!",

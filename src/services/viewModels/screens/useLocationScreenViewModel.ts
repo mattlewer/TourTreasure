@@ -12,7 +12,7 @@ import {requestLocationPermission} from '../../permissions';
 import {hasUserFoundLocation} from '../../checkIfTriggerDistance';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {noPermissionToast} from '../../toasts';
-import {AppStackParams} from '../../../navigation/AppStackNav';
+import {HomeAndMapStackParams} from '../../../navigation/HomeAndMapStack';
 import {useRecoilState} from 'recoil';
 import {CreateAlert} from '../../../components/modules/Alert';
 import {userState} from '../../../state/userState';
@@ -21,11 +21,11 @@ import {Place} from '../../../interfaces/place';
 import {User} from '../../../interfaces/user';
 import useLocation from '../../hooks/useLocation';
 
-type LocationScreenRouteProp = RouteProp<AppStackParams, 'Location'>;
+type LocationScreenRouteProp = RouteProp<HomeAndMapStackParams, 'Location'>;
 
 const useLocationScreenViewModel = () => {
   const [userValue, setUserValue] = useRecoilState(userState);
-  const navigation = useNavigation<StackNavigationProp<AppStackParams>>();
+  const navigation = useNavigation<StackNavigationProp<HomeAndMapStackParams>>();
   const {places, searchedPlaceName} =
     useRoute<LocationScreenRouteProp>().params;
 

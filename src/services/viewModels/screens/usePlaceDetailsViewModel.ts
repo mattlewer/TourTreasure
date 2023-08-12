@@ -1,12 +1,12 @@
 import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
-import {AppStackParams} from '../../../navigation/AppStackNav';
+import {HomeAndMapStackParams} from '../../../navigation/HomeAndMapStack';
 import { useState } from 'react';
 
-type PlaceDetailsScreenRouteProp = RouteProp<AppStackParams, 'PlaceDetails'>;
+type PlaceDetailsScreenRouteProp = RouteProp<HomeAndMapStackParams, 'PlaceDetails'>;
 
 const usePlaceDetailsScreenViewModel = () => {
-  const navigation = useNavigation<StackNavigationProp<AppStackParams>>();
+  const navigation = useNavigation<StackNavigationProp<HomeAndMapStackParams>>();
   const {placeDetails} = useRoute<PlaceDetailsScreenRouteProp>().params;
   const [isLoadingImage, setIsLoadingImage] = useState(false);
 

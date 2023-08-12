@@ -9,13 +9,13 @@ import SavedLocationList from '../../modules/SavedLocationList';
 import PopularLocationList from '../../modules/PopularLocationList';
 import PlaceSearchField from '../../modules/PlaceSearchField';
 import Avatar from '../../modules/Avatar';
-import MenuButton from '../../modules/MenuButton';
+import MenuToggleButton from '../../modules/MenuToggleButton';
 
 const HomeScreen = () => {
   const viewModel = useHomeScreenViewModel();
   return (
     <ScreenContainer scrollable stripPadding>
-      <MenuButton navigation={viewModel.navigation} />
+      <MenuToggleButton navigation={viewModel.navigation} light />
       <View style={style.header}>
         <View style={style.greetingContainer}>
           <Avatar name={viewModel.userValue.name} />
