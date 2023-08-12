@@ -4,14 +4,14 @@ import {hasSavedPlace} from '../../userHandler';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {getPointsOfInterest} from '../../hooks/api/place';
 import {noResultsToast} from '../../toasts';
-import {AppStackParams} from '../../../navigation/AppStackNav';
+import {HomeAndMapStackParams} from '../../../navigation/HomeAndMapStack';
 import {useRecoilState} from 'recoil';
 import {useNavigation} from '@react-navigation/native';
 import {userState} from '../../../state/userState';
 import {validateText} from '../../validateText';
 
 const useHomeScreenViewModel = () => {
-  const navigation = useNavigation<StackNavigationProp<AppStackParams>>();
+  const navigation = useNavigation<StackNavigationProp<HomeAndMapStackParams>>();
   const [userValue, setUserValue] = useRecoilState(userState);
   const [enteredLocation, setEnteredLocation] = useState<string>();
   const popularLocations = [

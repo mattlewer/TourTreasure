@@ -10,7 +10,7 @@ import LocationScreen from '../components/screens/Location';
 import PlaceDetailsScreen from '../components/screens/PlaceDetails';
 import {PlaceDetails} from '../interfaces/placeDetails';
 
-export type AppStackParams = {
+export type HomeAndMapStackParams = {
   HomeScreen: undefined;
   Location: {
     searchedPlaceName: string;
@@ -20,34 +20,34 @@ export type AppStackParams = {
     placeDetails: PlaceDetails;
   };
 };
-const AppStack = createStackNavigator<AppStackParams>();
+const HomeAndMap = createStackNavigator<HomeAndMapStackParams>();
 
-const AppStackNav = () => {
+const HomeAndMapStack = () => {
   return (
-    <AppStack.Navigator
+    <HomeAndMap.Navigator
       initialRouteName="HomeScreen"
       screenOptions={{
         headerTitleAlign: 'center',
         headerBackTitleVisible: false,
         cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
       }}>
-      <AppStack.Screen
+      <HomeAndMap.Screen
         options={{headerShown: false}}
         name="HomeScreen"
         component={HomeScreen}
       />
-      <AppStack.Screen
+      <HomeAndMap.Screen
         options={{headerShown: false}}
         name="Location"
         component={LocationScreen}
       />
-      <AppStack.Screen
+      <HomeAndMap.Screen
         options={{headerShown: false}}
         name="PlaceDetails"
         component={PlaceDetailsScreen}
       />
-    </AppStack.Navigator>
+    </HomeAndMap.Navigator>
   );
 };
 
-export default AppStackNav;
+export default HomeAndMapStack;
