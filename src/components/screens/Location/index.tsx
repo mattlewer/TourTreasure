@@ -1,5 +1,5 @@
 import React from 'react';
-import {findIndexOfPlace} from '../../../services/userHandler';
+import {findIndexOfPlace, hasSavedPlace} from '../../../services/userHandler';
 import Map from '../../modules/Map';
 import ScreenContainer from '../../modules/ScreenContainer';
 import SelectedPlaceCard from '../../modules/SelectedPlaceCard';
@@ -14,7 +14,9 @@ const Location = () => {
   return (
     <ScreenContainer stripPadding>
       <LocationScreenHeader
-        isSaved={viewModel.isSaved}
+        isSaved={
+          hasSavedPlace(viewModel.userValue, viewModel.searchedPlaceName) >= 0
+        }
         saveOrRemove={viewModel.saveOrRemove}
         onNavigateBack={viewModel.onNavigateBack}
         searchedPlaceName={viewModel.searchedPlaceName}

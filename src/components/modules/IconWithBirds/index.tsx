@@ -4,10 +4,19 @@ import * as color from '../../../constants/color';
 import Lottie from 'lottie-react-native';
 import Logo from '../../../assets/logo.png';
 
-const IconWithBirds = () => {
+interface IconWithBirdsProps {
+  small?: boolean;
+}
+const IconWithBirds = (props: IconWithBirdsProps) => {
   return (
     <View>
-      <Image source={Logo} style={style.logo} />
+      <Image
+        source={Logo}
+        style={[
+          style.logo,
+          {height: props.small ? 130 : 200, width: props.small ? 130 : 200},
+        ]}
+      />
       <Lottie
         source={require('../../../assets/birds1.json')}
         speed={0.6}
@@ -20,8 +29,8 @@ const IconWithBirds = () => {
 };
 const style = StyleSheet.create({
   logo: {
-    height: 250,
-    width: 250,
+    height: 200,
+    width: 200,
     resizeMode: 'contain',
     borderRadius: 12,
     borderWidth: 1,

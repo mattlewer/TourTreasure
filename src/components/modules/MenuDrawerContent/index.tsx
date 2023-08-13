@@ -5,11 +5,15 @@ import {
   DrawerItemList,
 } from '@react-navigation/drawer';
 import {DrawerContentComponentProps} from '@react-navigation/drawer';
+import auth from '@react-native-firebase/auth';
 import {localise} from '../../../services/lang/lang';
 import * as color from '../../../constants/color';
 import Logo from '../../../assets/logo.png';
 
 const MenuDrawerContent = (props: DrawerContentComponentProps) => {
+  const signOut = async () => {
+    await auth().signOut();
+  };
   return (
     <DrawerContentScrollView {...props} contentContainerStyle={style.content}>
       <View style={style.header}>
@@ -18,9 +22,7 @@ const MenuDrawerContent = (props: DrawerContentComponentProps) => {
       </View>
       <DrawerItemList {...props} />
       <View style={style.buffer} />
-      <Pressable
-        style={style.signOutContainer}
-        onPress={() => console.log('SIGN OUT')}>
+      <Pressable style={style.signOutContainer} onPress={signOut}>
         <Text style={style.signOutText}>{localise('SIGN_OUT')}</Text>
       </Pressable>
     </DrawerContentScrollView>

@@ -1,11 +1,5 @@
 import {useEffect, useState} from 'react';
-import {
-  addFoundPlace,
-  deletePlace,
-  hasSavedPlace,
-  hasVisitedLocation,
-  savePlace,
-} from '../../userHandler';
+import {hasSavedPlace, hasVisitedLocation} from '../../userHandler';
 import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
 import {getPlaceDetailsFromPlaceId} from '../../hooks/api/place';
 import {requestLocationPermission} from '../../permissions';
@@ -18,14 +12,16 @@ import {CreateAlert} from '../../../components/modules/Alert';
 import {userState} from '../../../state/userState';
 import {localise} from '../../lang/lang';
 import {Place} from '../../../interfaces/place';
-import {User} from '../../../interfaces/user';
 import useLocation from '../../hooks/useLocation';
+import useFirebaseDB from '../../hooks/useFirebaseDB';
 
 type LocationScreenRouteProp = RouteProp<HomeAndMapStackParams, 'Location'>;
 
 const useLocationScreenViewModel = () => {
+  const firebase = useFirebaseDB();
   const [userValue, setUserValue] = useRecoilState(userState);
-  const navigation = useNavigation<StackNavigationProp<HomeAndMapStackParams>>();
+  const navigation =
+    useNavigation<StackNavigationProp<HomeAndMapStackParams>>();
   const {places, searchedPlaceName} =
     useRoute<LocationScreenRouteProp>().params;
 
@@ -86,29 +82,35 @@ const useLocationScreenViewModel = () => {
     }
   };
 
-  const onPlaceFound = () => {
-    let userToUpdate = userValue;
+  const onPlaceFound = async () => {
+    let wasSaved = true;
     if (hasSavedPlace(userValue, searchedPlaceName) === -1) {
-      userToUpdate = savePlace(userValue, searchedPlaceName, shownPlaces);
-      setIsSaved(true);
+      wasSaved = false;
     }
     if (
       navigationPlace &&
       !hasVisitedLocation(navigationPlace, userValue, searchedPlaceName)
     ) {
-      onAddFoundPlace(navigationPlace, userToUpdate);
+      onAddFoundPlace(navigationPlace, wasSaved);
     }
     if (
       selectedPlace &&
       !hasVisitedLocation(selectedPlace, userValue, searchedPlaceName)
     ) {
-      onAddFoundPlace(selectedPlace, userToUpdate);
+      onAddFoundPlace(selectedPlace, wasSaved);
     }
   };
 
-  const onAddFoundPlace = (place: Place, user: User) => {
-    const updatedUser = addFoundPlace(user, place, searchedPlaceName);
-    setUserValue(updatedUser);
+  const onAddFoundPlace = async (place: Place, previouslySaved: boolean) => {
+    if (previouslySaved) {
+      await firebase.onAddFoundLandmark(place, searchedPlaceName);
+    } else {
+      await firebase.onAddFoundLandMarkNotSavedLocation(
+        place,
+        searchedPlaceName,
+        shownPlaces,
+      );
+    }
     setSelectedPlace(place);
     setNavigationPlace(undefined);
     setPlaceFound(false);
@@ -124,20 +126,12 @@ const useLocationScreenViewModel = () => {
         localise('YES'),
       );
     } else {
-      onSaveSearchedPlace();
+      firebase.onAddSavedLocation(searchedPlaceName, shownPlaces);
     }
   };
 
-  const onSaveSearchedPlace = () => {
-    const updatedUser = savePlace(userValue, searchedPlaceName, shownPlaces);
-    setUserValue(updatedUser);
-    setIsSaved(true);
-  };
-
   const onRemoveSearchedPlace = () => {
-    const updatedUser = deletePlace(userValue, searchedPlaceName);
-    setUserValue(updatedUser);
-    setIsSaved(false);
+    firebase.onDeleteSavedLocation(searchedPlaceName);
   };
 
   return {

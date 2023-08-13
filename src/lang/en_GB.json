@@ -2,7 +2,10 @@
   "APP_NAME": "Tour Treasure",
   "WELCOME": "Welcome to Tour Treasure",
   "ENTER_USERNAME_TO_START": "Enter a username to get started!",
-  "USERNAME": "Username",
+  "WELCOME_BACK": "Sign in to continue where you left off, or create an account to get started!",
+  "USERNAME": "Display name",
+  "EMAIL": "Email",
+  "PASSWORD": "Password",
 
   "HOME": "Home",
   "ACTIVITY_FEED": "Activity feed",
@@ -11,6 +14,8 @@
   "ABOUT_US": "About us",
   "SIGN_OUT": "Sign out",
 
+  "SIGN_IN": "Sign in",
+  "CREATE_ACCOUNT": "Create account",
   "GET_STARTED": "Get started!",
   "SKIP": "SKIP",
   "NEXT": "Next",
@@ -68,5 +73,10 @@
   "NO_PERMISSION_DESC": "Please enable location permissions to receive directions.",
   "OFFLINE_WARNING_TITLE": "You are currently offline.\nSome functionality will be limited.",
   "NO_INFO_TILE": "No info",
-  "NO_INFO_DESC": "Sorry, we couldn't get the information for this place."
+  "NO_INFO_DESC": "Sorry, we couldn't get the information for this place.",
+  "LOGIN_FAILED_TITLE": "Sign in failed",
+  "LOGIN_FAILED_DESC": "We were not able to sign you in using these details, please ensure you have entered them correctly and try again.",
+  "SIGN_UP_FAILED_TITLE": "Sign up failed",
+  "SIGN_UP_FAILED_DESC": "Please check you have entered all fields and your email address is valid.",
+  "SIGN_UP_FAILED_PASSWORD": "Your password must be at least 8 characters long, contain at least one number and have a mixture of uppercase and lowercase letters."
 }

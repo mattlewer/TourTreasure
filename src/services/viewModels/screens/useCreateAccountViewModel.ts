@@ -1,27 +1,44 @@
 import {useState} from 'react';
 import {CreateAccoundStackParams} from '../../../navigation/CreateAccountStackNav';
-import {invalidUsernameToast} from '../../toasts';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {useNavigation} from '@react-navigation/native';
+import {CreateAccount} from '../../auth';
 import {validateText} from '../../validateText';
+import {onSignUpFailure, onSignUpFailurePassword} from '../../toasts';
 
 const useCreateAccountViewModel = () => {
   const navigation =
     useNavigation<StackNavigationProp<CreateAccoundStackParams>>();
   const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  const onSetUsername = () => {
-    if (validateText(username)) {
+  const onCreateAccount = async () => {
+    if (password.length < 8) {
+      onSignUpFailurePassword();
+      return;
+    }
+    if (!validateText(username) || !validateText(email)) {
+      onSignUpFailure();
+      return;
+    }
+    const wasSuccess = await CreateAccount(username, email, password);
+    if (wasSuccess) {
       navigation.navigate('HowToUse', {name: username});
-    } else {
-      invalidUsernameToast();
     }
   };
 
+  const onSignIn = () => {
+    navigation.navigate('SignIn');
+  };
+
   return {
-    username,
+    email,
+    setEmail,
     setUsername,
-    onSetUsername,
+    setPassword,
+    onSignIn,
+    onCreateAccount,
   };
 };
 

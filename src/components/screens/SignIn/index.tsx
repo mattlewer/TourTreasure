@@ -7,25 +7,21 @@ import TextButton from '../../modules/TextButton';
 import TextInputField from '../../modules/TextInputField';
 import ScreenContainer from '../../modules/ScreenContainer';
 import IconWithBirds from '../../modules/IconWithBirds';
-import useCreateAccountViewModel from '../../../services/viewModels/screens/useCreateAccountViewModel';
+import useSignInViewModel from '../../../services/viewModels/screens/useSignInViewModel';
 
-const CreateAccount = () => {
-  const viewModel = useCreateAccountViewModel();
+const SignIn = () => {
+  const viewModel = useSignInViewModel();
 
   return (
     <ScreenContainer scrollable>
       <View style={style.container}>
         <View style={style.iconHeaderContainer}>
-          <IconWithBirds small />
+          <IconWithBirds />
           <Text style={[typography.HeaderReg, style.headerText]}>
             {localise('WELCOME')}
           </Text>
         </View>
         <View style={style.inputSubmit}>
-          <TextInputField
-            label={localise('USERNAME')}
-            onChange={viewModel.setUsername}
-          />
           <TextInputField
             label={localise('EMAIL')}
             onChange={viewModel.setEmail}
@@ -36,17 +32,17 @@ const CreateAccount = () => {
           />
         </View>
         <View style={style.buttonContainer}>
-          <TextButton
-            type="primary"
-            text={localise('CREATE_ACCOUNT')}
-            onPress={viewModel.onCreateAccount}
-          />
-          <TextButton
-            type="secondary"
-            text={localise('SIGN_IN')}
-            onPress={viewModel.onSignIn}
-          />
-        </View>
+            <TextButton
+              type="primary"
+              text={localise('SIGN_IN')}
+              onPress={viewModel.onSignIn}
+            />
+            <TextButton
+              type="secondary"
+              text={localise('CREATE_ACCOUNT')}
+              onPress={viewModel.onCreateAccount}
+            />
+          </View>
       </View>
     </ScreenContainer>
   );
@@ -86,4 +82,4 @@ const style = StyleSheet.create({
     gap: 10,
   },
 });
-export default CreateAccount;
+export default SignIn;

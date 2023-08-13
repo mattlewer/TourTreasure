@@ -16,7 +16,7 @@ interface TextInputFieldProps {
   isSearch?: boolean;
   isCentered?: boolean;
   onChange: (text: string) => void;
-  onSubmit: () => void;
+  onSubmit?: () => void;
 }
 const TextInputField = (props: TextInputFieldProps) => {
   const [isPressed, setIsPressed] = useState(false);
