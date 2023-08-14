@@ -22,7 +22,7 @@ const HowToUse = () => {
             style={[style.actionText, style.skipLink]}
             onPress={() => {
               viewModel.setCurrentSlide(viewModel.info.length - 1);
-              viewModel.createAccount();
+              viewModel.onContinueToHome();
             }}>
             {localise('SKIP')}
           </Text>
@@ -59,7 +59,7 @@ const HowToUse = () => {
             type={'primary'}
             onPress={
               viewModel.currentSlide === viewModel.info.length - 1
-                ? viewModel.createAccount
+                ? viewModel.onContinueToHome
                 : viewModel.onNextSlide
             }
           />

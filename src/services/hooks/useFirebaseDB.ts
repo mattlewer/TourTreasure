@@ -10,6 +10,15 @@ const useFirebaseDB = () => {
   const fbUser = useRecoilValue(sessionState);
   const userValue = useRecoilValue(userState);
 
+  const onHasOnboarded = async () =>{
+    await firestore()
+    .collection('users')
+    .doc(fbUser.uid)
+    .update({
+      hasOnboarded: true,
+    });
+  }
+
   const onAddSavedLocation = async (name: string, shownPlaces: Place[]) => {
     const newPlace: SavedPlace = {
       name: name,
@@ -76,6 +85,7 @@ const useFirebaseDB = () => {
   };
 
   return {
+    onHasOnboarded,
     onAddFoundLandmark,
     onAddSavedLocation,
     onDeleteSavedLocation,

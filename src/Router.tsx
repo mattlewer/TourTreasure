@@ -9,6 +9,7 @@ import {View} from 'react-native';
 import CreateAccountStackNav from './navigation/CreateAccountStackNav';
 import MenuDrawer from './navigation/MenuDrawer';
 import firestore from '@react-native-firebase/firestore';
+import HowToUse from './components/screens/HowToUse';
 
 const Router = () => {
   const [userValue, setUserValue] = useRecoilState(userState);
@@ -45,10 +46,16 @@ const Router = () => {
   }, [fbUser]);
 
   if (initializing) return <View />;
-
+  if (userValue && !userValue.hasOnboarded) return <HowToUse />;
+  if (fbUser && userValue && userValue.hasOnboarded)
+    return (
+      <NavigationContainer>
+        <MenuDrawer />
+      </NavigationContainer>
+    );
   return (
     <NavigationContainer>
-      {fbUser && userValue ? <MenuDrawer /> : <CreateAccountStackNav />}
+      <CreateAccountStackNav />
     </NavigationContainer>
   );
 };
