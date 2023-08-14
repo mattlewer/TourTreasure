@@ -1,28 +1,36 @@
-import {CreateAccoundStackParams} from '../../../navigation/CreateAccountStackNav';
-import {RouteProp, useRoute} from '@react-navigation/native';
 import {ICarouselInstance} from 'react-native-reanimated-carousel';
-import {useRef, useState} from 'react';
-import {useRecoilState} from 'recoil';
-import {userState} from '../../../state/userState';
+import {useEffect, useRef, useState} from 'react';
 import {localise} from '../../lang/lang';
-import {User} from '../../../interfaces/user';
-import useHandleUserData from '../../hooks/useHandleUserData';
-
 import Home from '../../../assets/app_example_home.png';
 import SelectedLocation from '../../../assets/app_selected_location.png';
 import LocationInfo from '../../../assets/app_example_info.png';
 import Navigation from '../../../assets/app_navigation.png';
 import Map from '../../../assets/app_example_map.png';
 import Points from '../../../assets/app_example_points.png';
-
-type HowToUseRouteProp = RouteProp<CreateAccoundStackParams, 'HowToUse'>;
+import useFirebaseDB from '../../hooks/useFirebaseDB';
+import {AppState} from 'react-native';
 
 const useHowToUserViewModel = () => {
-  const handleUserData = useHandleUserData();
-  const [userValue, setUserValue] = useRecoilState(userState);
+  const firebase = useFirebaseDB();
   const [currentSlide, setCurrentSlide] = useState<number>(0);
-  const {name} = useRoute<HowToUseRouteProp>().params;
   const carouselRef = useRef<ICarouselInstance>(null);
+
+  const appState = useRef(AppState.currentState);
+
+  useEffect(() => {
+    const appStateListener = AppState.addEventListener(
+      'change',
+      async nextAppState => {
+        if (nextAppState === 'background') {
+          await firebase.onHasOnboarded();
+        }
+        appState.current = nextAppState;
+      },
+    );
+    return () => {
+      appStateListener.remove();
+    };
+  }, []);
 
   const info = [
     {
@@ -57,14 +65,8 @@ const useHowToUserViewModel = () => {
     },
   ];
 
-  const createAccount = () => {
-    const newUser: User = {
-      name: name,
-      points: 0,
-      savedPlaces: [],
-    };
-    handleUserData.storeUser(newUser);
-    setUserValue(newUser);
+  const onContinueToHome = async () => {
+    await firebase.onHasOnboarded();
   };
 
   const onNextSlide = () => {
@@ -78,7 +80,7 @@ const useHowToUserViewModel = () => {
     carouselRef,
     currentSlide,
     onNextSlide,
-    createAccount,
+    onContinueToHome,
     setCurrentSlide,
   };
 };

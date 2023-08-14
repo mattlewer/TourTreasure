@@ -14,6 +14,7 @@ export const CreateAccount = async (
       await firestore().collection('users').doc(user.user.uid).set({
         name: username,
         points: 0,
+        hasOnboarded: false,
         savedPlaces: [],
       });
     }

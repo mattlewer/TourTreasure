@@ -9,11 +9,17 @@ import auth from '@react-native-firebase/auth';
 import {localise} from '../../../services/lang/lang';
 import * as color from '../../../constants/color';
 import Logo from '../../../assets/logo.png';
+import {useResetRecoilState} from 'recoil';
+import {userState} from '../../../state/userState';
 
 const MenuDrawerContent = (props: DrawerContentComponentProps) => {
+  const resetUserData = useResetRecoilState(userState);
+
   const signOut = async () => {
     await auth().signOut();
+    resetUserData();
   };
+
   return (
     <DrawerContentScrollView {...props} contentContainerStyle={style.content}>
       <View style={style.header}>
