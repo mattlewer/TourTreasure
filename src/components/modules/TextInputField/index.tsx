@@ -1,8 +1,10 @@
 import React, {useState} from 'react';
-import {View, Text, TextInput, StyleSheet, Image} from 'react-native';
+import {View, Text, TextInput, StyleSheet, Image, Pressable} from 'react-native';
 import * as color from '../../../constants/color';
 import {typography} from '../../../constants/typography';
 import ErrorIcon from '../../../assets/error_icon.png';
+import EyeOpen from '../../../assets/eye_open.png';
+import EyeClosed from '../../../assets/eye_closed.png';
 
 interface TextInputFieldProps {
   label: string;
@@ -10,16 +12,19 @@ interface TextInputFieldProps {
   isSearch?: boolean;
   isCentered?: boolean;
   error?: string;
+  secureEntry?: boolean;
   onChange: (text: string) => void;
   onSubmit?: () => void;
   onBlur?: (e: any) => void;
 }
 const TextInputField = (props: TextInputFieldProps) => {
+  const [isSecure, setIsSecure] = useState(props.secureEntry);
   return (
     <View style={style.container}>
       <Text style={[typography.BodyReg, style.inputLabel]}>{props.label}</Text>
       <View style={style.inputFieldContainer}>
         <TextInput
+          secureTextEntry={isSecure}
           value={props.value}
           onBlur={props.onBlur}
           maxLength={30}
@@ -27,6 +32,16 @@ const TextInputField = (props: TextInputFieldProps) => {
           onChangeText={props.onChange}
           onSubmitEditing={props.onSubmit}
         />
+        {props.secureEntry && (
+          <Pressable
+            style={style.showIconContainer}
+            onPress={() => setIsSecure(!isSecure)}>
+            <Image
+              source={isSecure ? EyeClosed : EyeOpen}
+              style={style.showIcon}
+            />
+          </Pressable>
+        )}
         {props.error ? (
           <View style={style.errorMessageContainer}>
             <Image source={ErrorIcon} style={style.errorIcon} />
@@ -50,6 +65,7 @@ const style = StyleSheet.create({
     color: color.TEXT_DARK,
   },
   inputFieldContainer: {
+    position: 'relative',
     flexDirection: 'column',
     width: '100%',
   },
@@ -83,6 +99,16 @@ const style = StyleSheet.create({
   },
   noErrorMessage: {
     height: 17,
+  },
+  showIconContainer: {
+    position: 'absolute',
+    top: 14,
+    right: 10,
+  },
+  showIcon: {
+    width: 20,
+    height: 20,
+    resizeMode: 'contain',
   },
 });
 export default TextInputField;

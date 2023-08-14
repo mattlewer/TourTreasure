@@ -67,6 +67,7 @@ const CreateAccount = () => {
                   value={values.password}
                   onChange={handleChange('password')}
                   onBlur={handleBlur('password')}
+                  secureEntry
                   error={
                     touched.password && errors.password
                       ? errors.password

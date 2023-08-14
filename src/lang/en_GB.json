@@ -80,6 +80,7 @@
 
   "INVALID_USERNAME_TITLE": "Invalid username",
   "INVALID_USERNAME_DESC": "Your username must not be longer than 20 characters.",
+  "INVALID_USERNAME_REQUIRED": "Username is required",
   "LOGIN_EMAIL_REQUIRED": "Email is required.",
   "LOGIN_EMAIL_INVALID": "Email address entered is invalid.",
   "LOGIN_PASSWORD_REQUIRED": "Password is required.",

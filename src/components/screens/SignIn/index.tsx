@@ -47,6 +47,7 @@ const SignIn = () => {
                   }
                 />
                 <TextInputField
+                  secureEntry
                   label={localise('PASSWORD')}
                   value={values.password}
                   onChange={handleChange('password')}
