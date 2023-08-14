@@ -13,6 +13,7 @@ const Drawer = createDrawerNavigator();
 const MenuDrawer = () => {
   return (
     <Drawer.Navigator
+      defaultStatus="closed"
       initialRouteName={localise('HOME')}
       screenOptions={{
         headerShown: false,

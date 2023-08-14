@@ -1,18 +1,24 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import {Keyboard} from 'react-native';
 import {hasSavedPlace} from '../../userHandler';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {getPointsOfInterest} from '../../hooks/api/place';
 import {noResultsToast} from '../../toasts';
 import {HomeAndMapStackParams} from '../../../navigation/HomeAndMapStack';
-import {useRecoilState} from 'recoil';
+import {useRecoilValue} from 'recoil';
 import {useNavigation} from '@react-navigation/native';
 import {userState} from '../../../state/userState';
 import {validateText} from '../../validateText';
+import {
+  requestLocationPermission,
+  requestNotificationPermission,
+} from '../../permissions';
+import {notificationListener} from '../../notifications';
 
 const useHomeScreenViewModel = () => {
-  const navigation = useNavigation<StackNavigationProp<HomeAndMapStackParams>>();
-  const [userValue, setUserValue] = useRecoilState(userState);
+  const navigation =
+    useNavigation<StackNavigationProp<HomeAndMapStackParams>>();
+  const userValue = useRecoilValue(userState);
   const [enteredLocation, setEnteredLocation] = useState<string>();
   const popularLocations = [
     'London',
@@ -23,6 +29,17 @@ const useHomeScreenViewModel = () => {
     'Tokyo',
     'Barcelona',
   ];
+
+  useEffect(() => {
+    const setUp = async () => {
+      await requestLocationPermission();
+      const notificationPermission = await requestNotificationPermission();
+      if (notificationPermission) {
+        notificationListener();
+      }
+    };
+    setUp();
+  }, []);
 
   const onSearchNew = async () => {
     if (enteredLocation) {

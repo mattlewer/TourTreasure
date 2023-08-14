@@ -7,24 +7,19 @@ import TextButton from '../../modules/TextButton';
 import TextInputField from '../../modules/TextInputField';
 import ScreenContainer from '../../modules/ScreenContainer';
 import IconWithBirds from '../../modules/IconWithBirds';
-import useCreateAccountViewModel from '../../../services/viewModels/screens/useCreateAccountViewModel';
+import useSignInViewModel from '../../../services/viewModels/screens/useSignInViewModel';
 import {Formik} from 'formik';
 
-const CreateAccount = () => {
-  const viewModel = useCreateAccountViewModel();
-
+const SignIn = () => {
+  const viewModel = useSignInViewModel();
   return (
     <ScreenContainer scrollable>
       <View style={style.container}>
         <Formik
-          initialValues={{username: '', email: '', password: ''}}
-          validationSchema={viewModel.createAccountValidation}
+          initialValues={{email: '', password: ''}}
+          validationSchema={viewModel.loginValidation}
           onSubmit={(values, formikHelpers) =>
-            viewModel.onCreateAccount(
-              values.username,
-              values.email,
-              values.password,
-            )
+            viewModel.onSignIn(values.email, values.password)
           }>
           {({
             handleChange,
@@ -36,23 +31,12 @@ const CreateAccount = () => {
           }) => (
             <>
               <View style={style.iconHeaderContainer}>
-                <IconWithBirds small />
+                <IconWithBirds />
                 <Text style={[typography.HeaderReg, style.headerText]}>
                   {localise('WELCOME')}
                 </Text>
               </View>
               <View style={style.inputSubmit}>
-                <TextInputField
-                  label={localise('USERNAME')}
-                  value={values.username}
-                  onChange={handleChange('username')}
-                  onBlur={handleBlur('username')}
-                  error={
-                    touched.username && errors.username
-                      ? errors.username
-                      : undefined
-                  }
-                />
                 <TextInputField
                   label={localise('EMAIL')}
                   value={values.email}
@@ -63,11 +47,11 @@ const CreateAccount = () => {
                   }
                 />
                 <TextInputField
+                  secureEntry
                   label={localise('PASSWORD')}
                   value={values.password}
                   onChange={handleChange('password')}
                   onBlur={handleBlur('password')}
-                  secureEntry
                   error={
                     touched.password && errors.password
                       ? errors.password
@@ -78,13 +62,13 @@ const CreateAccount = () => {
               <View style={style.buttonContainer}>
                 <TextButton
                   type="primary"
-                  text={localise('CREATE_ACCOUNT')}
+                  text={localise('SIGN_IN')}
                   onPress={handleSubmit}
                 />
                 <TextButton
                   type="secondary"
-                  text={localise('SIGN_IN')}
-                  onPress={viewModel.onSignIn}
+                  text={localise('CREATE_ACCOUNT')}
+                  onPress={viewModel.onCreateAccount}
                 />
               </View>
             </>
@@ -129,4 +113,4 @@ const style = StyleSheet.create({
     gap: 10,
   },
 });
-export default CreateAccount;
+export default SignIn;
