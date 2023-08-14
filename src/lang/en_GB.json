@@ -63,8 +63,6 @@
   "WEBSITE": "Website",
   "NO_CONTACT_INFO": "No contact info...",
 
-  "INVALID_USERNAME_TITLE": "Invalid username",
-  "INVALID_USERNAME_DESC": "Your username must not contain symbols, numbers, or be longer than 20 characters.",
   "NO_RESULTS_TITLE": "No results found",
   "NO_RESULTS_DESC": "No points of interest found for your entered place.",
   "NO_DIRECTIONS_TITLE": "No directions found",
@@ -74,9 +72,18 @@
   "OFFLINE_WARNING_TITLE": "You are currently offline.\nSome functionality will be limited.",
   "NO_INFO_TILE": "No info",
   "NO_INFO_DESC": "Sorry, we couldn't get the information for this place.",
+
   "LOGIN_FAILED_TITLE": "Sign in failed",
   "LOGIN_FAILED_DESC": "We were not able to sign you in using these details, please ensure you have entered them correctly and try again.",
   "SIGN_UP_FAILED_TITLE": "Sign up failed",
-  "SIGN_UP_FAILED_DESC": "Please check you have entered all fields and your email address is valid.",
-  "SIGN_UP_FAILED_PASSWORD": "Your password must be at least 8 characters long, contain at least one number and have a mixture of uppercase and lowercase letters."
+  "SIGN_UP_FAILED_DESC": "We were not able to sign you up at this time.",
+
+  "INVALID_USERNAME_TITLE": "Invalid username",
+  "INVALID_USERNAME_DESC": "Your username must not be longer than 20 characters.",
+  "LOGIN_EMAIL_REQUIRED": "Email is required.",
+  "LOGIN_EMAIL_INVALID": "Email address entered is invalid.",
+  "LOGIN_PASSWORD_REQUIRED": "Password is required.",
+  "LOGIN_PASSWORD_LENGTH": "Password must be at least 8 characters.",
+  "LOGIN_PASSWORD_UPPER_LOWER": "Password must have a mixture of uppercase and lowercase letters.",
+  "LOGIN_PASSWORD_NUMBERS": "Password must contain at least one number."
 }

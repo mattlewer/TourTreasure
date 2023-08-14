@@ -1,44 +1,39 @@
 import React, {useState} from 'react';
-import {
-  View,
-  Text,
-  TextInput,
-  StyleSheet,
-  Image,
-  Pressable,
-} from 'react-native';
+import {View, Text, TextInput, StyleSheet, Image} from 'react-native';
 import * as color from '../../../constants/color';
 import {typography} from '../../../constants/typography';
-import SearchIcon from '../../../assets/search_icon.png';
+import ErrorIcon from '../../../assets/error_icon.png';
 
 interface TextInputFieldProps {
   label: string;
+  value: string;
   isSearch?: boolean;
   isCentered?: boolean;
+  error?: string;
   onChange: (text: string) => void;
   onSubmit?: () => void;
+  onBlur?: (e: any) => void;
 }
 const TextInputField = (props: TextInputFieldProps) => {
-  const [isPressed, setIsPressed] = useState(false);
   return (
-    <View style={[style.container, {opacity: isPressed ? 0.7 : 1}]}>
+    <View style={style.container}>
       <Text style={[typography.BodyReg, style.inputLabel]}>{props.label}</Text>
       <View style={style.inputFieldContainer}>
         <TextInput
+          value={props.value}
+          onBlur={props.onBlur}
           maxLength={30}
           style={style.inputField}
           onChangeText={props.onChange}
           onSubmitEditing={props.onSubmit}
         />
-        {props.isSearch && (
-          <Pressable
-            accessibilityHint={'search'}
-            style={style.searchBtnContainer}
-            onPress={props.onSubmit}
-            onPressIn={() => setIsPressed(true)}
-            onPressOut={() => setIsPressed(false)}>
-            <Image style={style.searchBtnIcon} source={SearchIcon} />
-          </Pressable>
+        {props.error ? (
+          <View style={style.errorMessageContainer}>
+            <Image source={ErrorIcon} style={style.errorIcon} />
+            <Text style={style.errorText}>{props.error}</Text>
+          </View>
+        ) : (
+          <View style={style.noErrorMessage} />
         )}
       </View>
     </View>
@@ -55,7 +50,7 @@ const style = StyleSheet.create({
     color: color.TEXT_DARK,
   },
   inputFieldContainer: {
-    flexDirection: 'row',
+    flexDirection: 'column',
     width: '100%',
   },
   inputField: {
@@ -68,20 +63,26 @@ const style = StyleSheet.create({
     paddingHorizontal: 10,
     flexGrow: 1,
   },
-
-  searchBtnContainer: {
-    width: 48,
-    height: 48,
-    marginLeft: 10,
-    borderRadius: 8,
-    backgroundColor: color.PRIMARY,
-    justifyContent: 'center',
-    alignItems: 'center',
+  errorMessageContainer: {
+    paddingTop: 2,
+    width: '95%',
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
   },
-  searchBtnIcon: {
-    width: 24,
-    height: 24,
+  errorIcon: {
+    width: 15,
+    height: 15,
     resizeMode: 'contain',
+  },
+  errorText: {
+    paddingLeft: 5,
+    color: color.ERROR_RED,
+    fontSize: 12,
+    fontWeight: '400',
+  },
+  noErrorMessage: {
+    height: 17,
   },
 });
 export default TextInputField;

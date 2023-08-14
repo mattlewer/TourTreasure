@@ -8,6 +8,7 @@ import TextInputField from '../../modules/TextInputField';
 import ScreenContainer from '../../modules/ScreenContainer';
 import IconWithBirds from '../../modules/IconWithBirds';
 import useCreateAccountViewModel from '../../../services/viewModels/screens/useCreateAccountViewModel';
+import {Formik} from 'formik';
 
 const CreateAccount = () => {
   const viewModel = useCreateAccountViewModel();
@@ -15,38 +16,79 @@ const CreateAccount = () => {
   return (
     <ScreenContainer scrollable>
       <View style={style.container}>
-        <View style={style.iconHeaderContainer}>
-          <IconWithBirds small />
-          <Text style={[typography.HeaderReg, style.headerText]}>
-            {localise('WELCOME')}
-          </Text>
-        </View>
-        <View style={style.inputSubmit}>
-          <TextInputField
-            label={localise('USERNAME')}
-            onChange={viewModel.setUsername}
-          />
-          <TextInputField
-            label={localise('EMAIL')}
-            onChange={viewModel.setEmail}
-          />
-          <TextInputField
-            label={localise('PASSWORD')}
-            onChange={viewModel.setPassword}
-          />
-        </View>
-        <View style={style.buttonContainer}>
-          <TextButton
-            type="primary"
-            text={localise('CREATE_ACCOUNT')}
-            onPress={viewModel.onCreateAccount}
-          />
-          <TextButton
-            type="secondary"
-            text={localise('SIGN_IN')}
-            onPress={viewModel.onSignIn}
-          />
-        </View>
+        <Formik
+          initialValues={{username: '', email: '', password: ''}}
+          validationSchema={viewModel.createAccountValidation}
+          onSubmit={(values, formikHelpers) =>
+            viewModel.onCreateAccount(
+              values.username,
+              values.email,
+              values.password,
+            )
+          }>
+          {({
+            handleChange,
+            handleBlur,
+            handleSubmit,
+            values,
+            errors,
+            touched,
+          }) => (
+            <>
+              <View style={style.iconHeaderContainer}>
+                <IconWithBirds small />
+                <Text style={[typography.HeaderReg, style.headerText]}>
+                  {localise('WELCOME')}
+                </Text>
+              </View>
+              <View style={style.inputSubmit}>
+                <TextInputField
+                  label={localise('USERNAME')}
+                  value={values.username}
+                  onChange={handleChange('username')}
+                  onBlur={handleBlur('username')}
+                  error={
+                    touched.username && errors.username
+                      ? errors.username
+                      : undefined
+                  }
+                />
+                <TextInputField
+                  label={localise('EMAIL')}
+                  value={values.email}
+                  onChange={handleChange('email')}
+                  onBlur={handleBlur('email')}
+                  error={
+                    touched.email && errors.email ? errors.email : undefined
+                  }
+                />
+                <TextInputField
+                  label={localise('PASSWORD')}
+                  value={values.password}
+                  onChange={handleChange('password')}
+                  onBlur={handleBlur('password')}
+                  error={
+                    touched.password && errors.password
+                      ? errors.password
+                      : undefined
+                  }
+                />
+              </View>
+              <View style={style.buttonContainer}>
+                <TextButton
+                  type="primary"
+                  text={localise('CREATE_ACCOUNT')}
+                  onPress={handleSubmit}
+                />
+                <TextButton
+                  type="secondary"
+                  text={localise('SIGN_IN')}
+                  onPress={viewModel.onSignIn}
+                />
+              </View>
+            </>
+          )}
+        </Formik>
       </View>
     </ScreenContainer>
   );

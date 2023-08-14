@@ -8,41 +8,71 @@ import TextInputField from '../../modules/TextInputField';
 import ScreenContainer from '../../modules/ScreenContainer';
 import IconWithBirds from '../../modules/IconWithBirds';
 import useSignInViewModel from '../../../services/viewModels/screens/useSignInViewModel';
+import {Formik} from 'formik';
 
 const SignIn = () => {
   const viewModel = useSignInViewModel();
-
   return (
     <ScreenContainer scrollable>
       <View style={style.container}>
-        <View style={style.iconHeaderContainer}>
-          <IconWithBirds />
-          <Text style={[typography.HeaderReg, style.headerText]}>
-            {localise('WELCOME')}
-          </Text>
-        </View>
-        <View style={style.inputSubmit}>
-          <TextInputField
-            label={localise('EMAIL')}
-            onChange={viewModel.setEmail}
-          />
-          <TextInputField
-            label={localise('PASSWORD')}
-            onChange={viewModel.setPassword}
-          />
-        </View>
-        <View style={style.buttonContainer}>
-            <TextButton
-              type="primary"
-              text={localise('SIGN_IN')}
-              onPress={viewModel.onSignIn}
-            />
-            <TextButton
-              type="secondary"
-              text={localise('CREATE_ACCOUNT')}
-              onPress={viewModel.onCreateAccount}
-            />
-          </View>
+        <Formik
+          initialValues={{email: '', password: ''}}
+          validationSchema={viewModel.loginValidation}
+          onSubmit={(values, formikHelpers) =>
+            viewModel.onSignIn(values.email, values.password)
+          }>
+          {({
+            handleChange,
+            handleBlur,
+            handleSubmit,
+            values,
+            errors,
+            touched,
+          }) => (
+            <>
+              <View style={style.iconHeaderContainer}>
+                <IconWithBirds />
+                <Text style={[typography.HeaderReg, style.headerText]}>
+                  {localise('WELCOME')}
+                </Text>
+              </View>
+              <View style={style.inputSubmit}>
+                <TextInputField
+                  label={localise('EMAIL')}
+                  value={values.email}
+                  onChange={handleChange('email')}
+                  onBlur={handleBlur('email')}
+                  error={
+                    touched.email && errors.email ? errors.email : undefined
+                  }
+                />
+                <TextInputField
+                  label={localise('PASSWORD')}
+                  value={values.password}
+                  onChange={handleChange('password')}
+                  onBlur={handleBlur('password')}
+                  error={
+                    touched.password && errors.password
+                      ? errors.password
+                      : undefined
+                  }
+                />
+              </View>
+              <View style={style.buttonContainer}>
+                <TextButton
+                  type="primary"
+                  text={localise('SIGN_IN')}
+                  onPress={handleSubmit}
+                />
+                <TextButton
+                  type="secondary"
+                  text={localise('CREATE_ACCOUNT')}
+                  onPress={viewModel.onCreateAccount}
+                />
+              </View>
+            </>
+          )}
+        </Formik>
       </View>
     </ScreenContainer>
   );

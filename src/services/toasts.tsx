@@ -21,15 +21,6 @@ export const onSignUpFailure = () =>
     visibilityTime: 4000,
   });
 
-export const onSignUpFailurePassword = () =>
-  Toast.show({
-    type: 'error',
-    text1: localise('SIGN_UP_FAILED_TITLE'),
-    text2: localise('SIGN_UP_FAILED_PASSWORD'),
-    position: 'bottom',
-    bottomOffset: 100,
-    visibilityTime: 4000,
-  });
 export const noDirectionsToast = () =>
   Toast.show({
     type: 'error',
@@ -55,16 +46,6 @@ export const noInfoToast = () =>
     type: 'error',
     text1: localise('NO_INFO_TILE'),
     text2: localise('NO_INFO_DESC'),
-    position: 'bottom',
-    bottomOffset: 100,
-    visibilityTime: 4000,
-  });
-
-export const invalidUsernameToast = () =>
-  Toast.show({
-    type: 'error',
-    text1: localise('INVALID_USERNAME_TITLE'),
-    text2: localise('INVALID_USERNAME_DESC'),
     position: 'bottom',
     bottomOffset: 100,
     visibilityTime: 4000,
