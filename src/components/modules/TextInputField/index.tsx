@@ -71,9 +71,9 @@ const style = StyleSheet.create({
   },
   inputField: {
     color: color.PRIMARY,
-    backgroundColor: color.WHITE,
+    backgroundColor: color.BLACK + '11',
     height: 48,
-    borderColor: color.PRIMARY,
+    borderColor: color.WHITE,
     borderWidth: 1,
     borderRadius: 8,
     paddingHorizontal: 10,

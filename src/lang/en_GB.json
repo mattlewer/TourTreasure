@@ -1,8 +1,10 @@
 {
   "APP_NAME": "Tour Treasure",
-  "WELCOME": "Welcome to Tour Treasure",
   "ENTER_USERNAME_TO_START": "Enter a username to get started!",
-  "WELCOME_BACK": "Sign in to continue where you left off, or create an account to get started!",
+  "GUIDE_SIGN_UP": "Don't have an account?",
+  "GUIDE_SIGN_UP_LINK": "Sign up!",
+  "GUIDE_SIGN_IN": "Already have an account?",
+  "GUIDE_SIGN_IN_LINK": "Sign in!",
   "USERNAME": "Display name",
   "EMAIL": "Email",
   "PASSWORD": "Password",
