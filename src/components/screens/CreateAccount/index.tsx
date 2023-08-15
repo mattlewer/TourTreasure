@@ -8,7 +8,11 @@ import IconWithBirds from '../../modules/IconWithBirds';
 import useCreateAccountViewModel from '../../../services/viewModels/screens/useCreateAccountViewModel';
 import {Formik} from 'formik';
 import {LoginState} from '../../../enums/loginState';
-import Animated, { SlideInLeft, SlideInRight, SlideOutRight } from 'react-native-reanimated';
+import Animated, {
+  SlideInLeft,
+  SlideInRight,
+  SlideOutRight,
+} from 'react-native-reanimated';
 
 interface CreateAccountProps {
   onCreateAccount: (username: string, email: string, password: string) => void;
@@ -17,7 +21,10 @@ interface CreateAccountProps {
 const CreateAccount = (props: CreateAccountProps) => {
   const viewModel = useCreateAccountViewModel();
   return (
-    <Animated.View style={style.container} entering={SlideInRight} exiting={SlideOutRight}>
+    <Animated.View
+      style={style.container}
+      entering={SlideInRight}
+      exiting={SlideOutRight}>
       <Formik
         initialValues={{username: '', email: '', password: ''}}
         validationSchema={viewModel.createAccountValidation}
@@ -74,7 +81,9 @@ const CreateAccount = (props: CreateAccountProps) => {
                 text={localise('CREATE_ACCOUNT')}
                 onPress={handleSubmit}
               />
-              <Pressable onPress={() => props.setStage(LoginState.SIGN_IN)}>
+              <Pressable
+                onPress={() => props.setStage(LoginState.SIGN_IN)}
+                style={style.textButton}>
                 <Text style={{color: color.TEXT_DARK}}>
                   {localise('GUIDE_SIGN_IN')}
                   <Text style={{color: color.PRIMARY}}>
@@ -94,7 +103,7 @@ const CreateAccount = (props: CreateAccountProps) => {
 const style = StyleSheet.create({
   container: {
     backgroundColor: color.WHITE,
-    width: '95%',
+    width: '90%',
     padding: 10,
     borderRadius: 8,
     elevation: 10,
@@ -102,7 +111,7 @@ const style = StyleSheet.create({
   iconHeaderContainer: {
     width: '100%',
     alignItems: 'center',
-    paddingBottom: 20,
+    paddingVertical: 20,
   },
   inputSubmit: {
     flexGrow: 1,
@@ -110,7 +119,6 @@ const style = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
     justifyContent: 'center',
-    gap: 10,
     paddingBottom: 10,
   },
   buttonContainer: {
@@ -118,8 +126,12 @@ const style = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%',
-    paddingBottom: 20,
-    gap: 15,
+    gap: 5,
+  },
+  textButton: {
+    paddingVertical: 10,
+    width: '100%',
+    alignItems: 'center',
   },
 });
 export default CreateAccount;

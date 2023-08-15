@@ -11,7 +11,7 @@ import {LoginState} from '../../../enums/loginState';
 const Auth = () => {
   const viewModel = useAuthViewModel();
   return (
-    <ScreenContainer scrollable>
+    <ScreenContainer scrollable stripPadding>
       <ImageBackground style={style.container} source={SplashScreen}>
         {viewModel.stage === LoginState.CREATE_ACCOUNT ? (
           <CreateAccount

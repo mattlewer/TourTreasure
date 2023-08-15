@@ -67,7 +67,8 @@ const SignIn = (props: SignInProps) => {
                 onPress={handleSubmit}
               />
               <Pressable
-                onPress={() => props.setStage(LoginState.CREATE_ACCOUNT)}>
+                onPress={() => props.setStage(LoginState.CREATE_ACCOUNT)}
+                style={style.textButton}>
                 <Text style={{color: color.TEXT_DARK}}>
                   {localise('GUIDE_SIGN_UP')}
                   <Text style={{color: color.PRIMARY}}>
@@ -87,7 +88,7 @@ const SignIn = (props: SignInProps) => {
 const style = StyleSheet.create({
   container: {
     backgroundColor: color.WHITE,
-    width: '95%',
+    width: '90%',
     padding: 10,
     borderRadius: 8,
     elevation: 10,
@@ -95,7 +96,7 @@ const style = StyleSheet.create({
   iconHeaderContainer: {
     width: '100%',
     alignItems: 'center',
-    paddingBottom: 20,
+    paddingVertical: 20,
   },
   inputSubmit: {
     flexGrow: 1,
@@ -111,8 +112,12 @@ const style = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%',
-    paddingBottom: 20,
-    gap: 15,
+    gap: 5,
+  },
+  textButton: {
+    paddingVertical: 10,
+    width: '100%',
+    alignItems: 'center',
   },
 });
 export default SignIn;
