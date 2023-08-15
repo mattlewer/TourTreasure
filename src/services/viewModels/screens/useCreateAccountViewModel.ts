@@ -1,15 +1,8 @@
-import {useState} from 'react';
-import {CreateAccoundStackParams} from '../../../navigation/CreateAccountStackNav';
-import {StackNavigationProp} from '@react-navigation/stack';
-import {useNavigation} from '@react-navigation/native';
-import {CreateAccount} from '../../auth';
 import {localise} from '../../lang/lang';
 import * as Yup from 'yup';
 import {EMAIL_REGX} from '../../../constants/emailRegex';
 
 const useCreateAccountViewModel = () => {
-  const navigation =
-    useNavigation<StackNavigationProp<CreateAccoundStackParams>>();
 
   const createAccountValidation = Yup.object().shape({
     username: Yup.string()
@@ -26,25 +19,8 @@ const useCreateAccountViewModel = () => {
       .matches(/[A-Z]/, localise('LOGIN_PASSWORD_UPPER_LOWER')),
   });
 
-  const onCreateAccount = async (
-    username: string,
-    email: string,
-    password: string,
-  ) => {
-    const wasSuccess = await CreateAccount(username, email, password);
-    if (wasSuccess) {
-      navigation.navigate('HowToUse', {name: username});
-    }
-  };
-
-  const onSignIn = () => {
-    navigation.navigate('SignIn');
-  };
-
   return {
     createAccountValidation,
-    onSignIn,
-    onCreateAccount,
   };
 };
 

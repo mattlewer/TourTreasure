@@ -4,13 +4,11 @@ import {
   createStackNavigator,
 } from '@react-navigation/stack';
 
-import SignIn from '../components/screens/SignIn';
-import CreateAccount from '../components/screens/CreateAccount';
+import Auth from '../components/screens/Auth';
 import HowToUse from '../components/screens/HowToUse';
 
 export type CreateAccoundStackParams = {
-  SignIn: undefined;
-  CreateAccount: undefined;
+  Auth: undefined;
   HowToUse: {
     name: string;
   };
@@ -20,7 +18,7 @@ const CreateAccountStack = createStackNavigator<CreateAccoundStackParams>();
 const CreateAccountStackNav = () => {
   return (
     <CreateAccountStack.Navigator
-      initialRouteName="SignIn"
+      initialRouteName="Auth"
       screenOptions={{
         headerTitleAlign: 'center',
         headerBackTitleVisible: false,
@@ -28,13 +26,8 @@ const CreateAccountStackNav = () => {
       }}>
       <CreateAccountStack.Screen
         options={{headerShown: false}}
-        name="SignIn"
-        component={SignIn}
-      />
-      <CreateAccountStack.Screen
-        options={{headerShown: false}}
-        name="CreateAccount"
-        component={CreateAccount}
+        name="Auth"
+        component={Auth}
       />
       <CreateAccountStack.Screen
         options={{headerShown: false}}
