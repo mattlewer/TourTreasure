@@ -41,7 +41,7 @@ const style = StyleSheet.create({
     width: '100%',
     top: 24,
     left: 0,
-    zIndex: 200,
+    zIndex: 10000,
   },
   innerContainer: {
     paddingHorizontal: 20,
