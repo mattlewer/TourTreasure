@@ -5,17 +5,21 @@ import {typography} from '../../../constants/typography';
 import {localise} from '../../../services/lang/lang';
 import SavedLocation from '../SavedLocation';
 import * as color from '../../../constants/color';
+import {createEpoch} from '../../../services/dateHandler';
 
 interface SavedLocationListProps {
   user: User;
   onSearchLocation: (placeName: string) => void;
 }
 const SavedLocationList = (props: SavedLocationListProps) => {
+  const sortedSaved = props.user.savedPlaces
+    .slice()
+    .sort((a, b) => createEpoch(b.updatedAt) - createEpoch(a.updatedAt));
   return (
     <>
-      {props.user.savedPlaces.length > 0 ? (
+      {sortedSaved.length > 0 ? (
         <View style={style.savedPlacesListContainer}>
-          {props.user.savedPlaces.map((item, index) => {
+          {sortedSaved.map((item, index) => {
             return (
               <SavedLocation
                 key={index}
