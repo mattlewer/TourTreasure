@@ -1,5 +1,6 @@
-import {SavedPlace} from '../interfaces/savedPlace';
+import {ActivityFeedItem} from '../interfaces/activityFeedItem';
 import {Place} from '../interfaces/place';
+import {SavedPlace} from '../interfaces/savedPlace';
 import {User} from '../interfaces/user';
 
 export const hasSavedPlace = (user: User, placeName: string): number =>
@@ -31,3 +32,40 @@ export const totalFoundPlaces = (user: User): number => {
 
 export const findIndexOfPlace = (place: Place, places: Place[]): number =>
   places.findIndex(p => p.place_id === place.place_id);
+
+export const getFoundPlacesDateOrdered = (
+  savedPlaces: SavedPlace[],
+): ActivityFeedItem[] => {
+  // Convert and group the data using a Map
+  const groupedDataMap = new Map();
+
+  savedPlaces.forEach(person => {
+    const placeName = person.name;
+    person.visitedPlaces.forEach(place => {
+      if (!place.visited_date) {
+        //skip
+      } else {
+        const date = new Date(place.visited_date);
+        const day = new Date(
+          date.getFullYear(),
+          date.getMonth(),
+          date.getDate(),
+        ).toISOString();
+
+        if (!groupedDataMap.has(day)) {
+          groupedDataMap.set(day, {title: day, data: []});
+        }
+        const objToStore = {
+          name: place.name,
+          rating: place.rating,
+          placeName: placeName,
+        };
+        groupedDataMap.get(day).data.push(objToStore);
+      }
+    });
+  });
+
+  // Convert groupedDataMap values to an array
+  const resultArray: ActivityFeedItem[] = Array.from(groupedDataMap.values());
+  return resultArray;
+};

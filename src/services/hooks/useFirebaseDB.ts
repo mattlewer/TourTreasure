@@ -24,6 +24,7 @@ const useFirebaseDB = () => {
       name: name,
       places: shownPlaces,
       visitedPlaces: [],
+      updatedAt: new Date().toISOString(),
     };
     await firestore()
       .collection('users')
@@ -54,6 +55,7 @@ const useFirebaseDB = () => {
       let newUser = {...userValue};
       let savedPlaces = [...newUser.savedPlaces];
       let thisPlace = {...savedPlaces[indx]!};
+      thisPlace.updatedAt = new Date().toISOString(),
       thisPlace.visitedPlaces = [...thisPlace.visitedPlaces!, dateVisitedPlace];
       savedPlaces[indx] = thisPlace;
       newUser.savedPlaces = savedPlaces;
