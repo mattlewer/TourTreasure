@@ -11,11 +11,11 @@ interface PopularLocationListProps {
 const PopularLocationList = (props: PopularLocationListProps) => {
   return (
     <View style={style.container}>
-      <Text style={style.label}>{localise('POPULAR_LOCATIONS')}</Text>
       <FlatList
         horizontal
         showsHorizontalScrollIndicator
         style={style.container}
+        contentContainerStyle={style.content}
         data={props.locations}
         ItemSeparatorComponent={() => <View style={{width: 10}} />}
         renderItem={({item}) => (
@@ -32,10 +32,8 @@ const style = StyleSheet.create({
   container: {
     flexShrink: 1,
   },
-  label: {
-    marginBottom: 10,
-    alignSelf: 'flex-start',
-    color: color.TEXT_DARK,
-  },
+  content:{
+    paddingHorizontal: 10,
+  }
 });
 export default PopularLocationList;

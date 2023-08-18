@@ -36,18 +36,28 @@ const HomeScreen = () => {
       </View>
       <View style={style.inner}>
         <View style={style.popularLocationContainer}>
+          <Text
+            style={[
+              style.text,
+              {alignSelf: 'flex-start', marginBottom: 10, paddingLeft: 20},
+            ]}>
+            {localise('POPULAR_LOCATIONS')}
+          </Text>
           <PopularLocationList
             locations={viewModel.popularLocations}
             onSearchLocation={viewModel.onSearchLocation}
           />
         </View>
-        <Text style={[style.text, {alignSelf: 'flex-start'}]}>
-          {localise('SAVED_PLACES')}
-        </Text>
-        <SavedLocationList
-          user={viewModel.userValue}
-          onSearchLocation={viewModel.onSearchLocation}
-        />
+
+        <View style={style.savedPlacesContainer}>
+          <Text style={[style.text, {alignSelf: 'flex-start'}]}>
+            {localise('SAVED_PLACES')}
+          </Text>
+          <SavedLocationList
+            user={viewModel.userValue}
+            onSearchLocation={viewModel.onSearchLocation}
+          />
+        </View>
       </View>
     </ScreenContainer>
   );
@@ -86,7 +96,7 @@ const style = StyleSheet.create({
   },
   inner: {
     width: '100%',
-    paddingHorizontal: 20,
+    paddingHorizontal: 0,
     paddingTop: 20,
     flex: 1,
     paddingBottom: 20,
@@ -100,6 +110,9 @@ const style = StyleSheet.create({
   },
   popularLocationContainer: {
     paddingBottom: 30,
+  },
+  savedPlacesContainer: {
+    paddingHorizontal: 20,
   },
 });
 export default HomeScreen;
