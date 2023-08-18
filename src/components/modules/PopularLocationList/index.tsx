@@ -13,7 +13,7 @@ const PopularLocationList = (props: PopularLocationListProps) => {
     <View style={style.container}>
       <FlatList
         horizontal
-        showsHorizontalScrollIndicator
+        showsHorizontalScrollIndicator={false}
         style={style.container}
         contentContainerStyle={style.content}
         data={props.locations}

@@ -42,7 +42,7 @@
   "POPULAR_LOCATIONS": "Popular locations",
   "SEARCH_LOCATION": "Search location...",
   "SAVED_PLACES": "Saved places",
-  "NO_SAVED_PLACES": "No saved places...",
+  "NO_SAVED_PLACES": "You haven't saved any places yet, search for one to add to your list.",
   "RATING": "Rating:",
   "REVIEWS": "Reviews:",
   "TRAVEL": "Travel:",
@@ -88,5 +88,7 @@
   "LOGIN_PASSWORD_REQUIRED": "Password is required.",
   "LOGIN_PASSWORD_LENGTH": "Password must be at least 8 characters.",
   "LOGIN_PASSWORD_UPPER_LOWER": "Password must have a mixture of uppercase and lowercase letters.",
-  "LOGIN_PASSWORD_NUMBERS": "Password must contain at least one number."
+  "LOGIN_PASSWORD_NUMBERS": "Password must contain at least one number.",
+
+  "NO_ACTIVITY": "You haven't visited any places yet, when you do, they'll appear here."
 }

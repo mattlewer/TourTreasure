@@ -6,6 +6,7 @@ import {localise} from '../../../services/lang/lang';
 import SavedLocation from '../SavedLocation';
 import * as color from '../../../constants/color';
 import {createEpoch} from '../../../services/dateHandler';
+import NoInfo from '../NoInfo';
 
 interface SavedLocationListProps {
   user: User;
@@ -16,29 +17,23 @@ const SavedLocationList = (props: SavedLocationListProps) => {
     .slice()
     .sort((a, b) => createEpoch(b.updatedAt) - createEpoch(a.updatedAt));
   return (
-    <>
+    <View style={style.savedPlacesListContainer}>
       {sortedSaved.length > 0 ? (
-        <View style={style.savedPlacesListContainer}>
-          {sortedSaved.map((item, index) => {
-            return (
-              <SavedLocation
-                key={index}
-                name={item.name}
-                onPress={() => props.onSearchLocation(item.name)}
-                visitedPlaces={item.visitedPlaces.length}
-                totalPlaces={item.places.length}
-              />
-            );
-          })}
-        </View>
+        sortedSaved.map((item, index) => {
+          return (
+            <SavedLocation
+              key={index}
+              name={item.name}
+              onPress={() => props.onSearchLocation(item.name)}
+              visitedPlaces={item.visitedPlaces.length}
+              totalPlaces={item.places.length}
+            />
+          );
+        })
       ) : (
-        <View style={style.noSavedPlacesContainer}>
-          <Text style={[typography.BodyReg, {color: color.PRIMARY}]}>
-            {localise('NO_SAVED_PLACES')}
-          </Text>
-        </View>
+        <NoInfo text={localise('NO_SAVED_PLACES')} />
       )}
-    </>
+    </View>
   );
 };
 const style = StyleSheet.create({
@@ -46,6 +41,8 @@ const style = StyleSheet.create({
     flex: 1,
     width: '100%',
     margin: 0,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   noSavedPlacesContainer: {
     flexGrow: 1,

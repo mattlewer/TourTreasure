@@ -112,6 +112,7 @@ const style = StyleSheet.create({
     paddingBottom: 30,
   },
   savedPlacesContainer: {
+    flex: 1,
     paddingHorizontal: 20,
   },
 });

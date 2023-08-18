@@ -6,6 +6,7 @@ import useActivityFeedViewModel from '../../../services/viewModels/screens/useAc
 import ActivityFeedList from '../../modules/ActivityFeedList';
 import * as color from '../../../constants/color';
 import {localise} from '../../../services/lang/lang';
+import NoInfo from '../../modules/NoInfo';
 
 const ActivityFeed = ({navigation}) => {
   const viewModel = useActivityFeedViewModel();
@@ -16,8 +17,10 @@ const ActivityFeed = ({navigation}) => {
       </View>
       <MenuToggleButton navigation={navigation} light />
       <View style={style.inner}>
-        {viewModel.orderedLocations && (
+        {viewModel.orderedLocations.length > 0 ? (
           <ActivityFeedList items={viewModel.orderedLocations} />
+        ) : (
+          <NoInfo text={localise('NO_ACTIVITY')} />
         )}
       </View>
     </ScreenContainer>
