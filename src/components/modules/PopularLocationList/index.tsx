@@ -1,8 +1,6 @@
-import {View, Text, StyleSheet, FlatList} from 'react-native';
+import {View, StyleSheet, FlatList} from 'react-native';
 import React from 'react';
 import PopularLocation from '../PopularLocation';
-import * as color from '../../../constants/color';
-import {localise} from '../../../services/lang/lang';
 
 interface PopularLocationListProps {
   locations: string[];
