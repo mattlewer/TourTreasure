@@ -41,9 +41,7 @@ const style = StyleSheet.create({
   inner: {
     width: '100%',
     paddingHorizontal: 20,
-    paddingTop: 20,
     flex: 1,
-    paddingBottom: 20,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     backgroundColor: color.WHITE,

@@ -1,5 +1,12 @@
 import React from 'react';
-import {View, Text, SectionList, Image, StyleSheet} from 'react-native';
+import {
+  View,
+  Text,
+  SectionList,
+  Image,
+  StyleSheet,
+  SafeAreaView,
+} from 'react-native';
 import {ActivityFeedItem} from '../../../interfaces/activityFeedItem';
 import Rating from '../../../assets/icon_rating.png';
 import * as color from '../../../constants/color';
@@ -10,25 +17,27 @@ interface ActivityFeedListProps {
 }
 const ActivityFeedList = (props: ActivityFeedListProps) => {
   return (
-    <SectionList
-      style={style.container}
-      contentContainerStyle={style.listContainer}
-      sections={props.items}
-      keyExtractor={(item, index) => item.name + index}
-      renderItem={({item}) => (
-        <View style={style.item}>
-          <Text style={style.title}>{item.name}</Text>
-          <Text style={style.placeName}>{item.placeName}</Text>
-          <View style={style.statValueContainer}>
-            <Image source={Rating} style={style.statImage} />
-            <Text style={style.rating}> {item.rating}</Text>
+    <SafeAreaView style={{flex: 1}}>
+      <SectionList
+        style={style.container}
+        contentContainerStyle={style.listContainer}
+        sections={props.items}
+        keyExtractor={(item, index) => item.name + index}
+        renderItem={({item}) => (
+          <View style={style.item}>
+            <Text style={style.title}>{item.name}</Text>
+            <Text style={style.placeName}>{item.placeName}</Text>
+            <View style={style.statValueContainer}>
+              <Image source={Rating} style={style.statImage} />
+              <Text style={style.rating}> {item.rating}</Text>
+            </View>
           </View>
-        </View>
-      )}
-      renderSectionHeader={({section: {title}}) => (
-        <Text style={style.header}>{formatIsoString(title)}</Text>
-      )}
-    />
+        )}
+        renderSectionHeader={({section: {title}}) => (
+          <Text style={style.header}>{formatIsoString(title)}</Text>
+        )}
+      />
+    </SafeAreaView>
   );
 };
 const style = StyleSheet.create({
@@ -37,8 +46,8 @@ const style = StyleSheet.create({
     width: '100%',
   },
   listContainer: {
-    flex: 1,
     width: '100%',
+    paddingBottom: 20,
   },
   item: {
     width: '100%',
@@ -78,6 +87,7 @@ const style = StyleSheet.create({
   header: {
     color: color.TEXT_DARK,
     fontWeight: '600',
+    paddingTop: 20,
   },
 });
 export default ActivityFeedList;

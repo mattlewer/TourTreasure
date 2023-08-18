@@ -3,6 +3,7 @@ import {userState} from '../../../state/userState';
 import {useEffect, useState} from 'react';
 import {ActivityFeedItem} from '../../../interfaces/activityFeedItem';
 import {getFoundPlacesDateOrdered} from '../../userHandler';
+import {createEpoch} from '../../dateHandler';
 
 const useActivityFeedViewModel = () => {
   const userValue = useRecoilValue(userState);
@@ -11,7 +12,9 @@ const useActivityFeedViewModel = () => {
   );
 
   useEffect(() => {
-    const results = getFoundPlacesDateOrdered(userValue.savedPlaces);
+    const results = getFoundPlacesDateOrdered(userValue.savedPlaces).sort(
+      (a, b) => createEpoch(b.title) - createEpoch(a.title),
+    );
     setOrderedLocations(results);
   }, [userValue.savedPlaces]);
 
