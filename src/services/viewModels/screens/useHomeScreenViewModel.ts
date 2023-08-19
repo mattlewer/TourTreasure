@@ -20,6 +20,7 @@ const useHomeScreenViewModel = () => {
     useNavigation<StackNavigationProp<HomeAndMapStackParams>>();
   const userValue = useRecoilValue(userState);
   const [enteredLocation, setEnteredLocation] = useState<string>();
+  const [isLoading, setIsLoading] = useState(false);
   const popularLocations = [
     'London',
     'Paris',
@@ -42,16 +43,19 @@ const useHomeScreenViewModel = () => {
   }, []);
 
   const onSearchNew = async () => {
+    setIsLoading(true);
     if (enteredLocation) {
       if (validateText(enteredLocation)) {
         onSearchLocation(enteredLocation);
       } else {
+        setIsLoading(false);
         noResultsToast();
       }
     }
   };
 
   const onSearchLocation = async (place: string) => {
+    setIsLoading(true);
     Keyboard.dismiss();
     const isSavedPlaceIndex = hasSavedPlace(userValue, place);
     if (isSavedPlaceIndex >= 0) {
@@ -70,9 +74,11 @@ const useHomeScreenViewModel = () => {
         noResultsToast();
       }
     }
+    setIsLoading(false);
   };
 
   return {
+    isLoading,
     userValue,
     navigation,
     popularLocations,

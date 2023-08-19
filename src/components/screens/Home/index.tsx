@@ -10,11 +10,13 @@ import PopularLocationList from '../../modules/PopularLocationList';
 import PlaceSearchField from '../../modules/PlaceSearchField';
 import Avatar from '../../modules/Avatar';
 import MenuToggleButton from '../../modules/MenuToggleButton';
+import LoadingOverlay from '../../modules/LoadingOverlay';
 
 const HomeScreen = () => {
   const viewModel = useHomeScreenViewModel();
   return (
     <ScreenContainer scrollable stripPadding>
+      {viewModel.isLoading && <LoadingOverlay/>}
       <MenuToggleButton navigation={viewModel.navigation} light />
       <View style={style.header}>
         <View style={style.greetingContainer}>

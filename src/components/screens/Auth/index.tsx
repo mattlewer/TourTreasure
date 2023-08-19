@@ -7,11 +7,13 @@ import CreateAccount from '../../modules/CreateAccount';
 import useAuthViewModel from '../../../services/viewModels/screens/useAuthViewModel';
 import SignIn from '../../modules/SignIn';
 import {LoginState} from '../../../enums/loginState';
+import LoadingOverlay from '../../modules/LoadingOverlay';
 
 const Auth = () => {
   const viewModel = useAuthViewModel();
   return (
     <ScreenContainer scrollable stripPadding>
+      {viewModel.isLoading && <LoadingOverlay />}
       <ImageBackground style={style.container} source={SplashScreenNoLogo}>
         {viewModel.stage === LoginState.CREATE_ACCOUNT ? (
           <CreateAccount
