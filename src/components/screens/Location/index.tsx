@@ -12,7 +12,7 @@ import LocationScreenHeader from '../../modules/LocationScreenHeader';
 const Location = () => {
   const viewModel = useLocationScreenViewModel();
   return (
-    <ScreenContainer stripPadding>
+    <>
       <LocationScreenHeader
         isSaved={
           hasSavedPlace(viewModel.userValue, viewModel.searchedPlaceName) >= 0
@@ -21,57 +21,62 @@ const Location = () => {
         onNavigateBack={viewModel.onNavigateBack}
         searchedPlaceName={viewModel.searchedPlaceName}
       />
-      <Map
-        user={viewModel.userValue}
-        places={viewModel.shownPlaces}
-        userLocation={viewModel.userLocation.location}
-        selectedPlace={viewModel.selectedPlace}
-        navigationPlace={viewModel.navigationPlace}
-        searchedPlaceName={viewModel.searchedPlaceName}
-        setSelectedPlace={viewModel.setSelectedPlace}
-        setNavigationPlace={viewModel.onSetNavigationPlace}
-        setTimeToNavigationPlace={viewModel.setTimeToNavigationPlace}
-      />
-      {viewModel.selectedPlace && !viewModel.placeFound && (
-        <SelectedPlaceCard
+      <ScreenContainer stripPadding>
+        <Map
           user={viewModel.userValue}
-          place={viewModel.selectedPlace}
-          placeNumber={
-            findIndexOfPlace(viewModel.selectedPlace, viewModel.shownPlaces) + 1
-          }
+          places={viewModel.shownPlaces}
+          userLocation={viewModel.userLocation.location}
+          selectedPlace={viewModel.selectedPlace}
+          navigationPlace={viewModel.navigationPlace}
+          searchedPlaceName={viewModel.searchedPlaceName}
           setSelectedPlace={viewModel.setSelectedPlace}
-          onViewPlaceDetails={viewModel.onViewPlaceDetails}
           setNavigationPlace={viewModel.onSetNavigationPlace}
-          searchedPlaceName={viewModel.searchedPlaceName}
+          setTimeToNavigationPlace={viewModel.setTimeToNavigationPlace}
         />
-      )}
-      {viewModel.navigationPlace && (
-        <NavigationPlaceCard
-          user={viewModel.userValue}
-          place={viewModel.navigationPlace}
-          timeToPlace={viewModel.timeToNavigationPlace}
-          placeNumber={
-            findIndexOfPlace(viewModel.navigationPlace, viewModel.shownPlaces) +
-            1
-          }
-          setNavigationPlace={viewModel.onSetNavigationPlace}
-          searchedPlaceName={viewModel.searchedPlaceName}
-        />
-      )}
-      {viewModel.placeFound && (
-        <SuccessAnimationModal onClose={viewModel.onPlaceFound} />
-      )}
-      {viewModel.shownPlaces &&
-        !viewModel.navigationPlace &&
-        !viewModel.selectedPlace && (
-          <AnimatedBottomSheet
+        {viewModel.selectedPlace && !viewModel.placeFound && (
+          <SelectedPlaceCard
             user={viewModel.userValue}
-            places={viewModel.shownPlaces}
-            onSelectItem={viewModel.setSelectedPlace}
+            place={viewModel.selectedPlace}
+            placeNumber={
+              findIndexOfPlace(viewModel.selectedPlace, viewModel.shownPlaces) +
+              1
+            }
+            setSelectedPlace={viewModel.setSelectedPlace}
+            onViewPlaceDetails={viewModel.onViewPlaceDetails}
+            setNavigationPlace={viewModel.onSetNavigationPlace}
             searchedPlaceName={viewModel.searchedPlaceName}
           />
         )}
-    </ScreenContainer>
+        {viewModel.navigationPlace && (
+          <NavigationPlaceCard
+            user={viewModel.userValue}
+            place={viewModel.navigationPlace}
+            timeToPlace={viewModel.timeToNavigationPlace}
+            placeNumber={
+              findIndexOfPlace(
+                viewModel.navigationPlace,
+                viewModel.shownPlaces,
+              ) + 1
+            }
+            setNavigationPlace={viewModel.onSetNavigationPlace}
+            searchedPlaceName={viewModel.searchedPlaceName}
+          />
+        )}
+        {viewModel.placeFound && (
+          <SuccessAnimationModal onClose={viewModel.onPlaceFound} />
+        )}
+        {viewModel.shownPlaces &&
+          !viewModel.navigationPlace &&
+          !viewModel.selectedPlace && (
+            <AnimatedBottomSheet
+              user={viewModel.userValue}
+              places={viewModel.shownPlaces}
+              onSelectItem={viewModel.setSelectedPlace}
+              searchedPlaceName={viewModel.searchedPlaceName}
+            />
+          )}
+      </ScreenContainer>
+    </>
   );
 };
 export default Location;
