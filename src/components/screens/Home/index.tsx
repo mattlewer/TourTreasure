@@ -11,12 +11,13 @@ import PlaceSearchField from '../../modules/PlaceSearchField';
 import Avatar from '../../modules/Avatar';
 import MenuToggleButton from '../../modules/MenuToggleButton';
 import LoadingOverlay from '../../modules/LoadingOverlay';
+import popularLocations from '../../../constants/popularLocations';
 
 const HomeScreen = () => {
   const viewModel = useHomeScreenViewModel();
   return (
     <ScreenContainer scrollable stripPadding>
-      {viewModel.isLoading && <LoadingOverlay/>}
+      {viewModel.isLoading && <LoadingOverlay />}
       <MenuToggleButton navigation={viewModel.navigation} light />
       <View style={style.header}>
         <View style={style.greetingContainer}>
@@ -46,7 +47,7 @@ const HomeScreen = () => {
             {localise('POPULAR_LOCATIONS')}
           </Text>
           <PopularLocationList
-            locations={viewModel.popularLocations}
+            locations={popularLocations}
             onSearchLocation={viewModel.onSearchLocation}
           />
         </View>
