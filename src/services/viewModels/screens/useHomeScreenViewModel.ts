@@ -21,15 +21,6 @@ const useHomeScreenViewModel = () => {
   const userValue = useRecoilValue(userState);
   const [enteredLocation, setEnteredLocation] = useState<string>();
   const [isLoading, setIsLoading] = useState(false);
-  const popularLocations = [
-    'London',
-    'Paris',
-    'New york',
-    'Rome',
-    'Amsterdam',
-    'Tokyo',
-    'Barcelona',
-  ];
 
   useEffect(() => {
     const setUp = async () => {
@@ -81,7 +72,6 @@ const useHomeScreenViewModel = () => {
     isLoading,
     userValue,
     navigation,
-    popularLocations,
     onSearchNew,
     onSearchLocation,
     setEnteredLocation,

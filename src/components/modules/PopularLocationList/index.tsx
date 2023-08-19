@@ -1,9 +1,10 @@
 import {View, StyleSheet, FlatList} from 'react-native';
 import React from 'react';
 import PopularLocation from '../PopularLocation';
+import {PopularPlace} from '../../../interfaces/popularPlace';
 
 interface PopularLocationListProps {
-  locations: string[];
+  locations: PopularPlace[];
   onSearchLocation: (placeName: string) => void;
 }
 const PopularLocationList = (props: PopularLocationListProps) => {
@@ -15,10 +16,10 @@ const PopularLocationList = (props: PopularLocationListProps) => {
         style={style.container}
         contentContainerStyle={style.content}
         data={props.locations}
-        ItemSeparatorComponent={() => <View style={{width: 10}} />}
+        ItemSeparatorComponent={() => <View style={{width: 30}} />}
         renderItem={({item}) => (
           <PopularLocation
-            name={item}
+            place={item}
             onSearchLocation={props.onSearchLocation}
           />
         )}
@@ -30,8 +31,8 @@ const style = StyleSheet.create({
   container: {
     flexShrink: 1,
   },
-  content:{
-    paddingHorizontal: 10,
-  }
+  content: {
+    paddingHorizontal: 20,
+  },
 });
 export default PopularLocationList;
