@@ -21,7 +21,7 @@ const HomeStatList = (props: HomeStatListProps) => {
       />
       <HomeStat
         stat={props.user.savedPlaces.length.toString()}
-        desc={localise('LOCATIONS')}
+        desc={localise('SAVED_LOCATIONS')}
       />
     </View>
   );

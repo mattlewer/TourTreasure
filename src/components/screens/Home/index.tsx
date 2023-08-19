@@ -44,7 +44,7 @@ const HomeScreen = () => {
               style.text,
               {alignSelf: 'flex-start', marginBottom: 10, paddingLeft: 20},
             ]}>
-            {localise('POPULAR_LOCATIONS')}
+            {localise('POPULAR_PLACES')}
           </Text>
           <PopularLocationList
             locations={popularLocations}
