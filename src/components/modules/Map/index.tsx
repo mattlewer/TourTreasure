@@ -184,9 +184,11 @@ const style = StyleSheet.create({
   mapContainer: {
     width: '100%',
     flex: 1,
+    zIndex: 0,
   },
   map: {
     flex: 1,
+    zIndex: 1,
   },
 });
 export default Map;

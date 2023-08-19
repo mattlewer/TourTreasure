@@ -47,11 +47,12 @@ const style = StyleSheet.create({
     paddingHorizontal: 20,
     flexDirection: 'row',
     justifyContent: 'space-between',
+    zIndex: 10000,
   },
   backButtonContainer: {
     justifyContent: 'center',
     alignItems: 'flex-start',
-    zIndex: 100,
+    zIndex: 10000,
   },
   placeTextContainer: {
     marginHorizontal: 20,
@@ -65,6 +66,7 @@ const style = StyleSheet.create({
     shadowOffset: {width: 0, height: 2},
     shadowColor: color.BLACK,
     shadowOpacity: 1,
+    zIndex: 10000,
   },
   placeText: {
     color: color.PRIMARY,
@@ -73,7 +75,7 @@ const style = StyleSheet.create({
   saveButtonContainer: {
     justifyContent: 'center',
     alignItems: 'flex-start',
-    zIndex: 100,
+    zIndex: 10000,
   },
 });
 export default LocationScreenHeader;

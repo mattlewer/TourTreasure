@@ -3,9 +3,9 @@ import React from 'react';
 import SplashScreenNoLogo from '../../../assets/splash_screen_no_logo.png';
 import * as color from '../../../constants/color';
 import ScreenContainer from '../../modules/ScreenContainer';
-import CreateAccount from '../CreateAccount';
+import CreateAccount from '../../modules/CreateAccount';
 import useAuthViewModel from '../../../services/viewModels/screens/useAuthViewModel';
-import SignIn from '../SignIn';
+import SignIn from '../../modules/SignIn';
 import {LoginState} from '../../../enums/loginState';
 
 const Auth = () => {

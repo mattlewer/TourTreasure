@@ -2,34 +2,30 @@ import React from 'react';
 import {View, StyleSheet, Text, Pressable} from 'react-native';
 import {localise} from '../../../services/lang/lang';
 import * as color from '../../../constants/color';
-import TextButton from '../../modules/TextButton';
-import TextInputField from '../../modules/TextInputField';
-import IconWithBirds from '../../modules/IconWithBirds';
-import useCreateAccountViewModel from '../../../services/viewModels/screens/useCreateAccountViewModel';
+import TextButton from '../TextButton';
+import TextInputField from '../TextInputField';
+import IconWithBirds from '../IconWithBirds';
+import useSignInViewModel from '../../../services/viewModels/screens/useSignInViewModel';
 import {Formik} from 'formik';
 import {LoginState} from '../../../enums/loginState';
-import Animated, {
-  SlideInLeft,
-  SlideInRight,
-  SlideOutRight,
-} from 'react-native-reanimated';
+import Animated, {SlideInLeft, SlideOutLeft} from 'react-native-reanimated';
 
-interface CreateAccountProps {
-  onCreateAccount: (username: string, email: string, password: string) => void;
+interface SignInProps {
+  onSignIn: (email: string, password: string) => void;
   setStage: (stage: LoginState) => void;
 }
-const CreateAccount = (props: CreateAccountProps) => {
-  const viewModel = useCreateAccountViewModel();
+const SignIn = (props: SignInProps) => {
+  const viewModel = useSignInViewModel();
   return (
     <Animated.View
       style={style.container}
-      entering={SlideInRight}
-      exiting={SlideOutRight}>
+      entering={SlideInLeft}
+      exiting={SlideOutLeft}>
       <Formik
-        initialValues={{username: '', email: '', password: ''}}
-        validationSchema={viewModel.createAccountValidation}
+        initialValues={{email: '', password: ''}}
+        validationSchema={viewModel.loginValidation}
         onSubmit={(values, formikHelpers) =>
-          props.onCreateAccount(values.username, values.email, values.password)
+          props.onSignIn(values.email, values.password)
         }>
         {({
           handleChange,
@@ -45,17 +41,6 @@ const CreateAccount = (props: CreateAccountProps) => {
             </View>
             <View style={style.inputSubmit}>
               <TextInputField
-                label={localise('USERNAME')}
-                value={values.username}
-                onChange={handleChange('username')}
-                onBlur={handleBlur('username')}
-                error={
-                  touched.username && errors.username
-                    ? errors.username
-                    : undefined
-                }
-              />
-              <TextInputField
                 label={localise('EMAIL')}
                 value={values.email}
                 onChange={handleChange('email')}
@@ -63,11 +48,11 @@ const CreateAccount = (props: CreateAccountProps) => {
                 error={touched.email && errors.email ? errors.email : undefined}
               />
               <TextInputField
+                secureEntry
                 label={localise('PASSWORD')}
                 value={values.password}
                 onChange={handleChange('password')}
                 onBlur={handleBlur('password')}
-                secureEntry
                 error={
                   touched.password && errors.password
                     ? errors.password
@@ -78,17 +63,17 @@ const CreateAccount = (props: CreateAccountProps) => {
             <View style={style.buttonContainer}>
               <TextButton
                 type="primary"
-                text={localise('CREATE_ACCOUNT')}
+                text={localise('SIGN_IN')}
                 onPress={handleSubmit}
               />
               <Pressable
-                onPress={() => props.setStage(LoginState.SIGN_IN)}
+                onPress={() => props.setStage(LoginState.CREATE_ACCOUNT)}
                 style={style.textButton}>
                 <Text style={{color: color.TEXT_DARK}}>
-                  {localise('GUIDE_SIGN_IN')}
+                  {localise('GUIDE_SIGN_UP')}
                   <Text style={{color: color.PRIMARY}}>
                     {' '}
-                    {localise('GUIDE_SIGN_IN_LINK')}
+                    {localise('GUIDE_SIGN_UP_LINK')}
                   </Text>
                 </Text>
               </Pressable>
@@ -119,6 +104,7 @@ const style = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
     justifyContent: 'center',
+    gap: 10,
     paddingBottom: 10,
   },
   buttonContainer: {
@@ -134,4 +120,4 @@ const style = StyleSheet.create({
     alignItems: 'center',
   },
 });
-export default CreateAccount;
+export default SignIn;
