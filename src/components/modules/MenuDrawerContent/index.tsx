@@ -5,19 +5,16 @@ import {
   DrawerItemList,
 } from '@react-navigation/drawer';
 import {DrawerContentComponentProps} from '@react-navigation/drawer';
-import auth from '@react-native-firebase/auth';
 import {localise} from '../../../services/lang/lang';
 import * as color from '../../../constants/color';
 import Logo from '../../../assets/logo.png';
-import {useResetRecoilState} from 'recoil';
-import {userState} from '../../../state/userState';
+import useFirebaseDB from '../../../services/hooks/useFirebaseDB';
 
 const MenuDrawerContent = (props: DrawerContentComponentProps) => {
-  const resetUserData = useResetRecoilState(userState);
+  const firebase = useFirebaseDB();
 
   const signOut = async () => {
-    await auth().signOut();
-    resetUserData();
+    await firebase.onSignOut();
   };
 
   return (

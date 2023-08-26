@@ -5,17 +5,16 @@ import * as color from '../../../constants/color';
 import TextButton from '../TextButton';
 import TextInputField from '../TextInputField';
 import IconWithBirds from '../IconWithBirds';
-import useSignInViewModel from '../../../services/viewModels/screens/useSignInViewModel';
 import {Formik} from 'formik';
 import {LoginState} from '../../../enums/loginState';
 import Animated, {SlideInLeft, SlideOutLeft} from 'react-native-reanimated';
+import signInValidation from '../../../services/forms/signInValidation';
 
 interface SignInProps {
   onSignIn: (email: string, password: string) => void;
   setStage: (stage: LoginState) => void;
 }
 const SignIn = (props: SignInProps) => {
-  const viewModel = useSignInViewModel();
   return (
     <Animated.View
       style={style.container}
@@ -23,7 +22,7 @@ const SignIn = (props: SignInProps) => {
       exiting={SlideOutLeft}>
       <Formik
         initialValues={{email: '', password: ''}}
-        validationSchema={viewModel.loginValidation}
+        validationSchema={signInValidation}
         onSubmit={(values, formikHelpers) =>
           props.onSignIn(values.email, values.password)
         }>

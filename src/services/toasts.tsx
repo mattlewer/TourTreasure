@@ -60,3 +60,43 @@ export const noPermissionToast = () =>
     bottomOffset: 100,
     visibilityTime: 4000,
   });
+
+export const onResetPasswordEmailSent = () =>
+  Toast.show({
+    type: 'success',
+    text1: localise('RESET_PASSWORD_TITLE'),
+    text2: localise('RESET_PASSWORD_DESC'),
+    position: 'bottom',
+    bottomOffset: 100,
+    visibilityTime: 6000,
+  });
+
+export const onResetPasswordEmailFailed = () =>
+  Toast.show({
+    type: 'success',
+    text1: localise('RESET_PASSWORD_EMAIL_FAILED_TITLE'),
+    text2: localise('RESET_PASSWORD_EMAIL_FAILED_DESC'),
+    position: 'bottom',
+    bottomOffset: 100,
+    visibilityTime: 6000,
+  });
+
+export const onUsernameChangedToast = () =>
+  Toast.show({
+    type: 'success',
+    text1: localise('USERNAME_CHANGE_SUCCESSFUL_TITLE'),
+    text2: localise('USERNAME_CHANGE_SUCCESSFUL_DESC'),
+    position: 'bottom',
+    bottomOffset: 100,
+    visibilityTime: 6000,
+  });
+
+export const onUsernameChangeFailedToast = () =>
+  Toast.show({
+    type: 'success',
+    text1: localise('USERNAME_CHANGE_FAILED_TITLE'),
+    text2: localise('USERNAME_CHANGE_FAILED_DESC'),
+    position: 'bottom',
+    bottomOffset: 100,
+    visibilityTime: 6000,
+  });

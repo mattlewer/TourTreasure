@@ -1,5 +1,12 @@
 import React, {useState} from 'react';
-import {View, Text, TextInput, StyleSheet, Image, Pressable} from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  StyleSheet,
+  Image,
+  Pressable,
+} from 'react-native';
 import * as color from '../../../constants/color';
 import {typography} from '../../../constants/typography';
 import ErrorIcon from '../../../assets/error_icon.png';
@@ -13,6 +20,8 @@ interface TextInputFieldProps {
   isCentered?: boolean;
   error?: string;
   secureEntry?: boolean;
+  disabled?: boolean;
+  forwardedRef?: React.Ref<TextInput>;
   onChange: (text: string) => void;
   onSubmit?: () => void;
   onBlur?: (e: any) => void;
@@ -20,10 +29,13 @@ interface TextInputFieldProps {
 const TextInputField = (props: TextInputFieldProps) => {
   const [isSecure, setIsSecure] = useState(props.secureEntry);
   return (
-    <View style={style.container}>
+    <View style={[style.container, {opacity: props.disabled ? 0.5 : 1}]}>
       <Text style={[typography.BodyReg, style.inputLabel]}>{props.label}</Text>
       <View style={style.inputFieldContainer}>
         <TextInput
+          ref={props.forwardedRef}
+          editable={props.disabled ? false : true}
+          selectTextOnFocus={props.disabled ? false : true}
           secureTextEntry={isSecure}
           value={props.value}
           onBlur={props.onBlur}

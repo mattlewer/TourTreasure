@@ -1,5 +1,10 @@
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
+import {
+  View,
+  StyleSheet,
+  TouchableWithoutFeedback,
+  Keyboard,
+} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
 interface ScreenContainerProps {
@@ -22,7 +27,9 @@ const ScreenContainer = (props: ScreenContainerProps) => {
         style={{flex: 1}}
         contentContainerStyle={{flexGrow: 1}}
         showsVerticalScrollIndicator={true}>
-        {content}
+        <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+          {content}
+        </TouchableWithoutFeedback>
       </KeyboardAwareScrollView>
     );
   }
