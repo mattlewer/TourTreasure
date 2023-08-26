@@ -16,4 +16,17 @@ export const toastConfig: ToastConfig = {
       />
     );
   },
+  success: props => {
+    return (
+      <ErrorToast
+        {...props}
+        style={{borderLeftColor: color.SUCCESS_GREEN, height: 100}}
+        contentContainerStyle={{height: 100}}
+        text1Style={[typography.HeaderReg, {color: color.TEXT_DARK}]}
+        text2Style={[typography.BodyReg]}
+        text2NumberOfLines={5}
+        onPress={() => props.hide()}
+      />
+    );
+  },
 };

@@ -37,7 +37,7 @@ const TextButton = (props: TextButtonProps) => {
       onTouchStart={() => setPressed(true)}
       onTouchEnd={() => setPressed(false)}
       disabled={props.disabled}
-      style={[style.buttonContainer, buttonStyle, {opacity: pressed ? 0.7 : 1}]}>
+      style={[style.buttonContainer, buttonStyle, {opacity: pressed || props.disabled ? 0.7 : 1}]}>
       <Text style={textStyle}>{props.text}</Text>
     </Pressable>
   );

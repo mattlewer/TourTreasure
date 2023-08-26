@@ -5,21 +5,16 @@ import * as color from '../../../constants/color';
 import TextButton from '../TextButton';
 import TextInputField from '../TextInputField';
 import IconWithBirds from '../IconWithBirds';
-import useCreateAccountViewModel from '../../../services/viewModels/screens/useCreateAccountViewModel';
 import {Formik} from 'formik';
 import {LoginState} from '../../../enums/loginState';
-import Animated, {
-  SlideInLeft,
-  SlideInRight,
-  SlideOutRight,
-} from 'react-native-reanimated';
+import Animated, {SlideInRight, SlideOutRight} from 'react-native-reanimated';
+import createAccountValidation from '../../../services/forms/createAccountValidation';
 
 interface CreateAccountProps {
   onCreateAccount: (username: string, email: string, password: string) => void;
   setStage: (stage: LoginState) => void;
 }
 const CreateAccount = (props: CreateAccountProps) => {
-  const viewModel = useCreateAccountViewModel();
   return (
     <Animated.View
       style={style.container}
@@ -27,7 +22,7 @@ const CreateAccount = (props: CreateAccountProps) => {
       exiting={SlideOutRight}>
       <Formik
         initialValues={{username: '', email: '', password: ''}}
-        validationSchema={viewModel.createAccountValidation}
+        validationSchema={createAccountValidation}
         onSubmit={(values, formikHelpers) =>
           props.onCreateAccount(values.username, values.email, values.password)
         }>
