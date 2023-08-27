@@ -2,15 +2,18 @@ import {userState} from '../../../state/userState';
 import {useRecoilState} from 'recoil';
 import {useEffect, useState} from 'react';
 import useHandleUserData from '../../hooks/useHandleUserData';
-import SplashScreen from 'react-native-splash-screen'
+import SplashScreen from 'react-native-splash-screen';
+import checkUpdate from '../../checkUpdate';
 
 const useAppStartupViewModel = () => {
   const [userValue, setUserValue] = useRecoilState(userState);
   const [loading, setLoading] = useState(true);
+  const [hasUpdate, setHasUpdate] = useState<string | undefined>();
   const handleUserData = useHandleUserData();
 
   useEffect(() => {
     loadData();
+    checkUpdateRun();
   }, []);
 
   useEffect(() => {
@@ -25,7 +28,13 @@ const useAppStartupViewModel = () => {
     SplashScreen.hide();
   };
 
+  const checkUpdateRun = async () => {
+    const needsUpdate = await checkUpdate();
+    setHasUpdate(needsUpdate);
+  };
+
   return {
+    hasUpdate,
     userValue,
     loading,
   };
