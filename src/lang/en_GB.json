@@ -10,6 +10,7 @@
   "GUIDE_SIGN_UP_LINK": "Sign up!",
   "GUIDE_SIGN_IN": "Already have an account?",
   "GUIDE_SIGN_IN_LINK": "Sign in!",
+  "FORGOT_PASSWORD_INFO": "Forgot your password?",
   "USERNAME": "Display name",
   "EMAIL": "Email",
   "PASSWORD": "Password",
@@ -91,7 +92,7 @@
   "USERNAME_CHANGE_SUCCESSFUL_TITLE": "Username changed",
   "USERNAME_CHANGE_SUCCESSFUL_DESC": "Your new username should now appear on the home page.",
   "RESET_PASSWORD_TITLE": "Email sent",
-  "RESET_PASSWORD_DESC": "Check your email for a message from us, please make sure you check the junk folder.",
+  "RESET_PASSWORD_DESC": "You should receive an email from us in the next few minutes, please make sure you check the junk folder.",
 
   "INVALID_USERNAME_LENGTH": "Your username must not be longer than 20 characters.",
   "INVALID_USERNAME_REQUIRED": "Username is required",
@@ -104,6 +105,7 @@
 
   "NO_ACTIVITY": "You haven't visited any places yet, when you do, they'll appear here.",
   "RESET_PASSWORD": "Reset password",
+  "SEND_EMAIL": "Send reset email",
   "SAVE": "Save"
 
 }
