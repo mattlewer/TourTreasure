@@ -2,7 +2,7 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 import AppStackNav from './HomeAndMapStack';
 import MenuDrawerContent from '../components/modules/MenuDrawerContent';
 import * as color from '../constants/color';
-import SupportAndFeedback from '../components/screens/Feedback';
+import HelpAndSupport from '../components/screens/HelpAndSupport';
 import About from '../components/screens/About';
 import Profile from '../components/screens/Profile';
 import ActivityFeed from '../components/screens/ActivityFeed';
@@ -37,11 +37,8 @@ const MenuDrawer = () => {
         component={ActivityFeed}
       />
       <Drawer.Screen name={localise('PROFILE')} component={Profile} />
-      <Drawer.Screen
-        name={localise('SUPPORT')}
-        component={SupportAndFeedback}
-      />
       <Drawer.Screen name={localise('ABOUT_US')} component={About} />
+      <Drawer.Screen name={localise('SUPPORT')} component={HelpAndSupport} />
     </Drawer.Navigator>
   );
 };

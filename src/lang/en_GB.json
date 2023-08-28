@@ -17,7 +17,7 @@
   "HOME": "Home",
   "ACTIVITY_FEED": "Activity feed",
   "PROFILE": "Profile",
-  "SUPPORT": "Support & feedback",
+  "SUPPORT": "Help & support",
   "ABOUT_US": "About us",
   "SIGN_OUT": "Sign out",
 
@@ -104,6 +104,12 @@
 
   "NO_ACTIVITY": "You haven't visited any places yet, when you do, they'll appear here.",
   "RESET_PASSWORD": "Reset password",
-  "SAVE": "Save"
+  "SAVE": "Save",
 
+  "WHAT": "What?",
+  "WHY": "Why?",
+  "HOW": "How?",
+  "ABOUT_TOUR_TREASURE_WHAT": "Tour Treasure offers navigation services, favouriting, and similar functionality to a traditional map service, but tailored specifically to travel and tourism.\n",
+  "ABOUT_TOUR_TREASURE_WHY": "Our aim with Tour Treasure is to improve on paper tourist maps by offering an interactive and visually appealing way to explore destinations.\n",
+  "ABOUT_TOUR_TREASURE_HOW": "By gamifying the experience, we hope that you and whoever you are travelling with will find enjoyment from ticking these locations off the list, and gaining points along the way."
 }
