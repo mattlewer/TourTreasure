@@ -1,14 +1,14 @@
 import React from 'react';
 import {View, StyleSheet, Text, Pressable} from 'react-native';
-import {localise} from '../../../services/lang/lang';
-import * as color from '../../../constants/color';
-import TextButton from '../TextButton';
-import TextInputField from '../TextInputField';
-import IconWithBirds from '../IconWithBirds';
+import {localise} from '../../../../services/lang/lang';
+import * as color from '../../../../constants/color';
+import TextButton from '../../TextButton';
+import TextInputField from '../../TextInputField';
+import IconWithBirds from '../../IconWithBirds';
 import {Formik} from 'formik';
-import {LoginState} from '../../../enums/loginState';
+import {LoginState} from '../../../../enums/loginState';
 import Animated, {SlideInRight, SlideOutRight} from 'react-native-reanimated';
-import createAccountValidation from '../../../services/forms/createAccountValidation';
+import createAccountValidation from '../../../../services/forms/createAccountValidation';
 
 interface CreateAccountProps {
   onCreateAccount: (username: string, email: string, password: string) => void;

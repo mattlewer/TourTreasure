@@ -4,12 +4,14 @@ import {StackNavigationProp} from '@react-navigation/stack';
 import {CreateAccoundStackParams} from '../../../navigation/CreateAccountStackNav';
 import {LoginState} from '../../../enums/loginState';
 import {useState} from 'react';
+import useFirebaseDB from '../../hooks/useFirebaseDB';
 
 const useAuthViewModel = () => {
   const navigation =
     useNavigation<StackNavigationProp<CreateAccoundStackParams>>();
   const [stage, setStage] = useState(LoginState.SIGN_IN);
   const [isLoading, setIsLoading] = useState(false);
+  const firebase = useFirebaseDB();
 
   const onCreateAccount = async (
     username: string,
@@ -30,12 +32,19 @@ const useAuthViewModel = () => {
     setIsLoading(false);
   };
 
+  const onSendResetEmail = async (email: string) => {
+    setIsLoading(true);
+    await firebase.onChangePassword(email);
+    setIsLoading(false);
+  };
+
   return {
     stage,
     isLoading,
     onCreateAccount,
     onSignIn,
     setStage,
+    onSendResetEmail,
   };
 };
 
