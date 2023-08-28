@@ -9,24 +9,29 @@ import Carousel from 'react-native-reanimated-carousel';
 import Dots from 'react-native-dots-pagination';
 import useHowToUserViewModel from '../../../services/viewModels/screens/useHowToUserViewModel';
 
-const HowToUse = () => {
+interface HowToUseProps {
+  hideButtons?: boolean;
+}
+const HowToUse = (props: HowToUseProps) => {
   const viewModel = useHowToUserViewModel();
   const width = Dimensions.get('window').width;
   const isEnd = viewModel.currentSlide === viewModel.info.length - 1;
   return (
     <ScreenContainer scrollable>
       <View style={style.carouselContainer}>
-        <View style={style.actionContainer}>
-          <Text style={style.actionText} />
-          <Text
-            style={[style.actionText, style.skipLink]}
-            onPress={() => {
-              viewModel.setCurrentSlide(viewModel.info.length - 1);
-              viewModel.onContinueToHome();
-            }}>
-            {localise('SKIP')}
-          </Text>
-        </View>
+        {!props.hideButtons && (
+          <View style={style.actionContainer}>
+            <Text style={style.actionText} />
+            <Text
+              style={[style.actionText, style.skipLink]}
+              onPress={() => {
+                viewModel.setCurrentSlide(viewModel.info.length - 1);
+                viewModel.onContinueToHome();
+              }}>
+              {localise('SKIP')}
+            </Text>
+          </View>
+        )}
         <Carousel
           ref={viewModel.carouselRef}
           style={style.carousel}
@@ -38,6 +43,7 @@ const HowToUse = () => {
           onSnapToItem={viewModel.setCurrentSlide}
           renderItem={({item, index}) => (
             <HowToUseCard
+              small={props.hideButtons}
               title={item.title}
               content={item.content}
               image={item.image}
@@ -53,17 +59,19 @@ const HowToUse = () => {
             marginHorizontal={15}
           />
         </View>
-        <View style={style.buttonContainer}>
-          <TextButton
-            text={isEnd ? localise('START_EXPLORING') : localise('NEXT')}
-            type={'primary'}
-            onPress={
-              viewModel.currentSlide === viewModel.info.length - 1
-                ? viewModel.onContinueToHome
-                : viewModel.onNextSlide
-            }
-          />
-        </View>
+        {!props.hideButtons && (
+          <View style={style.buttonContainer}>
+            <TextButton
+              text={isEnd ? localise('START_EXPLORING') : localise('NEXT')}
+              type={'primary'}
+              onPress={
+                viewModel.currentSlide === viewModel.info.length - 1
+                  ? viewModel.onContinueToHome
+                  : viewModel.onNextSlide
+              }
+            />
+          </View>
+        )}
       </View>
     </ScreenContainer>
   );
@@ -93,7 +101,7 @@ const style = StyleSheet.create({
   },
 
   carousel: {
-    height: '75%',
+    flex:1 ,
     justifyContent: 'center',
     alignItems: 'center',
   },

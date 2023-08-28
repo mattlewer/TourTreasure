@@ -11,7 +11,7 @@ interface FloatingButtonProps {
 const FloatingButton = (props: FloatingButtonProps) => {
   return (
     <Pressable
-      onPress={props.onPress}
+      onPressIn={props.onPress}
       disabled={props.disabled}
       style={[style.container, !props.removeElevation && style.elevation]}>
       <Image source={props.image} style={style.icon} />

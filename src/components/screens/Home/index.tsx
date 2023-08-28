@@ -18,8 +18,8 @@ const HomeScreen = () => {
   return (
     <ScreenContainer scrollable stripPadding>
       {viewModel.isLoading && <LoadingOverlay />}
-      <MenuToggleButton navigation={viewModel.navigation} light />
       <View style={style.header}>
+        <MenuToggleButton navigation={viewModel.navigation} light />
         <View style={style.greetingContainer}>
           <Avatar name={viewModel.userValue.name} />
           <View style={style.greetingText}>

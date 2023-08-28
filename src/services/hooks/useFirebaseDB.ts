@@ -6,6 +6,8 @@ import {SavedPlace} from '../../interfaces/savedPlace';
 import {userState} from '../../state/userState';
 import auth from '@react-native-firebase/auth';
 import {
+  deleteAccountFailed,
+  deleteAccountSuccess,
   onResetPasswordEmailFailed,
   onResetPasswordEmailSent,
   onUsernameChangeFailedToast,
@@ -16,6 +18,7 @@ const useFirebaseDB = () => {
   const fbUser = useRecoilValue(sessionState);
   const userValue = useRecoilValue(userState);
   const resetUserData = useResetRecoilState(userState);
+  const resetFbData = useResetRecoilState(sessionState);
 
   const onHasOnboarded = async () => {
     await firestore().collection('users').doc(fbUser.uid).update({
@@ -52,6 +55,34 @@ const useFirebaseDB = () => {
   const onSignOut = async () => {
     await auth().signOut();
     resetUserData();
+  };
+
+  const onDeleteUser = async (password: string) => {
+    const user = auth().currentUser;
+    if (user) {
+      const credential = auth.EmailAuthProvider.credential(
+        user.email!,
+        password,
+      );
+      user
+        .reauthenticateWithCredential(credential)
+        .then(async () => {
+          await firestore()
+            .collection('users')
+            .doc(fbUser.uid)
+            .delete()
+            .then(async () => {
+              await user?.delete();
+              resetFbData();
+              resetUserData();
+            });
+          deleteAccountSuccess();
+        })
+        .catch(error => {
+          console.log(error);
+          deleteAccountFailed();
+        });
+    }
   };
 
   const onAddSavedLocation = async (name: string, shownPlaces: Place[]) => {
@@ -126,6 +157,7 @@ const useFirebaseDB = () => {
 
   return {
     onSignOut,
+    onDeleteUser,
     onChangeUsername,
     onChangePassword,
     onHasOnboarded,
