@@ -100,3 +100,23 @@ export const onUsernameChangeFailedToast = () =>
     bottomOffset: 100,
     visibilityTime: 6000,
   });
+
+export const deleteAccountFailed = () =>
+  Toast.show({
+    type: 'error',
+    text1: localise('FAILED_TO_DELETE_USER_TITLE'),
+    text2: localise('FAILED_TO_DELETE_USER_DESC'),
+    position: 'bottom',
+    bottomOffset: 100,
+    visibilityTime: 6000,
+  });
+
+export const deleteAccountSuccess = () =>
+  Toast.show({
+    type: 'error',
+    text1: localise('ACCOUNT_DELETED_TITLE'),
+    text2: localise('ACCOUNT_DELETED_DESC'),
+    position: 'bottom',
+    bottomOffset: 100,
+    visibilityTime: 6000,
+  });

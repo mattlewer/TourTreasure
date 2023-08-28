@@ -87,12 +87,16 @@
   "USERNAME_CHANGE_FAILED_DESC": "Failed to change username, please try again.",
   "RESET_PASSWORD_EMAIL_FAILED_TITLE": "Sending reset email failed",
   "RESET_PASSWORD_EMAIL_FAILED_DESC": "Failed to send reset email, please try again",
+  "FAILED_TO_DELETE_USER_TITLE": "Failed to delete user",
+  "FAILED_TO_DELETE_USER_DESC": "We couldn't delete your account at this time, please ensure you have entered the correct password.",
 
   "USERNAME_CHANGE_SUCCESSFUL_TITLE": "Username changed",
   "USERNAME_CHANGE_SUCCESSFUL_DESC": "Your new username should now appear on the home page.",
   "RESET_PASSWORD_TITLE": "Email sent",
   "RESET_PASSWORD_DESC": "Check your email for a message from us, please make sure you check the junk folder.",
-
+  "ACCOUNT_DELETED_TITLE": "Account deleted",
+  "ACCOUNT_DELETED_DESC": "Account deletion successful.",
+  
   "INVALID_USERNAME_LENGTH": "Your username must not be longer than 20 characters.",
   "INVALID_USERNAME_REQUIRED": "Username is required",
   "LOGIN_EMAIL_REQUIRED": "Email is required.",
@@ -111,5 +115,10 @@
   "HOW": "How?",
   "ABOUT_TOUR_TREASURE_WHAT": "Tour Treasure offers navigation services, favouriting, and similar functionality to a traditional map service, but tailored specifically to travel and tourism.\n",
   "ABOUT_TOUR_TREASURE_WHY": "Our aim with Tour Treasure is to improve on paper tourist maps by offering an interactive and visually appealing way to explore destinations.\n",
-  "ABOUT_TOUR_TREASURE_HOW": "By gamifying the experience, we hope that you and whoever you are travelling with will find enjoyment from ticking these locations off the list, and gaining points along the way."
+  "ABOUT_TOUR_TREASURE_HOW": "By gamifying the experience, we hope that you and whoever you are travelling with will find enjoyment from ticking these locations off the list, and gaining points along the way.",
+
+  "DELETE_ACCOUNT": "DELETE ACCOUNT",
+  "DELETE_ACCOUNT_POPUP_TITLE": "Are you sure?",
+  "DELETE_ACCOUNT_POPUP_DESC": "This action will remove all of your saved data and account details permenantly.",
+  "ENTER_YOUR_PASSWORD": "Enter your password"
 }

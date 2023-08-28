@@ -4,8 +4,7 @@ import * as color from '../../../constants/color';
 
 const LoadingOverlay = () => {
   return (
-    <View
-      style={style.container}>
+    <View style={style.container}>
       <ActivityIndicator size={'large'} color={color.PRIMARY} />
     </View>
   );
@@ -18,7 +17,7 @@ const style = StyleSheet.create({
     height: '100%',
     justifyContent: 'center',
     alignItems: 'center',
-    zIndex: 1000,
+    zIndex: 10000,
     backgroundColor: color.BLACK + '66',
   },
 });
