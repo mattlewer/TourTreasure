@@ -9,6 +9,7 @@ import {localise} from '../../../services/lang/lang';
 import * as color from '../../../constants/color';
 import Logo from '../../../assets/logo.png';
 import useFirebaseDB from '../../../services/hooks/useFirebaseDB';
+import {getPackageJson} from '../../../services/getPackageJson';
 
 const MenuDrawerContent = (props: DrawerContentComponentProps) => {
   const firebase = useFirebaseDB();
@@ -17,11 +18,14 @@ const MenuDrawerContent = (props: DrawerContentComponentProps) => {
     await firebase.onSignOut();
   };
 
+  const packageJson = getPackageJson();
+
   return (
     <DrawerContentScrollView {...props} contentContainerStyle={style.content}>
       <View style={style.header}>
         <Image source={Logo} style={style.logo} />
         <Text style={style.appName}>{localise('APP_NAME')}</Text>
+        <Text style={style.appVersion}>v{packageJson['versionName']}</Text>
       </View>
       <DrawerItemList {...props} />
       <View style={style.buffer} />
@@ -37,10 +41,18 @@ const style = StyleSheet.create({
     flex: 1,
   },
   header: {
+    position: 'relative',
     padding: 10,
     paddingVertical: 20,
     flexDirection: 'row',
     alignItems: 'center',
+  },
+  appVersion:{
+    color: color.TEXT_DARK,
+    position: 'absolute',
+    bottom: 5,
+    right: 10,
+    fontWeight: '500',
   },
   logo: {
     width: 50,
