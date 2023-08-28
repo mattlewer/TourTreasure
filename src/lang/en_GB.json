@@ -10,6 +10,7 @@
   "GUIDE_SIGN_UP_LINK": "Sign up!",
   "GUIDE_SIGN_IN": "Already have an account?",
   "GUIDE_SIGN_IN_LINK": "Sign in!",
+  "FORGOT_PASSWORD_INFO": "Forgot your password?",
   "USERNAME": "Display name",
   "EMAIL": "Email",
   "PASSWORD": "Password",
@@ -93,10 +94,13 @@
   "USERNAME_CHANGE_SUCCESSFUL_TITLE": "Username changed",
   "USERNAME_CHANGE_SUCCESSFUL_DESC": "Your new username should now appear on the home page.",
   "RESET_PASSWORD_TITLE": "Email sent",
+
   "RESET_PASSWORD_DESC": "Check your email for a message from us, please make sure you check the junk folder.",
   "ACCOUNT_DELETED_TITLE": "Account deleted",
   "ACCOUNT_DELETED_DESC": "Account deletion successful.",
   
+  "RESET_PASSWORD_DESC": "You should receive an email from us in the next few minutes, please make sure you check the junk folder.",
+
   "INVALID_USERNAME_LENGTH": "Your username must not be longer than 20 characters.",
   "INVALID_USERNAME_REQUIRED": "Username is required",
   "LOGIN_EMAIL_REQUIRED": "Email is required.",
@@ -116,6 +120,8 @@
   "ABOUT_TOUR_TREASURE_WHAT": "Tour Treasure offers navigation services, favouriting, and similar functionality to a traditional map service, but tailored specifically to travel and tourism.\n",
   "ABOUT_TOUR_TREASURE_WHY": "Our aim with Tour Treasure is to improve on paper tourist maps by offering an interactive and visually appealing way to explore destinations.\n",
   "ABOUT_TOUR_TREASURE_HOW": "By gamifying the experience, we hope that you and whoever you are travelling with will find enjoyment from ticking these locations off the list, and gaining points along the way.",
+  "SEND_EMAIL": "Send reset email",
+  "SAVE": "Save",
 
   "DELETE_ACCOUNT": "DELETE ACCOUNT",
   "DELETE_ACCOUNT_POPUP_TITLE": "Are you sure?",

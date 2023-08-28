@@ -1,14 +1,14 @@
 import React from 'react';
 import {View, StyleSheet, Text, Pressable} from 'react-native';
-import {localise} from '../../../services/lang/lang';
-import * as color from '../../../constants/color';
-import TextButton from '../TextButton';
-import TextInputField from '../TextInputField';
-import IconWithBirds from '../IconWithBirds';
+import {localise} from '../../../../services/lang/lang';
+import * as color from '../../../../constants/color';
+import TextButton from '../../TextButton';
+import TextInputField from '../../TextInputField';
+import IconWithBirds from '../../IconWithBirds';
 import {Formik} from 'formik';
-import {LoginState} from '../../../enums/loginState';
+import {LoginState} from '../../../../enums/loginState';
 import Animated, {SlideInLeft, SlideOutLeft} from 'react-native-reanimated';
-import signInValidation from '../../../services/forms/signInValidation';
+import signInValidation from '../../../../services/forms/signInValidation';
 
 interface SignInProps {
   onSignIn: (email: string, password: string) => void;
@@ -73,6 +73,17 @@ const SignIn = (props: SignInProps) => {
                   <Text style={{color: color.PRIMARY}}>
                     {' '}
                     {localise('GUIDE_SIGN_UP_LINK')}
+                  </Text>
+                </Text>
+              </Pressable>
+              <Pressable
+                onPress={() => props.setStage(LoginState.RESET_PASSWORD)}
+                style={style.textButton}>
+                <Text style={{color: color.TEXT_DARK}}>
+                  {'Forgot password?'}
+                  <Text style={{color: color.PRIMARY}}>
+                    {' '}
+                    {'Get a reset email.'}
                   </Text>
                 </Text>
               </Pressable>
