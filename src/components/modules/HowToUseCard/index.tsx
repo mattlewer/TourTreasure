@@ -7,13 +7,20 @@ interface HowToUseCardProps {
   image: HTMLImageElement;
   title: string;
   content: string;
+  small?: boolean;
 }
 
 const HowToUseCard = (props: HowToUseCardProps) => {
   return (
     <View style={style.slideContainer}>
       <View style={style.howToCard}>
-        <Image source={props.image} style={style.howToUseImage} />
+        <Image
+          source={props.image}
+          style={[
+            style.howToUseImage,
+            {height: props.small ? 220 : 300, width: props.small ? 100 : 140},
+          ]}
+        />
         <View style={style.textContainer}>
           <Text style={[typography.HeaderReg, style.headerText]}>
             {props.title}
@@ -47,8 +54,6 @@ const style = StyleSheet.create({
     shadowOpacity: 1,
   },
   howToUseImage: {
-    height: 300,
-    width: 140,
     resizeMode: 'contain',
     borderRadius: 12,
     borderWidth: 1,

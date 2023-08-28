@@ -120,5 +120,7 @@
   "DELETE_ACCOUNT": "DELETE ACCOUNT",
   "DELETE_ACCOUNT_POPUP_TITLE": "Are you sure?",
   "DELETE_ACCOUNT_POPUP_DESC": "This action will remove all of your saved data and account details permenantly.",
-  "ENTER_YOUR_PASSWORD": "Enter your password"
+  "ENTER_YOUR_PASSWORD": "Enter your password",
+  "SUPPORT_EMAIL": "fakeSupport@hotmail.co.uk",
+  "SUPPORT_EMAIL_SUBJECT": "Support Request - Tour Treasure"
 }

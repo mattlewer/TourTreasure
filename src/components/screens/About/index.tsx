@@ -15,18 +15,20 @@ const About = ({navigation}) => {
           {localise('APP_NAME')}
         </Text>
       </View>
-      <Text style={style.sectionHeader}>{localise('WHY')}</Text>
-      <Text style={style.sectionText}>
-        {localise('ABOUT_TOUR_TREASURE_WHY')}
-      </Text>
-      <Text style={style.sectionHeader}>{localise('WHAT')}</Text>
-      <Text style={style.sectionText}>
-        {localise('ABOUT_TOUR_TREASURE_WHAT')}
-      </Text>
-      <Text style={style.sectionHeader}>{localise('HOW')}</Text>
-      <Text style={style.sectionText}>
-        {localise('ABOUT_TOUR_TREASURE_HOW')}
-      </Text>
+      <View style={style.content}>
+        <Text style={style.sectionHeader}>{localise('WHY')}</Text>
+        <Text style={style.sectionText}>
+          {localise('ABOUT_TOUR_TREASURE_WHY')}
+        </Text>
+        <Text style={style.sectionHeader}>{localise('WHAT')}</Text>
+        <Text style={style.sectionText}>
+          {localise('ABOUT_TOUR_TREASURE_WHAT')}
+        </Text>
+        <Text style={style.sectionHeader}>{localise('HOW')}</Text>
+        <Text style={style.sectionText}>
+          {localise('ABOUT_TOUR_TREASURE_HOW')}
+        </Text>
+      </View>
     </StandardPageLayout>
   );
 };
@@ -46,7 +48,12 @@ const style = StyleSheet.create({
   iconHeaderContainer: {
     width: '100%',
     alignItems: 'center',
-    paddingVertical: 20,
+    paddingTop: 20,
   },
+  content:{
+    flex: 1,
+    marginTop: -40,
+    justifyContent: 'center',
+  }
 });
 export default About;
