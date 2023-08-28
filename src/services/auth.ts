@@ -30,10 +30,7 @@ export const SignIn = async (
   password: string,
 ): Promise<boolean> => {
   try {
-    const res = await auth().signInWithEmailAndPassword(email, password);
-    if(res.user.displayName === null){
-      throw new Error('Invalid user')
-    }
+    await auth().signInWithEmailAndPassword(email, password);
     return true;
   } catch (e) {
     onLogInFailure();
