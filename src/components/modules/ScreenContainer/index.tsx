@@ -26,7 +26,7 @@ const ScreenContainer = (props: ScreenContainerProps) => {
         keyboardShouldPersistTaps={'handled'}
         style={{flex: 1}}
         contentContainerStyle={{flexGrow: 1}}
-        showsVerticalScrollIndicator={true}>
+        showsVerticalScrollIndicator={false}>
         <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
           {content}
         </TouchableWithoutFeedback>

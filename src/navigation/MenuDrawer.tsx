@@ -16,6 +16,7 @@ const MenuDrawer = () => {
       defaultStatus="closed"
       initialRouteName={localise('HOME')}
       screenOptions={{
+        unmountOnBlur: true,
         headerShown: false,
         drawerPosition: 'right',
         swipeEdgeWidth: 0,
@@ -37,8 +38,8 @@ const MenuDrawer = () => {
         component={ActivityFeed}
       />
       <Drawer.Screen name={localise('PROFILE')} component={Profile} />
-      <Drawer.Screen name={localise('ABOUT_US')} component={About} />
       <Drawer.Screen name={localise('SUPPORT')} component={HelpAndSupport} />
+      <Drawer.Screen name={localise('ABOUT_US')} component={About} />
     </Drawer.Navigator>
   );
 };

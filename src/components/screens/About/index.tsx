@@ -52,8 +52,7 @@ const style = StyleSheet.create({
   },
   content:{
     flex: 1,
-    marginTop: -40,
-    justifyContent: 'center',
+    paddingTop: 30,
   }
 });
 export default About;
