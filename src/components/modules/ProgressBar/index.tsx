@@ -15,7 +15,7 @@ const ProgressBar = (props: ProgressBarProps) => {
         start={{x: 0, y: 0}}
         end={{x: 1, y: 0}}
         style={style.gradient}
-        colors={[color.PRIMARY + '55', color.PRIMARY + 'dd']}
+        colors={[color.PRIMARY + '22', color.PRIMARY + '22']}
       />
       <Slider
         disabled

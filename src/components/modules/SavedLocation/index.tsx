@@ -13,7 +13,9 @@ const SavedLocation = (props: SavedLocationProps) => {
   return (
     <Pressable style={style.container} onPress={props.onPress}>
       <View style={style.topRow}>
-        <Text style={style.text}>{props.name}</Text>
+        <Text style={[style.text, {color: color.TEXT_DARK, fontWeight: '500'}]}>
+          {props.name}
+        </Text>
         <Text
           style={style.text}
           accessibilityLabel={`${props.visitedPlaces} out of ${props.totalPlaces} places visited`}>
@@ -33,9 +35,9 @@ const style = StyleSheet.create({
     marginVertical: 9,
     borderRadius: 12,
     width: '100%',
-    backgroundColor: color.WHITE_PRIMARY,
+    backgroundColor: color.WHITE,
     flexDirection: 'column',
-    elevation: 2,
+    elevation: 6,
     zIndex: 20,
   },
   topRow: {
@@ -46,7 +48,7 @@ const style = StyleSheet.create({
   },
   text: {
     color: color.TEXT_DARK,
-    fontSize: 20,
+    fontSize: 16,
   },
   bottomRow: {
     width: '100%',
