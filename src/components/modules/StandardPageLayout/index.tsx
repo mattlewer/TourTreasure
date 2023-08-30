@@ -1,23 +1,38 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import ScreenContainer from '../ScreenContainer';
 import MenuToggleButton from '../MenuToggleButton';
 import * as color from '../../../constants/color';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
 interface StandardPageLayoutProps {
   navigation: any;
   title: string;
   children: React.ReactNode;
+  preventScroll?: boolean;
 }
 const StandardPageLayout = (props: StandardPageLayoutProps) => {
+  const container = !props.preventScroll ? (
+    <KeyboardAwareScrollView
+      bounces={false}
+      alwaysBounceVertical={false}
+      overScrollMode={'never'}
+      keyboardShouldPersistTaps={'handled'}
+      style={style.inner}
+      contentContainerStyle={{flexGrow: 1}}
+      showsVerticalScrollIndicator={false}>
+      {props.children}
+    </KeyboardAwareScrollView>
+  ) : (
+    <View style={style.inner}>{props.children}</View>
+  );
   return (
-    <ScreenContainer stripPadding>
+    <View style={{flex: 1}}>
       <View style={style.header}>
         <Text style={style.headerText}>{props.title}</Text>
       </View>
       <MenuToggleButton navigation={props.navigation} light />
-      <View style={style.inner}>{props.children}</View>
-    </ScreenContainer>
+      {container}
+    </View>
   );
 };
 

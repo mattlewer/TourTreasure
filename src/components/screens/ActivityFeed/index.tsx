@@ -9,6 +9,7 @@ const ActivityFeed = ({navigation}) => {
   const viewModel = useActivityFeedViewModel();
   return (
     <StandardPageLayout
+      preventScroll
       title={localise('ACTIVITY_FEED')}
       navigation={navigation}>
       {viewModel.orderedLocations.length > 0 ? (

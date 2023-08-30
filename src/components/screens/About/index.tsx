@@ -52,7 +52,7 @@ const style = StyleSheet.create({
   },
   content:{
     flex: 1,
-    paddingTop: 30,
+    paddingVertical: 30,
   }
 });
 export default About;

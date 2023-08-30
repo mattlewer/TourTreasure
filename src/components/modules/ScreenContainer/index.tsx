@@ -23,6 +23,7 @@ const ScreenContainer = (props: ScreenContainerProps) => {
     content = (
       <KeyboardAwareScrollView
         bounces={false}
+        alwaysBounceVertical={false}
         keyboardShouldPersistTaps={'handled'}
         style={{flex: 1}}
         contentContainerStyle={{flexGrow: 1}}
