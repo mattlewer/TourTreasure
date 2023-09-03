@@ -8,3 +8,4 @@ export const BLACK = '#000000';
 export const LINK_COLOR = '#2200CC';
 export const ERROR_RED = '#e83427';
 export const SUCCESS_GREEN = '#24c400';
+export const TERTIARY = '#6603fc';

@@ -14,6 +14,7 @@ import {localise} from '../../lang/lang';
 import {Place} from '../../../interfaces/place';
 import useLocation from '../../hooks/useLocation';
 import useFirebaseDB from '../../hooks/useFirebaseDB';
+import {PhotoFile} from 'react-native-vision-camera';
 
 type LocationScreenRouteProp = RouteProp<HomeAndMapStackParams, 'Location'>;
 
@@ -33,6 +34,7 @@ const useLocationScreenViewModel = () => {
   const [shownPlaces, setShownPlaces] = useState<Place[]>(places);
   const [placeFound, setPlaceFound] = useState<boolean>(false);
   const [isSaved, setIsSaved] = useState(false);
+  const [isCameraOpen, setIsCameraOpen] = useState(false);
   const userLocation = useLocation();
 
   useEffect(() => {
@@ -134,11 +136,16 @@ const useLocationScreenViewModel = () => {
     firebase.onDeleteSavedLocation(searchedPlaceName);
   };
 
+  const onReceivePhoto = (photo: PhotoFile) => {
+    console.log(photo);
+  };
+
   return {
     isSaved,
     userValue,
     placeFound,
     shownPlaces,
+    isCameraOpen,
     userLocation,
     selectedPlace,
     navigationPlace,
@@ -147,7 +154,9 @@ const useLocationScreenViewModel = () => {
     saveOrRemove,
     onPlaceFound,
     setPlaceFound,
+    onReceivePhoto,
     onNavigateBack,
+    setIsCameraOpen,
     setSelectedPlace,
     onViewPlaceDetails,
     onSetNavigationPlace,

@@ -11,6 +11,7 @@ import TextButton from '../TextButton';
 import CloseIcon from '../../../assets/close.png';
 import PlaceStats from '../PlaceStats';
 import MapPin from '../MapPin';
+import TakePhotoButton from '../TakePhotoButton';
 
 interface SelectedPlaceCardProps {
   user: User;
@@ -20,6 +21,7 @@ interface SelectedPlaceCardProps {
   setSelectedPlace: (place: undefined) => void;
   setNavigationPlace: (place: Place) => void;
   onViewPlaceDetails: (place: Place) => void;
+  onTakePhoto: (isOpen: boolean) => void;
 }
 
 const SelectedPlaceCard = (props: SelectedPlaceCardProps) => {
@@ -72,6 +74,7 @@ const SelectedPlaceCard = (props: SelectedPlaceCardProps) => {
             />
           </View>
         </View>
+        <TakePhotoButton onPress={props.onTakePhoto}/>
       </View>
     </Pressable>
   );

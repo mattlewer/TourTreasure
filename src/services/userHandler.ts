@@ -22,6 +22,23 @@ export const hasVisitedLocation = (
   return false;
 };
 
+export const getVisitedPlaceInfo = (
+  place: Place,
+  user: User,
+  placeName: string,
+): Place | undefined => {
+  for (let x of user.savedPlaces) {
+    const visitedPlaceIndex = x.visitedPlaces.findIndex(p => p.place_id === place.place_id)
+    if (
+      x.name === placeName &&
+      x.visitedPlaces.findIndex(p => p.place_id === place.place_id) >= 0
+    ) {
+      return x.visitedPlaces[visitedPlaceIndex];
+    }
+  }
+  return undefined;
+};
+
 export const totalFoundPlaces = (user: User): number => {
   let totalFoundPlaces = 0;
   for (let x of user.savedPlaces) {

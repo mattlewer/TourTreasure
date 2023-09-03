@@ -8,19 +8,22 @@ import NavigationPlaceCard from '../../modules/NavigationPlaceCard';
 import SuccessAnimationModal from '../../modules/SuccessAnimationModal';
 import useLocationScreenViewModel from '../../../services/viewModels/screens/useLocationScreenViewModel';
 import LocationScreenHeader from '../../modules/LocationScreenHeader';
+import CameraView from '../../modules/Camera';
 
 const Location = () => {
   const viewModel = useLocationScreenViewModel();
   return (
     <>
-      <LocationScreenHeader
-        isSaved={
-          hasSavedPlace(viewModel.userValue, viewModel.searchedPlaceName) >= 0
-        }
-        saveOrRemove={viewModel.saveOrRemove}
-        onNavigateBack={viewModel.onNavigateBack}
-        searchedPlaceName={viewModel.searchedPlaceName}
-      />
+      {!viewModel.isCameraOpen && (
+        <LocationScreenHeader
+          isSaved={
+            hasSavedPlace(viewModel.userValue, viewModel.searchedPlaceName) >= 0
+          }
+          saveOrRemove={viewModel.saveOrRemove}
+          onNavigateBack={viewModel.onNavigateBack}
+          searchedPlaceName={viewModel.searchedPlaceName}
+        />
+      )}
       <ScreenContainer stripPadding>
         <Map
           user={viewModel.userValue}
@@ -35,6 +38,7 @@ const Location = () => {
         />
         {viewModel.selectedPlace && !viewModel.placeFound && (
           <SelectedPlaceCard
+            onTakePhoto={viewModel.setIsCameraOpen}
             user={viewModel.userValue}
             place={viewModel.selectedPlace}
             placeNumber={
@@ -75,6 +79,11 @@ const Location = () => {
               searchedPlaceName={viewModel.searchedPlaceName}
             />
           )}
+        <CameraView
+          isOpen={viewModel.isCameraOpen}
+          onReceiveImage={viewModel.onReceivePhoto}
+          setIsOpen={viewModel.setIsCameraOpen}
+        />
       </ScreenContainer>
     </>
   );
