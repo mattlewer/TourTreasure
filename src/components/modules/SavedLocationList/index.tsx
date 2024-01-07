@@ -5,7 +5,7 @@ import {typography} from '../../../constants/typography';
 import {localise} from '../../../services/lang/lang';
 import SavedLocation from '../SavedLocation';
 import * as color from '../../../constants/color';
-import {createEpoch} from '../../../services/dateHandler';
+import {createEpoch} from '../../../utils/dateHandler';
 import NoInfo from '../NoInfo';
 
 interface SavedLocationListProps {

@@ -1,5 +1,5 @@
 import Toast from 'react-native-toast-message';
-import {localise} from './lang/lang';
+import {localise} from '../services/lang/lang';
 
 export const onLogInFailure = () =>
   Toast.show({

@@ -2,7 +2,7 @@ import {View, Text, StyleSheet} from 'react-native';
 import React from 'react';
 import {User} from '../../../interfaces/user';
 import HomeStat from '../HomeStat';
-import {totalFoundPlaces} from '../../../services/userHandler';
+import {totalFoundPlaces} from '../../../utils/userHandler';
 import {localise} from '../../../services/lang/lang';
 
 interface HomeStatListProps {

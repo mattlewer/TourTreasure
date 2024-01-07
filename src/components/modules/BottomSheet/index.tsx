@@ -3,7 +3,7 @@ import BottomSheet, {
   BottomSheetFlatList,
   BottomSheetFlatListMethods,
 } from '@gorhom/bottom-sheet';
-import {hasVisitedLocation} from '../../../services/userHandler';
+import {hasVisitedLocation} from '../../../utils/userHandler';
 import {StyleSheet} from 'react-native';
 import {Place} from '../../../interfaces/place';
 import {User} from '../../../interfaces/user';

@@ -1,11 +1,11 @@
 import {useEffect, useState} from 'react';
-import {hasSavedPlace, hasVisitedLocation} from '../../userHandler';
+import {hasSavedPlace, hasVisitedLocation} from '../../../utils/userHandler';
 import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
 import {getPlaceDetailsFromPlaceId} from '../../hooks/api/place';
-import {requestLocationPermission} from '../../permissions';
-import {hasUserFoundLocation} from '../../checkIfTriggerDistance';
+import {requestLocationPermission} from '../../../utils/permissions';
+import {hasUserFoundLocation} from '../../../utils/checkIfTriggerDistance';
 import {StackNavigationProp} from '@react-navigation/stack';
-import {noPermissionToast} from '../../toasts';
+import {noPermissionToast} from '../../../utils/toasts';
 import {HomeAndMapStackParams} from '../../../navigation/HomeAndMapStack';
 import {useRecoilState} from 'recoil';
 import {CreateAlert} from '../../../components/modules/Alert';

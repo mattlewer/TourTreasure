@@ -1,4 +1,4 @@
-import {CreateAccount, SignIn} from '../../auth';
+import {CreateAccount, SignIn} from '../../../utils/auth';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {CreateAccoundStackParams} from '../../../navigation/CreateAccountStackNav';

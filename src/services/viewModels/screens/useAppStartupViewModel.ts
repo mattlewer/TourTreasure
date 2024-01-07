@@ -3,7 +3,7 @@ import {useRecoilState} from 'recoil';
 import {useEffect, useState} from 'react';
 import useHandleUserData from '../../hooks/useHandleUserData';
 import SplashScreen from 'react-native-splash-screen';
-import checkUpdate from '../../checkUpdate';
+import checkUpdate from '../../../utils/checkUpdate';
 
 const useAppStartupViewModel = () => {
   const [userValue, setUserValue] = useRecoilState(userState);

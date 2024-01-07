@@ -2,8 +2,8 @@ import {useRecoilValue} from 'recoil';
 import {userState} from '../../../state/userState';
 import {useEffect, useState} from 'react';
 import {ActivityFeedItem} from '../../../interfaces/activityFeedItem';
-import {getFoundPlacesDateOrdered} from '../../userHandler';
-import {createEpoch} from '../../dateHandler';
+import {getFoundPlacesDateOrdered} from '../../../utils/userHandler';
+import {createEpoch} from '../../../utils/dateHandler';
 
 const useActivityFeedViewModel = () => {
   const userValue = useRecoilValue(userState);

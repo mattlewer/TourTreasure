@@ -1,7 +1,7 @@
 import React from 'react';
 import * as color from '../../../constants/color';
 import {View, Text, StyleSheet} from 'react-native';
-import {hasVisitedLocation} from '../../../services/userHandler';
+import {hasVisitedLocation} from '../../../utils/userHandler';
 import {typography} from '../../../constants/typography';
 import {Place} from '../../../interfaces/place';
 import {User} from '../../../interfaces/user';

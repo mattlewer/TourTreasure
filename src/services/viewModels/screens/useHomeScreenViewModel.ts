@@ -1,19 +1,19 @@
 import {useEffect, useState} from 'react';
 import {Keyboard} from 'react-native';
-import {hasSavedPlace} from '../../userHandler';
+import {hasSavedPlace} from '../../../utils/userHandler';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {getPointsOfInterest} from '../../hooks/api/place';
-import {noResultsToast} from '../../toasts';
+import {noResultsToast} from '../../../utils/toasts';
 import {HomeAndMapStackParams} from '../../../navigation/HomeAndMapStack';
 import {useRecoilValue} from 'recoil';
 import {useNavigation} from '@react-navigation/native';
 import {userState} from '../../../state/userState';
-import {validateText} from '../../validateText';
+import {validateText} from '../../../utils/validateText';
 import {
   requestLocationPermission,
   requestNotificationPermission,
-} from '../../permissions';
-import {notificationListener} from '../../notifications';
+} from '../../../utils/permissions';
+import {notificationListener} from '../../../utils/notifications';
 
 const useHomeScreenViewModel = () => {
   const navigation =

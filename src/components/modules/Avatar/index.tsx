@@ -1,6 +1,6 @@
 import {Text, StyleSheet, View} from 'react-native';
 import React from 'react';
-import {generateInitials} from '../../../services/generateInitals';
+import {generateInitials} from '../../../utils/generateInitals';
 import * as color from '../../../constants/color';
 
 interface AvatarProps {

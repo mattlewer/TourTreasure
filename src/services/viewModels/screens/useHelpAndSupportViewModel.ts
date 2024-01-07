@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import useFirebaseDB from '../hooks/useFirebaseDB';
+import useFirebaseDB from '../../hooks/useFirebaseDB';
 
 const useHelpAndSupportViewModel = () => {
   const [isDeleting, setIsDeleting] = useState(false);

@@ -10,7 +10,7 @@ import {localise} from '../../../services/lang/lang';
 import * as color from '../../../constants/color';
 import Logo from '../../../assets/logo.png';
 import useFirebaseDB from '../../../services/hooks/useFirebaseDB';
-import {getPackageJson} from '../../../services/getPackageJson';
+import {getPackageJson} from '../../../utils/getPackageJson';
 
 const MenuDrawerContent = (props: DrawerContentComponentProps) => {
   const firebase = useFirebaseDB();
