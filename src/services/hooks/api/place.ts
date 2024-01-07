@@ -4,7 +4,7 @@ import {PlaceDetails} from '../../../interfaces/placeDetails';
 import {
   noInfoToast,
   noResultsToast,
-} from '../../toasts';
+} from '../../../utils/toasts';
 
 export const getPointsOfInterest = async (
   location: string,

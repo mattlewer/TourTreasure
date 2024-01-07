@@ -3,7 +3,7 @@ import {Review} from '../../../../interfaces/placeDetails';
 import {typography} from '../../../../constants/typography';
 import {Text, FlatList, StyleSheet, View} from 'react-native';
 import * as color from '../../../../constants/color';
-import {generateInitials} from '../../../../services/generateInitals';
+import {generateInitials} from '../../../../utils/generateInitals';
 
 interface ReviewsProps {
   reviews: Review[];

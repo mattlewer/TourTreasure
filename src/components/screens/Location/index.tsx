@@ -1,5 +1,5 @@
 import React from 'react';
-import {findIndexOfPlace, hasSavedPlace} from '../../../services/userHandler';
+import {findIndexOfPlace, hasSavedPlace} from '../../../utils/userHandler';
 import Map from '../../modules/Map';
 import ScreenContainer from '../../modules/ScreenContainer';
 import SelectedPlaceCard from '../../modules/SelectedPlaceCard';

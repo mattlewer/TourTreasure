@@ -12,7 +12,7 @@ import {
   onResetPasswordEmailSent,
   onUsernameChangeFailedToast,
   onUsernameChangedToast,
-} from '../toasts';
+} from '../../utils/toasts';
 
 const useFirebaseDB = () => {
   const fbUser = useRecoilValue(sessionState);
@@ -78,8 +78,7 @@ const useFirebaseDB = () => {
             });
           deleteAccountSuccess();
         })
-        .catch(error => {
-          console.log(error);
+        .catch(() => {
           deleteAccountFailed();
         });
     }

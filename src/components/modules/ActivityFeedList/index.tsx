@@ -10,7 +10,7 @@ import {
 import {ActivityFeedItem} from '../../../interfaces/activityFeedItem';
 import Rating from '../../../assets/icon_rating.png';
 import * as color from '../../../constants/color';
-import {formatIsoString} from '../../../services/dateHandler';
+import {formatIsoString} from '../../../utils/dateHandler';
 
 interface ActivityFeedListProps {
   items: ActivityFeedItem[];

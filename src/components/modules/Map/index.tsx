@@ -3,9 +3,9 @@ import * as color from '../../../constants/color';
 import {
   findIndexOfPlace,
   hasVisitedLocation,
-} from '../../../services/userHandler';
+} from '../../../utils/userHandler';
 import MapView, {Marker, Region} from 'react-native-maps';
-import {noDirectionsToast} from '../../../services/toasts';
+import {noDirectionsToast} from '../../../utils/toasts';
 import {StyleSheet, View} from 'react-native';
 import {GpsLocation} from '../../../interfaces/gpsLocation';
 import {MapStyle} from '../../../constants/mapStyle';

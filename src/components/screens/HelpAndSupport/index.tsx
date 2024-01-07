@@ -3,7 +3,7 @@ import StandardPageLayout from '../../modules/StandardPageLayout';
 import {localise} from '../../../services/lang/lang';
 import {Linking, Pressable, StyleSheet, Text, View} from 'react-native';
 import * as color from '../../../constants/color';
-import useHelpAndSupportViewModel from '../../../services/viewModels/useHelpAndSupportViewModel';
+import useHelpAndSupportViewModel from '../../../services/viewModels/screens/useHelpAndSupportViewModel';
 import ConfirmDeleteAccount from '../../modules/ConfirmDeleteAccount';
 import TextButton from '../../modules/TextButton';
 import HowToUse from '../HowToUse';
