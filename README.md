@@ -1,6 +1,7 @@
 **Explore Landmarks and Receive Points For Visiting Them**
-Published to Google Play Store: https://play.google.com/store/apps/details?id=com.tourtreasure&hl=en_GB
 
+
+Published to Google Play Store: https://play.google.com/store/apps/details?id=com.tourtreasure&hl=en_GB
 
 Configuration steps:
 
